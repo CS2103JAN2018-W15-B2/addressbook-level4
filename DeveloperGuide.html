@@ -1938,13 +1938,13 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">medical staff</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">filter the details that I want to see</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">easy access to information I need</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I can have easy access to information I need</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">doctor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">record health profile (chronic conditions and allergies) of the patient</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -1980,13 +1980,10 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">doctor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">print out a formatted medical record</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">it can be easily show to the patient when explaining their condition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">it can be shown to the patient when explaining their condition</p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1997,7 +1994,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <h3 id="use-case-update-record-of-patient-s-visit" class="discrete">Use case: Update record of patient&#8217;s visit</h3>
 <div class="paragraph">
-<p>Precondition: User is logged in, the patient exists in the system</p>
+<p>Precondition: User is logged in</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -2013,7 +2010,7 @@ for <code>RemarkCommandParser</code>.</p>
 <li>
 <p>IMDB shows a success message</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>Use case ends</p>
 </div>
 </li>
 </ol>
@@ -2028,13 +2025,13 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. IMDB detects that the patient does not exist.</p>
+<p>2a1. IMDB detects that the patient does not exist</p>
 </li>
 <li>
-<p>2a2. IMDB shows an error message.</p>
+<p>2a2. IMDB shows an error message</p>
 </li>
 <li>
-<p>2a3. IMDB requests for user to input NRIC of patient.</p>
+<p>2a3. IMDB requests for user to input NRIC of patient</p>
 </li>
 <li>
 <p>2a4. User inputs NRIC of patient</p>
@@ -2068,7 +2065,7 @@ for <code>RemarkCommandParser</code>.</p>
 <li>
 <p>IMDB shows a success message</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>Use case ends</p>
 </div>
 </li>
 </ol>
@@ -2079,11 +2076,11 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a. Username and password do not match.</p>
+<p>3a. Username and password do not match</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. IMDB shows an error message.</p>
+<p>3a1. IMDB shows an error message</p>
 </li>
 <li>
 <p>3a2. IMDB requests user to input username and password</p>
@@ -2094,7 +2091,7 @@ for <code>RemarkCommandParser</code>.</p>
 <li>
 <p>Steps 3a1-3a3 are repeated until username and password match</p>
 <div class="paragraph">
-<p>Use case resumes at step 4.</p>
+<p>Use case resumes at step 4</p>
 </div>
 </li>
 </ul>
@@ -2104,7 +2101,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <h3 id="use-case-update-patient-details" class="discrete">Use case: Update patient details</h3>
 <div class="paragraph">
-<p>Preconditions: User is logged in, the patient is exist in the system</p>
+<p>Preconditions: User is logged in</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -2123,7 +2120,7 @@ for <code>RemarkCommandParser</code>.</p>
 <li>
 <p>IMDB shows a success message and display the patient details</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>Use case ends</p>
 </div>
 </li>
 </ol>
@@ -2134,11 +2131,11 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a. Patient cannot be found in the system.</p>
+<p>3a. Patient cannot be found in the system</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. IMDB shows an error message.</p>
+<p>3a1. IMDB shows an error message</p>
 </li>
 <li>
 <p>3a2. IMDB requests user to input NRIC and patient detail that need to be edited</p>
@@ -2149,18 +2146,18 @@ for <code>RemarkCommandParser</code>.</p>
 <li>
 <p>Steps 3a1-3a3 are repeated until the inputs are valid</p>
 <div class="paragraph">
-<p>Use case resumes from step 4.</p>
+<p>Use case resumes from step 4</p>
 </div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>3b. Input format is incorrect.</p>
+<p>3b. Input format is incorrect</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3b1. IMDB shows an error message.</p>
+<p>3b1. IMDB shows an error message</p>
 </li>
 <li>
 <p>3b2. IMDB requests user to input NRIC and patient detail that need to be edited</p>
@@ -2169,9 +2166,9 @@ for <code>RemarkCommandParser</code>.</p>
 <p>3b3. User inputs NRIC and patient detail that need to be edited</p>
 </li>
 <li>
-<p>Steps 3b1-3b3 are repeated until the inputs are valid.</p>
+<p>Steps 3b1-3b3 are repeated until the inputs are valid</p>
 <div class="paragraph">
-<p>Use case resumes from step 4.</p>
+<p>Use case resumes from step 4</p>
 </div>
 </li>
 </ul>
@@ -2181,7 +2178,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <h3 id="use-case-record-health-profile-of-the-patient" class="discrete">Use case: Record health profile of the patient</h3>
 <div class="paragraph">
-<p>Preconditions: User is logged in, the patient is exist in the system</p>
+<p>Preconditions: User is logged in</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -2206,7 +2203,7 @@ for <code>RemarkCommandParser</code>.</p>
 <li>
 <p>IMDB shows a success message and display the patient details</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>Use case ends</p>
 </div>
 </li>
 </ol>
@@ -2217,11 +2214,11 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a. Patient cannot be found in the system.</p>
+<p>3a. Patient cannot be found in the system</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. IMDB shows an error message.</p>
+<p>3a1. IMDB shows an error message</p>
 </li>
 <li>
 <p>3a2. IMDB requests user to input NRIC</p>
@@ -2232,18 +2229,18 @@ for <code>RemarkCommandParser</code>.</p>
 <li>
 <p>Steps 3a1-3a3 are repeated until the inputs are valid</p>
 <div class="paragraph">
-<p>Use case resumes from step 4.</p>
+<p>Use case resumes from step 4</p>
 </div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>5a. Input format is incorrect.</p>
+<p>5a. Input format is incorrect</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>5a1. IMDB shows an error message.</p>
+<p>5a1. IMDB shows an error message</p>
 </li>
 <li>
 <p>5a2. IMDB requests user to input details that need to be edited</p>
@@ -2252,10 +2249,262 @@ for <code>RemarkCommandParser</code>.</p>
 <p>5a3. User inputs details that need to be edited</p>
 </li>
 <li>
-<p>Steps 5a1-5a3 are repeated until the inputs are valid.</p>
+<p>Steps 5a1-5a3 are repeated until the inputs are valid</p>
 <div class="paragraph">
-<p>Use case resumes from step 6.</p>
+<p>Use case resumes from step 6</p>
 </div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-add-remarks-to-a-patient" class="discrete">Use case: Add remarks to a patient</h3>
+<div class="paragraph">
+<p>Preconditions: User is logged in</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add remarks to a patient</p>
+</li>
+<li>
+<p>IMDB requests user to input NRIC of the patient and the remarks</p>
+</li>
+<li>
+<p>User inputs NRIC and the remarks</p>
+</li>
+<li>
+<p>IMDB shows a success message and displays the added remarks</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. Patient cannot be found in the system</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. IMDB shows an error message</p>
+</li>
+<li>
+<p>3a2. IMDB requests user to input NRIC and remarks</p>
+</li>
+<li>
+<p>3a3. User inputs NRIC and remarks</p>
+</li>
+<li>
+<p>Steps 3a1-3a3 are repeated until the inputs are valid</p>
+<div class="paragraph">
+<p>Use case resumes from step 4</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. Input format is incorrect</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b1. IMDB shows an error message</p>
+</li>
+<li>
+<p>3b2. IMDB requests user to input NRIC and remarks</p>
+</li>
+<li>
+<p>3b3. User inputs NRIC and remarks</p>
+</li>
+<li>
+<p>Steps 3b1-3b3 are repeated until the inputs are valid.</p>
+<div class="paragraph">
+<p>Use case resumes from step 4</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-retrieve-patient-schedule" class="discrete">Use case: Retrieve patient schedule</h3>
+<div class="paragraph">
+<p>Preconditions: User is logged in</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to search for schedule</p>
+</li>
+<li>
+<p>IMDB requests user to input NRIC of the patient</p>
+</li>
+<li>
+<p>IMDB displays schedule of patient</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Patient cannot be found in the system</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. IMDB shows an error message</p>
+</li>
+<li>
+<p>2a2. IMDB requests user to input NRIC</p>
+</li>
+<li>
+<p>2a3. User inputs NRIC</p>
+</li>
+<li>
+<p>Steps 2a1-2a3 are repeated until the inputs are valid</p>
+<div class="paragraph">
+<p>Use case resumes from step 3</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. Input format is incorrect</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. IMDB shows an error message</p>
+</li>
+<li>
+<p>2b2. IMDB requests user to input NRIC</p>
+</li>
+<li>
+<p>2b3. User inputs NRIC</p>
+</li>
+<li>
+<p>Steps 2b1-2b3 are repeated until the inputs are valid</p>
+<div class="paragraph">
+<p>Use case resumes from step 3</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-filter-displayed-patient-details" class="discrete">Use case: Filter displayed patient details</h3>
+<div class="paragraph">
+<p>Preconditions: User is logged in, patient details are on screen</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to use a filter</p>
+</li>
+<li>
+<p>IMDB requests user to input filter number</p>
+</li>
+<li>
+<p>IMDB displays filtered patient details only</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Filter number does not exist</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. IMDB shows an error message</p>
+</li>
+<li>
+<p>2a2. IMDB requests user to input filter number</p>
+</li>
+<li>
+<p>2a3. User inputs filter number</p>
+</li>
+<li>
+<p>Steps 2a1-2a3 are repeated until the inputs are valid</p>
+<div class="paragraph">
+<p>Use case resumes from step 3</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-export-patient-records-for-printing" class="discrete">Use case: Export patient records for printing</h3>
+<div class="paragraph">
+<p>Preconditions: User is logged in</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to print patient records</p>
+</li>
+<li>
+<p>IMDB requests user to input NRIC of the patient</p>
+</li>
+<li>
+<p>IMDB exports a formatted record of the patient that can be printed</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Patient cannot be found in the system</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. IMDB shows an error message</p>
+</li>
+<li>
+<p>2a2. IMDB requests user to input NRIC</p>
+</li>
+<li>
+<p>2a3. User inputs NRIC</p>
+</li>
+<li>
+<p>Steps 2a1-2a3 are repeated until the inputs are valid</p>
 </li>
 </ul>
 </div>
@@ -2312,9 +2561,6 @@ for <code>RemarkCommandParser</code>.</p>
 <p>Should be able to work in offline mode in case of emergencies</p>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -2489,7 +2735,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-07 15:51:26 UTC
+Last updated 2018-03-07 17:34:02 UTC
 </div>
 </div>
 </body>
