@@ -39,20 +39,28 @@
 <li><a href="#editing-remarks-for-a-patient-code-remark-code-or-code-rk-code-coming-in-v1-2">3.9. Editing remarks for a patient : <code>remark</code> or <code>rk</code> [coming in v1.2]</a></li>
 <li><a href="#viewing-the-medical-records-for-a-patient-record-coming-in-v1-4">3.10. Viewing the medical records for a patient : record [coming in v1.4]</a></li>
 <li><a href="#editing-the-medical-records-for-a-patient-record-coming-in-v1-4">3.11. Editing the medical records for a patient : record [coming in v1.4]</a></li>
-<li><a href="#listing-entered-commands-code-history-code-or-code-hi-code">3.12. Listing entered commands : <code>history</code> or <code>hi</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code-or-code-u-code-or-code-z-code">3.13. Undoing previous command : <code>undo</code> or <code>u</code> or <code>z</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code-or-code-r-code-or-code-y-code">3.14. Redoing the previously undone command : <code>redo</code> or <code>r</code> or <code>y</code></a></li>
-<li><a href="#view-patient-appointments-code-viewappt-code">3.15. View patient appointments: <code>viewappt</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code-or-code-c-code">3.16. Clearing all entries : <code>clear</code> or <code>c</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code-or-code-x-code">3.17. Exiting the program : <code>exit</code> or <code>x</code></a></li>
-<li><a href="#saving-the-data">3.18. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.19. Encrypting data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#centralised-database-code-coming-in-v2-0-code">3.20. Centralised database <code>[coming in v2.0]</code></a></li>
+<li><a href="#add-patient-into-visiting-queue-with-patient-name-code-addq-code-coming-in-v1-2">3.12. Add patient into visiting queue with patient name: <code>addq</code> [coming in v1.2]</a></li>
+<li><a href="#remove-patient-into-visiting-queue-with-patient-name-code-removeq-code-coming-in-v1-2">3.13. Remove patient into visiting queue with patient name: <code>removeq</code> [coming in v1.2]</a></li>
+<li><a href="#listing-entered-commands-code-history-code-or-code-hi-code">3.14. Listing entered commands : <code>history</code> or <code>hi</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code-or-code-u-code-or-code-z-code">3.15. Undoing previous command : <code>undo</code> or <code>u</code> or <code>z</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code-or-code-r-code-or-code-y-code">3.16. Redoing the previously undone command : <code>redo</code> or <code>r</code> or <code>y</code></a></li>
+<li><a href="#view-medical-appointments-by-patient-name-code-viewappt-code-coming-in-v1-3">3.17. View medical appointments by patient name: <code>viewappt</code> [coming in v1.3]</a></li>
+<li><a href="#delete-a-medical-appointment-by-patient-name-and-appointment-index-number-code-delappt-code-coming-in-v1-3">3.18. Delete a medical appointment by patient name and appointment index number: <code>delappt</code> [coming in v1.3]</a></li>
+<li><a href="#view-medical-appointments-by-date-code-viewappt-code-coming-in-v1-4">3.19. View medical appointments by date: <code>viewappt</code> [coming in v1.4]</a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
-<li><a href="#command-alias-summary">6. Command Alias Summary</a></li>
+<li><a href="#add-a-medical-appointment-with-code-addappt-code-coming-in-v1-4">4. Add a medical appointment with: <code>addappt</code> [coming in v1.4]</a>
+<ul class="sectlevel2">
+<li><a href="#clearing-all-entries-code-clear-code-or-code-c-code">4.1. Clearing all entries : <code>clear</code> or <code>c</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code-or-code-x-code">4.2. Exiting the program : <code>exit</code> or <code>x</code></a></li>
+<li><a href="#saving-the-data">4.3. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">4.4. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#centralised-database-code-coming-in-v2-0-code">4.5. Centralised database <code>[coming in v2.0]</code></a></li>
+</ul>
+</li>
+<li><a href="#faq">5. FAQ</a></li>
+<li><a href="#command-summary">6. Command Summary</a></li>
+<li><a href="#command-alias-summary">7. Command Alias Summary</a></li>
 </ul>
 </div>
 </div>
@@ -481,7 +489,47 @@ Illness:Flu Treatment:Zyrtec`.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code-or-code-hi-code"><a class="link" href="#listing-entered-commands-code-history-code-or-code-hi-code">3.12. Listing entered commands : <code>history</code> or <code>hi</code></a></h3>
+<h3 id="add-patient-into-visiting-queue-with-patient-name-code-addq-code-coming-in-v1-2"><a class="link" href="#add-patient-into-visiting-queue-with-patient-name-code-addq-code-coming-in-v1-2">3.12. Add patient into visiting queue with patient name: <code>addq</code> [coming in v1.2]</a></h3>
+<div class="paragraph">
+<p>Add patient into visiting queue (registration).
+Format: <code>addq PATIENT_NAME</code> or <code>aq PATIENT_NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:
+* <code>addq Betsy</code><br>
+Betsy will be added at the back of the visiting queue.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>vq John</code><br>
+John will be added at the back of the visiting queue.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="remove-patient-into-visiting-queue-with-patient-name-code-removeq-code-coming-in-v1-2"><a class="link" href="#remove-patient-into-visiting-queue-with-patient-name-code-removeq-code-coming-in-v1-2">3.13. Remove patient into visiting queue with patient name: <code>removeq</code> [coming in v1.2]</a></h3>
+<div class="paragraph">
+<p>Remove the first patient from the visiting queue (check-out).
+Format: <code>removeq</code> or <code>rq</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:
+* <code>removeq Betsy</code><br>
+Betsy will be removed if she is the first patient in the queue.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>vq John</code><br>
+John will be removed if he is the first patient in the queue.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-entered-commands-code-history-code-or-code-hi-code"><a class="link" href="#listing-entered-commands-code-history-code-or-code-hi-code">3.14. Listing entered commands : <code>history</code> or <code>hi</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code> or <code>hi</code></p>
@@ -502,7 +550,7 @@ Format: <code>history</code> or <code>hi</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code-or-code-u-code-or-code-z-code"><a class="link" href="#undoing-previous-command-code-undo-code-or-code-u-code-or-code-z-code">3.13. Undoing previous command : <code>undo</code> or <code>u</code> or <code>z</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code-or-code-u-code-or-code-z-code"><a class="link" href="#undoing-previous-command-code-undo-code-or-code-u-code-or-code-z-code">3.15. Undoing previous command : <code>undo</code> or <code>u</code> or <code>z</code></a></h3>
 <div class="paragraph">
 <p>Restores the Imdb to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code> or <code>u</code></p>
@@ -547,7 +595,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code-or-code-r-code-or-code-y-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-or-code-r-code-or-code-y-code">3.14. Redoing the previously undone command : <code>redo</code> or <code>r</code> or <code>y</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code-or-code-r-code-or-code-y-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-or-code-r-code-or-code-y-code">3.16. Redoing the previously undone command : <code>redo</code> or <code>r</code> or <code>y</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code> or <code>r</code></p>
@@ -579,41 +627,116 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-patient-appointments-code-viewappt-code"><a class="link" href="#view-patient-appointments-code-viewappt-code">3.15. View patient appointments: <code>viewappt</code></a></h3>
+<h3 id="view-medical-appointments-by-patient-name-code-viewappt-code-coming-in-v1-3"><a class="link" href="#view-medical-appointments-by-patient-name-code-viewappt-code-coming-in-v1-3">3.17. View medical appointments by patient name: <code>viewappt</code> [coming in v1.3]</a></h3>
 <div class="paragraph">
-<p>Shows a list of patient appointments in the Imdb.
-Format: <code>viewappt</code> or <code>va</code></p>
+<p>Shows a list of medical appointments of the patient.
+Format: <code>viewappt PATIENT_NAME</code> or <code>va PATIENT_NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:
+* <code>viewappt Betsy</code><br>
+List of medical appointments made by Betsy.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>va John</code><br>
+List of medical appointments made by John.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-entries-code-clear-code-or-code-c-code">3.16. Clearing all entries : <code>clear</code> or <code>c</code></a></h3>
+<h3 id="delete-a-medical-appointment-by-patient-name-and-appointment-index-number-code-delappt-code-coming-in-v1-3"><a class="link" href="#delete-a-medical-appointment-by-patient-name-and-appointment-index-number-code-delappt-code-coming-in-v1-3">3.18. Delete a medical appointment by patient name and appointment index number: <code>delappt</code> [coming in v1.3]</a></h3>
+<div class="paragraph">
+<p>Delete a medical appointment of the patient.
+Format: <code>delappt PATIENT_NAME APPOINTMENT_INDEX_NO</code> or <code>da PATIENT_NAME APPOINTMENT_INDEX_NO</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:
+* <code>delappt Betsy 2</code><br>
+Delete a medical appointment of Betsy with index number 2.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>da John 1</code><br>
+Delete a medical appointment of John with index number 1.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="view-medical-appointments-by-date-code-viewappt-code-coming-in-v1-4"><a class="link" href="#view-medical-appointments-by-date-code-viewappt-code-coming-in-v1-4">3.19. View medical appointments by date: <code>viewappt</code> [coming in v1.4]</a></h3>
+<div class="paragraph">
+<p>Shows a list of medical appointments of a particular date.
+Format: <code>viewappt DATE</code> or <code>va DATE</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:
+* <code>viewappt 19/3/2018</code><br>
+List of medical appointments on 19/3/2018.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>va 23/3/2019</code><br>
+List of medical appointments on 23/3/2018.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="add-a-medical-appointment-with-code-addappt-code-coming-in-v1-4"><a class="link" href="#add-a-medical-appointment-with-code-addappt-code-coming-in-v1-4">4. Add a medical appointment with: <code>addappt</code> [coming in v1.4]</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Add a medical appointment with patient name, date, time.
+Format: <code>addappt PATIENT_NAME DATE TIME</code> or <code>aa PATIENT_NAME DATE TIME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:
+* <code>addappt Betsy 19/3/2018 1000</code><br>
+Add a medical appointment for Betsy on 19/3/2018 at 10am.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>aa John 23/3/2019 1430</code><br>
+Add a medical appointment for John on 23/3/2018 at 2:30pm.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="clearing-all-entries-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-entries-code-clear-code-or-code-c-code">4.1. Clearing all entries : <code>clear</code> or <code>c</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the Imdb.<br>
 Format: <code>clear</code> or <code>c</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code-or-code-x-code"><a class="link" href="#exiting-the-program-code-exit-code-or-code-x-code">3.17. Exiting the program : <code>exit</code> or <code>x</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code-or-code-x-code"><a class="link" href="#exiting-the-program-code-exit-code-or-code-x-code">4.2. Exiting the program : <code>exit</code> or <code>x</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code> or <code>x</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.18. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">4.3. Saving the data</a></h3>
 <div class="paragraph">
 <p>Imdb data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.19. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">4.4. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Data encryption will be implemented in v2.0 to improve security and ensure confidentiality of patients' information.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="centralised-database-code-coming-in-v2-0-code"><a class="link" href="#centralised-database-code-coming-in-v2-0-code">3.20. Centralised database <code>[coming in v2.0]</code></a></h3>
+<h3 id="centralised-database-code-coming-in-v2-0-code"><a class="link" href="#centralised-database-code-coming-in-v2-0-code">4.5. Centralised database <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Imdb will be able to switch from standalone mode to server/client mode in v2.0 to centralise the database at the server in the main branch.</p>
 </div>
@@ -621,7 +744,7 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
@@ -630,7 +753,7 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -687,7 +810,7 @@ e.g.<code>remark 1 r/Likes to drink coffee.</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-alias-summary"><a class="link" href="#command-alias-summary">6. Command Alias Summary</a></h2>
+<h2 id="command-alias-summary"><a class="link" href="#command-alias-summary">7. Command Alias Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -746,7 +869,7 @@ e.g.<code>rk 1 r/Likes to drink coffee.</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-18 16:04:26 UTC
+Last updated 2018-03-19 06:37:07 UTC
 </div>
 </div>
 </body>
