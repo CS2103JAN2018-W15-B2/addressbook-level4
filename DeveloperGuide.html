@@ -45,9 +45,10 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#edit-remarks-feature">3.2. Edit remarks feature</a></li>
+<li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -869,20 +870,139 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
+<h3 id="edit-remarks-feature"><a class="link" href="#edit-remarks-feature">3.2. Edit remarks feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The edit remarks mechanism is facilitated by a <code>RemarkCommand</code>.
+It supports editing the remarks of a <code>Patient</code> to match the user input. <code>RemarkCommand</code> inherits from <code>UndoableCommand</code> as well.</p>
+</div>
+<div class="paragraph">
+<p>The edit remarks mechanism functions like that of the <code>Edit</code>. It searches for the patient to be edited based on the index provided
+by the user. It then creates a new patient with the same attributes as the patient to be edited, changing the remarks attribute to
+match the user input. The <code>RemarkCommand</code> then calls for the utility method updatePerson under <code>Model</code>, to replace the patient to be
+edited with the edited patient.</p>
+</div>
+<div class="paragraph">
+<p>Suppose that the user has just launched the application. The current list is shown in Figure 3.2.1.1. below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Figure%203.2.1.1.png" alt="Figure 3.2.1.1" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The user now decides to edit the remarks of the first person in the list.</p>
+</div>
+<div class="paragraph">
+<p><code>RemarkCommand</code> will search for the first person in the list and store it as the person to be edited as shown in Figure 3.2.1.2. below.
+<code>RemarkCommand</code> will then create a new patient with the same attributes as the patient to be edited, except the remarks attribute
+which will be based on the user input. This new patient will be stored as the edited patient as shown in Figure 3.2.1.2. below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Figure%203.2.1.2.png" alt="Figure 3.2.1.2" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><code>RemarkCommand</code> will finally call the for the utility method updatePerson under <code>Model</code>, to replace the patient to be edited with the edited patient,
+the new list will be as shown in Figure 3.2.1.2. below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Figure%203.2.1.3.png" alt="Figure 3.2.1.3" width="650">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>The following is an exploration of possible alternative implementations, the various aspects of
+each implementation and the pros and cons of each implementation:</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-remarkcommand-code"><a class="link" href="#aspect-implementation-of-code-remarkcommand-code">Aspect: Implementation of <code>RemarkCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create a duplicate <code>Patient</code> and utilise updatePerson to edit the remarks</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to implement due to existing utility methods.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of memory usage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a public method in <code>Remark</code> for updating the remark which will be called by <code>Patient</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will use less memory (no need to create new patient object).</p>
+</li>
+<li>
+<p>Cons: Will require public access to <code>Remark</code> stored in <code>Patient</code> (possible security concerns).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-remark-command"><a class="link" href="#aspect-data-structure-to-support-the-remark-command">Aspect: Data structure to support the remark command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create a <code>Remark</code> that is stored in <code>Patient</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to understand for new developers as it follows existing structures.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of memory usage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a String that is stored in <code>Patient</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will use less memory (no need to create new remark object).</p>
+</li>
+<li>
+<p>Cons: Will require a method in Patient to update and verify validity of remark. Violates Single Responsibility Principle and Separation of Concerns as <code>Patient</code> now needs to do two * different things.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -913,7 +1033,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2906,7 +3026,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-20 16:02:33 UTC
+Last updated 2018-03-20 16:02:30 UTC
 </div>
 </div>
 </body>
