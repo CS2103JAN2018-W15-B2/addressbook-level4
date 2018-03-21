@@ -916,6 +916,79 @@ the new list will be as shown in Figure 3.2.1.2. below.</p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>The following is an exploration of possible alternative implementations, the various aspects of
+each implementation and the pros and cons of each implementation:</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-remarkcommand-code"><a class="link" href="#aspect-implementation-of-code-remarkcommand-code">Aspect: Implementation of <code>RemarkCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create a duplicate <code>Patient</code> and utilise updatePerson to edit the remarks</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to implement due to existing utility methods.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of memory usage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a public method in <code>Remark</code> for updating the remark which will be called by <code>Patient</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will use less memory (no need to create new patient object).</p>
+</li>
+<li>
+<p>Cons: Will require public access to <code>Remark</code> stored in <code>Patient</code> (possible security concerns).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-remark-command"><a class="link" href="#aspect-data-structure-to-support-the-remark-command">Aspect: Data structure to support the remark command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create a <code>Remark</code> that is stored in <code>Patient</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to understand for new developers as it follows existing structures.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of memory usage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a String that is stored in <code>Patient</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will use less memory (no need to create new remark object).</p>
+</li>
+<li>
+<p>Cons: Will require a method in Patient to update and verify validity of remark. Violates Single Responsibility Principle and Separation of Concerns as <code>Patient</code> now needs to do two * different things.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="patient-visting-queue-waiting-list-for-registration"><a class="link" href="#patient-visting-queue-waiting-list-for-registration">3.3. Patient Visting Queue (waiting list for registration)</a></h3>
@@ -974,7 +1047,7 @@ the new list will be as shown in figure below.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>The following is an exploration of possible alternative implementations, the various aspects of
 each implementation and the pros and cons of each implementation:</p>
@@ -3161,7 +3234,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-21 06:38:45 UTC
+Last updated 2018-03-21 07:12:07 UTC
 </div>
 </div>
 </body>
