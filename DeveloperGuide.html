@@ -48,9 +48,10 @@
 <li><a href="#edit-remarks-feature">3.2. Edit remarks feature</a></li>
 <li><a href="#patient-visting-queue-waiting-list-for-registration">3.3. Patient Visting Queue (waiting list for registration)</a></li>
 <li><a href="#implement-more-fields-for-the-patient-information-feature">3.4. Implement more fields for the patient information feature</a></li>
-<li><a href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#login-system">3.5. Login System</a></li>
+<li><a href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1197,20 +1198,78 @@ the new list will be as shown in Figure 3.3.1.2. below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></h3>
+<h3 id="login-system"><a class="link" href="#login-system">3.5. Login System</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The action of logging into IMDB is facilitated by <code>LoginCommand</code> and the static class <code>LoginManager</code>, which also contains a static attribute of class <code>LoginState</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>LoginCommand</code> takes in username and password input from the user, then calls the static class <code>LoginManager</code> to authenticate the given username and password, meaning that it will check through a csv file of correct usernames and passwords. If the given username and password are found in that file, then the value stored in <code>LoginState</code> will be changed to reflect the role of the user who logged in (doctor or medical staff).</p>
+</div>
+<div class="paragraph">
+<p>If <code>LoginState</code> shows that no user is currently logged in, certain commands that access the database such as <code>AddCommand</code> and <code>ListCommand</code> will throw an exception telling the user to log in. Once logged in, the user can perform those commands.</p>
+</div>
+<div class="paragraph">
+<p>There is no need for a logout command, since <code>ExitCommand</code> can be used to exit the application, and when the application is opened again, <code>LoginState</code> will be reset.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>The following is an exploration of possible alternative implementations, the various aspects of
+each implementation and the pros and cons of each implementation:</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-loginstate-code"><a class="link" href="#aspect-implementation-of-code-loginstate-code">Aspect: Implementation of <code>LoginState</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a static <code>LoginManager</code> class with a static <code>LoginState</code> attribute</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The methods of <code>LoginManager</code> can be called anywhere, and its stored <code>LoginState</code> attribute will not be changed except through the authenticate method.</p>
+</li>
+<li>
+<p>Cons: Need to implement as a final class with a private constructor, since Java does not support public static classes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Store a login state in LoginCommand</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can store login state as an int instead of an object instance.</p>
+</li>
+<li>
+<p>Cons: Will require a method in LoginCommand to update login state and verify username and password. Violates Single Responsibility Principle and Separation of Concerns as <code>LoginCommand</code> now needs to do two different things. Also, there is a need to somehow pass the login state to ImdbParser.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1241,7 +1300,7 @@ the new list will be as shown in Figure 3.3.1.2. below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -3234,7 +3293,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-21 07:12:07 UTC
+Last updated 2018-03-21 07:13:44 UTC
 </div>
 </div>
 </body>
