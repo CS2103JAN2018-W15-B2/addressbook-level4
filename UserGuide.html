@@ -751,12 +751,14 @@ John will be removed if he is the first patient in the queue.</p>
 Format: <code>addappt PATIENT_NAME DATE TIME</code> or <code>aa PATIENT_NAME DATE TIME</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:
-* <code>addappt Betsy 19/3/2018 1000</code><br>
-Add a medical appointment for Betsy on 19/3/2018 at 10am.</p>
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><code>addappt Betsy 19/3/2018 1000</code><br>
+Add a medical appointment for Betsy on 19/3/2018 at 10am.</p>
+</li>
 <li>
 <p><code>aa John 23/3/2019 1430</code><br>
 Add a medical appointment for John on 23/3/2018 at 2:30pm.</p>
@@ -771,12 +773,14 @@ Add a medical appointment for John on 23/3/2018 at 2:30pm.</p>
 Format: <code>delappt PATIENT_NAME APPOINTMENT_INDEX_NO</code> or <code>da PATIENT_NAME APPOINTMENT_INDEX_NO</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:
-* <code>delappt Betsy 2</code><br>
-Delete a medical appointment of Betsy with index number 2.</p>
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><code>delappt Betsy 2</code><br>
+Delete a medical appointment of Betsy with index number 2.</p>
+</li>
 <li>
 <p><code>da John 1</code><br>
 Delete a medical appointment of John with index number 1.</p>
@@ -791,12 +795,14 @@ Delete a medical appointment of John with index number 1.</p>
 Format: <code>viewappt PATIENT_NAME</code> or <code>va PATIENT_NAME</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:
-* <code>viewappt Betsy</code><br>
-List of medical appointments made by Betsy.</p>
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><code>viewappt Betsy</code><br>
+List of medical appointments made by Betsy.</p>
+</li>
 <li>
 <p><code>va John</code><br>
 List of medical appointments made by John.</p>
@@ -811,12 +817,14 @@ List of medical appointments made by John.</p>
 Format: <code>viewappt DATE</code> or <code>va DATE</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:
-* <code>viewappt 19/3/2018</code><br>
-List of medical appointments on 19/3/2018.</p>
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><code>viewappt 19/3/2018</code><br>
+List of medical appointments on 19/3/2018.</p>
+</li>
 <li>
 <p><code>va 23/3/2019</code><br>
 List of medical appointments on 23/3/2018.</p>
@@ -891,7 +899,19 @@ e.g.<code>select</code> or <code>s 2</code></p>
 e.g.<code>remark</code> or <code>rk 1 r/Likes to drink coffee.</code></p>
 </li>
 <li>
-<p><strong>View Appointment</strong> : <code>viewappt</code> or <code>va</code></p>
+<p><strong>Add patient into visiting queue</strong> : <code>addq</code> or <code>aq</code></p>
+</li>
+<li>
+<p><strong>Remove patient from visiting queue</strong> : <code>removeq</code> or <code>rq</code></p>
+</li>
+<li>
+<p><strong>View appointments</strong> : <code>viewappt</code> or <code>va</code></p>
+</li>
+<li>
+<p><strong>Add new appointment</strong> : <code>addappt</code> or <code>aa</code></p>
+</li>
+<li>
+<p><strong>Delete appointment</strong> : <code>delappt</code> or <code>da</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code> or <code>hi</code></p>
@@ -909,7 +929,7 @@ e.g.<code>remark</code> or <code>rk 1 r/Likes to drink coffee.</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-25 19:44:08 UTC
+Last updated 2018-03-26 13:00:36 UTC
 </div>
 </div>
 </body>
