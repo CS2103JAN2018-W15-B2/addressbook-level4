@@ -18,7 +18,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team W15-B2</code>      Since: <code>March 2018</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -88,7 +88,7 @@
 <h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section details how one can go about setting up IMDB.</p>
+<p>This section details how you can go about setting up IMDB.</p>
 </div>
 <div class="sect2">
 <h3 id="prerequisites"><a class="link" href="#prerequisites">1.1. Prerequisites</a></h3>
@@ -189,7 +189,7 @@ This will generate all resources required by the application and tests.</p>
 <div class="sect3">
 <h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">1.4.1. Configuring the coding style</a></h4>
 <div class="paragraph">
-<p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours. To rectify,</p>
+<p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours. To rectify:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -221,7 +221,7 @@ This will generate all resources required by the application and tests.</p>
 <div class="sect3">
 <h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">1.4.2. Getting started with coding</a></h4>
 <div class="paragraph">
-<p>You are now ready to start coding. You may wish to refer to the links below for more information.</p>
+<p>You are now ready to start coding. You may wish to refer to the links below for more information:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -310,7 +310,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </ul>
 </div>
 <div class="paragraph">
-<p>Each of the four components</p>
+<p>Each of the four components:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -388,7 +388,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="sect2">
 <h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
 <div class="paragraph">
-<p><br></p>
+<p>The diagram below is an overview of the structure of the <code>UI</code> component.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -407,18 +407,18 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component,</p>
+<p>The <code>UI</code> component:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Executes user commands using the <code>Logic</code> component.</p>
+<p>executes user commands using the <code>Logic</code> component.</p>
 </li>
 <li>
-<p>Binds itself to some data in the <code>Model</code> so that the UI can auto-update when data in the <code>Model</code> change.</p>
+<p>binds itself to some data in the <code>Model</code> so that the UI can auto-update when data in the <code>Model</code> change.</p>
 </li>
 <li>
-<p>Responds to events raised from various parts of the App and updates the UI accordingly.</p>
+<p>responds to events raised from various parts of the App and updates the UI accordingly.</p>
 </li>
 </ul>
 </div>
@@ -426,7 +426,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="sect2">
 <h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
 <div class="paragraph">
-<p><br></p>
+<p>The diagram below is an overview of the structure of the <code>Logic</code> component.<br></p>
 </div>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
@@ -435,13 +435,13 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 6. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
-<p><br></p>
+<p>The diagram below shows finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 6, &#8220;Structure of the Logic Component&#8221;</a><br></p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
-<div class="title">Figure 7. Structure of Commands in the Logic Component. This diagram shows finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 6, &#8220;Structure of the Logic Component&#8221;</a></div>
+<div class="title">Figure 7. Structure of Commands in the Logic Component.</div>
 </div>
 <div class="paragraph">
 <p><br></p>
@@ -485,7 +485,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="sect2">
 <h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
 <div class="paragraph">
-<p><br></p>
+<p>The diagram below is an overview of the structure of the <code>Model</code> component.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -497,7 +497,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>Model</code>,</p>
+<p>The <code>Model</code>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -519,7 +519,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
 <div class="paragraph">
-<p><br></p>
+<p>The diagram below is an overview of the structure of the <code>Storage</code> component.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -531,7 +531,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>Storage</code> component,</p>
+<p>The <code>Storage</code> component:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -609,7 +609,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>Suppose that the user has just launched the application. The <code>UndoRedoStack</code> will be empty at the beginning.</p>
 </div>
 <div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th patient in the address book. The current state of the address book is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command).</p>
+<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th patient in the address book. The current state of the address book is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command), as shown in the diagram below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -617,7 +617,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="paragraph">
-<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new patient.</p>
+<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>, as shown in the diagram below. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new patient.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -640,7 +640,7 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 <p>The user now decides that adding the patient was a mistake, and decides to undo that action using <code>undo</code>.</p>
 </div>
 <div class="paragraph">
-<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>. We will restore the address book to the state before the <code>add</code> command executed.</p>
+<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>. We will restore the address book to the state before the <code>add</code> command executed, as shown in the diagram below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -683,7 +683,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </table>
 </div>
 <div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
+<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>, as shown in the diagram below. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -691,7 +691,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="paragraph">
-<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution:</p>
+<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution, as shown in the diagam below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -718,20 +718,20 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We will not lose any undone/redone functionality as it is now part of the default behaviour. Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.</p>
+<p>Pros: Will not lose any undone/redone functionality as it is now part of the default behaviour. Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.</p>
 </li>
 <li>
-<p>Cons: Hard for new developers to understand the template pattern.</p>
+<p>Cons: Will be hard for new developers to understand the template pattern.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Just override <code>execute()</code></p>
+<p><strong>Alternative 2:</strong> Override <code>execute()</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Does not involve the template pattern, easier for new developers to understand.</p>
+<p>Pros: Does not involve the template pattern and is easier for new developers to understand.</p>
 </li>
 <li>
 <p>Cons: Classes that inherit from <code>UndoableCommand</code> must remember to call <code>super.execute()</code>, or lose the ability to undo/redo.</p>
@@ -760,14 +760,14 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<p><strong>Alternative 2:</strong> Undo/redo is done by each individual command.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the patient being deleted).</p>
+<p>Pros: Will use less memory usage (e.g. for <code>delete</code>, just save the patient being deleted).</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p>Cons: Must ensure that the implementation of each individual command are correct.</p>
 </li>
 </ul>
 </div>
@@ -784,7 +784,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We only revert changes that are hard to change back (the view can easily be re-modified as no data are * lost).</p>
+<p>Pros: Only need to revert changes that are hard to change back (the view can easily be re-modified as no data are * lost).</p>
 </li>
 <li>
 <p>Cons: User might think that undo also applies when the list is modified (undoing filtering for example), * only to realize that it does not do that, after executing <code>undo</code>.</p>
@@ -800,7 +800,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <p>Pros: Might be more intuitive for the user.</p>
 </li>
 <li>
-<p>Cons: User have no way of skipping such commands if he or she just want to reset the state of the address * book and not the view.
+<p>Cons: No way of skipping commands if user just wants to reset the state of the address * book and not the view.
 <strong>Additional Info:</strong> See our discussion  <a href="https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672">here</a>.</p>
 </li>
 </ul>
@@ -831,7 +831,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We do not need to maintain a separate stack, and just reuse what is already in the codebase.</p>
+<p>Pros: Not necessary to maintain a separate stack, and just reuse what is already in the codebase.</p>
 </li>
 <li>
 <p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two * different things.</p>
@@ -850,43 +850,46 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The edit remarks mechanism is facilitated by a <code>RemarkCommand</code>.
-It supports editing the remarks of a <code>Patient</code> to match the user input. <code>RemarkCommand</code> inherits from <code>UndoableCommand</code> as well.</p>
+It supports editing the remarks of a <code>Patient</code> to match the user input. <code>RemarkCommand</code> inherits from <code>UndoableCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p>The edit remarks mechanism functions like that of the <code>Edit</code>. It searches for the patient to be edited based on the index provided
+<p>The edit remarks mechanism functions like that of the <code>EditCommand</code>. It searches for the patient to be edited based on the index provided
 by the user. It then creates a new patient with the same attributes as the patient to be edited, changing the remarks attribute to
 match the user input. The <code>RemarkCommand</code> then calls for the utility method updatePerson under <code>Model</code>, to replace the patient to be
 edited with the edited patient.</p>
 </div>
 <div class="paragraph">
-<p>Suppose that the user has just launched the application. The current list is shown in Figure 3.2.1.1. below.</p>
+<p>Suppose that the user has just launched the application. The current patient queue is shown in the figure below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/Figure%203.2.1.1.PNG" alt="Figure 3.2.1.1" width="800">
+<img src="images/Figure%203.2.1.1.png" alt="Figure 3.2.1.1" width="800">
 </div>
+<div class="title">Figure 11. The current queue</div>
 </div>
 <div class="paragraph">
 <p>The user now decides to edit the remarks of the first person in the list.</p>
 </div>
 <div class="paragraph">
-<p><code>RemarkCommand</code> will search for the first person in the list and store it as the person to be edited as shown in Figure 3.2.1.2. below.
+<p><code>RemarkCommand</code> will search for the first person in the list and store it as the person to be edited.
 <code>RemarkCommand</code> will then create a new patient with the same attributes as the patient to be edited, except the remarks attribute
-which will be based on the user input. This new patient will be stored as the edited patient as shown in Figure 3.2.1.2. below.</p>
+which will be based on the user input. This new patient will be stored as the edited patient as shown in the figure below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/Figure%203.2.1.2.PNG" alt="Figure 3.2.1.2" width="800">
+<img src="images/Figure%203.2.1.2.png" alt="Figure 3.2.1.2" width="800">
 </div>
+<div class="title">Figure 12. The patient before and after editing</div>
 </div>
 <div class="paragraph">
 <p><code>RemarkCommand</code> will finally call the for the utility method updatePerson under <code>Model</code>, to replace the patient to be edited with the edited patient,
-the new list will be as shown in Figure 3.2.1.2. below.</p>
+the new list will be as shown in the figure below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/Figure%203.2.1.3.PNG" alt="Figure 3.2.1.3" width="650">
+<img src="images/Figure%203.2.1.3.png" alt="Figure 3.2.1.3" width="650">
 </div>
+<div class="title">Figure 13. The queue with updated details</div>
 </div>
 </div>
 <div class="sect3">
@@ -900,7 +903,7 @@ each implementation and the pros and cons of each implementation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Create a duplicate <code>Patient</code> and utilise updatePerson to edit the remarks</p>
+<p><strong>Alternative 1 (current choice):</strong> Create a duplicate <code>Patient</code> and utilise updatePerson to replace the <code>Patient</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -953,7 +956,7 @@ each implementation and the pros and cons of each implementation:</p>
 <p>Pros: Will use less memory (no need to create new remark object).</p>
 </li>
 <li>
-<p>Cons: Will require a method in Patient to update and verify validity of remark. Violates Single Responsibility Principle and Separation of Concerns as <code>Patient</code> now needs to do two * different things.</p>
+<p>Cons: Will require a method in Patient to update and verify validity of remark. Violates Single Responsibility Principle and Separation of Concerns as <code>Patient</code> now needs to do two different things.</p>
 </li>
 </ul>
 </div>
@@ -981,7 +984,7 @@ They are included as fields to be filled in when adding a new <code>Patient</cod
 <div class="content">
 <img src="images/Figure3-3-1-1.png" alt="Figure3 3 1 1" width="800">
 </div>
-<div class="title">Figure 11. The current queue</div>
+<div class="title">Figure 14. The current queue</div>
 </div>
 <div class="paragraph">
 <p>The user now decides to edit the blood type of the first person in the list (he got a blood transfusion).</p>
@@ -995,7 +998,7 @@ which will be based on the user input. This new patient will be stored as the ed
 <div class="content">
 <img src="images/Figure3-3-1-2.png" alt="Figure3 3 1 2" width="800">
 </div>
-<div class="title">Figure 12. The patient before and after editing</div>
+<div class="title">Figure 15. The patient before and after editing</div>
 </div>
 <div class="paragraph">
 <p><code>EditCommand</code> will finally call the for the utility method updatePerson under <code>Model</code>, to replace the patient to be edited with the edited patient,
@@ -1005,7 +1008,7 @@ the new list will be as shown in Figure 3.3.1.2. below.</p>
 <div class="content">
 <img src="images/Figure3-3-1-3.png" alt="Figure3 3 1 3" width="650">
 </div>
-<div class="title">Figure 13. The queue with updated details</div>
+<div class="title">Figure 16. The queue with updated details</div>
 </div>
 </div>
 </div>
@@ -1018,11 +1021,11 @@ the new list will be as shown in Figure 3.3.1.2. below.</p>
 It supports adding and removing a patient from the visiting queue. <code>AddPatientQueueCommand</code> and <code>RemovePatientQueueCommand</code> inherit from <code>Command</code>.</p>
 </div>
 <div class="paragraph">
-<p>The add patient into visiting queue mechanism functions like that of the <code>Add</code> but with patient name only. It searches for the patient to be added based on the patient name provided
-by the user. If the patient already exist in the system then the patient will be added into the visiting queue. The <code>AddPatientQueueCommand</code> then calls for the utility method addPatientToQueue under <code>Model</code>, to update the visiting queue and trigger a IMDBChangedEvent to UI to update PatientListPanel.</p>
+<p>The add patient into visiting queue mechanism functions like that of the <code>AddCommand</code> but using the patient name only. It searches for the patient to be added based on the patient name provided
+by the user. If the patient already exists in the system then the patient will be added into the visiting queue. The <code>AddPatientQueueCommand</code> then calls for the utility method addPatientToQueue under <code>Model</code>, to update the visiting queue and trigger a IMDBChangedEvent to the <code>UI</code> to update PatientListPanel.</p>
 </div>
 <div class="paragraph">
-<p>Suppose that the user has just launched the application and login as medical staffs. The empty queue is shown in Figure 3.4.1.1 below.</p>
+<p>Suppose that the user has just launched the application and logged in as a medical staff. The empty queue is shown in Figure 3.4.1.1 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1033,11 +1036,11 @@ by the user. If the patient already exist in the system then the patient will be
 <p>Figure 3.4.1.1 The empty queue</p>
 </div>
 <div class="paragraph">
-<p>The user now decides to add a patient into the queues.</p>
+<p>The user now decides to add a patient into the queue.</p>
 </div>
 <div class="paragraph">
-<p><code>AddPatientQueueCommand</code> will search for the patient in the patient list. If the patient is found in the list, <code>AddPatientQueueCommand</code> will finally call the for the utility method addPatientToQueue under <code>Model</code>, to add the patient into the visit queue,
-the updated queue is shown in Figure 3.4.1.2 below.</p>
+<p><code>AddPatientQueueCommand</code> will search for the patient in the patient list. If the patient is found in the list, <code>AddPatientQueueCommand</code> will then call the for the utility method addPatientToQueue under <code>Model</code>, to add the patient into the visiting queue.
+The updated queue is shown in Figure 3.4.1.2 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1048,7 +1051,7 @@ the updated queue is shown in Figure 3.4.1.2 below.</p>
 <p>Figure 3.4.1.2 The updated queue</p>
 </div>
 <div class="paragraph">
-<p>The remove patient from visiting queue mechanism functions like that of the <code>Delete</code> but without any parameters. It removes the first patient of the queue. The <code>RemovePatientQueueCommand</code> then calls for the utility method removePatientFromQueue under <code>Model</code>, to update the visiting queue and trigger a IMDBChangedEvent to UI to update PatientListPanel.</p>
+<p>The remove patient from visiting queue mechanism functions like that of the <code>DeleteCommand</code> but without any parameters. It removes the first patient of the queue. The <code>RemovePatientQueueCommand</code> then calls for the utility method removePatientFromQueue under <code>Model</code>, to update the visiting queue and trigger a IMDBChangedEvent to <code>UI</code> to update PatientListPanel.</p>
 </div>
 <div class="paragraph">
 <p>Suppose that the queue contains patients as shown in Figure 3.4.1.3 below.</p>
@@ -1062,11 +1065,11 @@ the updated queue is shown in Figure 3.4.1.2 below.</p>
 <p>Figure 3.4.1.3 The queue contains some patients</p>
 </div>
 <div class="paragraph">
-<p>The user now decides to remove the first patient from the queues.</p>
+<p>The user now decides to remove the first patient from the queue.</p>
 </div>
 <div class="paragraph">
-<p><code>RemovePatientQueueCommand</code> will finally call the for the utility method removePatientFromQueue under <code>Model</code>, to remove the patient from the visit queue,
-the updated queue is shown in Figure 3.4.1.4 below.</p>
+<p><code>RemovePatientQueueCommand</code> will then call the for the utility method removePatientFromQueue under <code>Model</code>, to remove the patient from the visiting queue.
+The updated queue is shown in Figure 3.4.1.4 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1138,7 +1141,7 @@ each implementation and the pros and cons of each implementation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Improve the functionality of AddPatientQueue command.</p>
+<p>Pros: Will improve the functionality of AddPatientQueue command.</p>
 </li>
 <li>
 <p>Cons: Will require another implentation to add patient in the specified position in the queue.</p>
@@ -1161,7 +1164,7 @@ each implementation and the pros and cons of each implementation:</p>
 <p>Pros: Easy to implement.</p>
 </li>
 <li>
-<p>Cons: User cannot remove a patient in a certain position.</p>
+<p>Cons: Cannot remove a patient in a certain position.</p>
 </li>
 </ul>
 </div>
@@ -1347,7 +1350,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 14. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 17. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -2389,7 +2392,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-26 13:00:36 UTC
+Last updated 2018-03-26 14:26:56 UTC
 </div>
 </div>
 </body>
