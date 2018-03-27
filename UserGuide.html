@@ -101,13 +101,13 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>login bob password456</code></strong>: logs you into the IMDB as Bob. Note that some commands will not work unless you are logged in.</p>
 </li>
 <li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
+<p><strong><code>list</code></strong> : lists all patients</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the IMDB.</p>
+<p><strong><code>add</code></strong><code>n/John Doe ic/S1234567A p/98765432 e/johnd@example.com a/John street, block 123, #01-01 dob/11/11/1991 b/B+</code> : adds a patient named <code>John Doe</code> to the IMDB.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd patient shown in the current list</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -464,7 +464,7 @@ Removes the remark for the first patient.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-a-condition-to-an-existing-patient-code-addc-code-coming-in-v1-3"><a class="link" href="#adding-a-condition-to-an-existing-patient-code-addc-code-coming-in-v1-3">3.2.5. Adding a condition to an existing patient: <code>addc</code> [coming in v1.3]</a></h4>
+<h4 id="adding-a-condition-to-an-existing-patient-code-addc-code-since-v1-3"><a class="link" href="#adding-a-condition-to-an-existing-patient-code-addc-code-since-v1-3">3.2.5. Adding a condition to an existing patient: <code>addc</code> [since v1.3]</a></h4>
 <div class="paragraph">
 <p>Adds a medical condition to an existing patient.
 Format: <code>addc</code> or <code>ac</code></p>
@@ -475,12 +475,12 @@ Format: <code>addc</code> or <code>ac</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addc Betsy aspirin</code><br>
-Aspirin will be added to the list of conditions that Betsy has.</p>
+<p><code>addc 1 aspirin</code><br>
+<code>aspirin</code> will be added to the list of conditions that the patient at index <code>1</code> has.</p>
 </li>
 <li>
-<p><code>ac John asthma</code><br>
-Asthma will be added to the list of conditions that John has.</p>
+<p><code>ac 2 asthma</code><br>
+<code>asthma</code> will be added to the list of conditions that the patient at index <code>2</code> has.</p>
 </li>
 </ul>
 </div>
@@ -497,12 +497,12 @@ Format: <code>removec</code> or <code>rc</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>removec Betsy aspirin</code><br>
-Aspirin will be removed from the list of conditions that Betsy has.</p>
+<p><code>removec 1 aspirin</code><br>
+<code>aspirin</code> will be removed from the list of conditions that the patient at index <code>1</code> has.</p>
 </li>
 <li>
-<p><code>rc John asthma</code><br>
-Asthma will be removed from the list of conditions that John has.</p>
+<p><code>rc 2 asthma</code><br>
+<code>asthma</code> will be removed from the list of conditions that the patient at index <code>2</code> has.</p>
 </li>
 </ul>
 </div>
@@ -515,7 +515,7 @@ Format: <code>list</code> or <code>ls</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-certain-details-only-code-filter-code-coming-in-v1-3"><a class="link" href="#viewing-certain-details-only-code-filter-code-coming-in-v1-3">3.2.8. Viewing certain details only: <code>filter</code> [coming in v1.3]</a></h4>
+<h4 id="viewing-certain-details-only-code-filter-code-coming-in-v1-4"><a class="link" href="#viewing-certain-details-only-code-filter-code-coming-in-v1-4">3.2.8. Viewing certain details only: <code>filter</code> [coming in v1.4]</a></h4>
 <div class="paragraph">
 <p>Switches between showing personal details only, medical information only.
 Format: <code>filter</code> or <code>fil</code></p>
@@ -929,7 +929,7 @@ e.g.<code>remark</code> or <code>rk 1 r/Likes to drink coffee.</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-27 18:23:09 UTC
+Last updated 2018-03-27 19:23:59 UTC
 </div>
 </div>
 </body>
