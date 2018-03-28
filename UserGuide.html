@@ -649,14 +649,14 @@ Displays all the medical records for the first person in the result of the list 
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-the-medical-records-for-a-patient-record-coming-in-v1-4"><a class="link" href="#editing-the-medical-records-for-a-patient-record-coming-in-v1-4">3.2.12. Editing the medical records for a patient : record [coming in v1.4]</a></h4>
+<h4 id="editing-the-medical-records-for-a-patient-record-since-v1-3"><a class="link" href="#editing-the-medical-records-for-a-patient-record-since-v1-3">3.2.12. Editing the medical records for a patient : record [since v1.3]</a></h4>
 <div class="paragraph">
 <p>Edits the medical records for a patient specified by the index number used in the last patient listing.<br>
-Format: record INDEX d/[DATE] s/[SYMPTOMS] i/[ILLNESS] t/[TREATMENT] r/[REMARKS]</p>
+Format: record INDEX in/[RECORD INDEX] d/[DATE] s/[SYMPTOMS] i/[ILLNESS] t/[TREATMENT] r/[REMARKS]</p>
 </div>
 <div class="paragraph">
 <p><strong>
-* Selects the person at the specified <code>INDEX</code> and edits the medical records for that patient.
+* Selects the person at the specified <code>INDEX</code> and edits the medical records at the specified <code>RECORDINDEX</code> for that patient.
 * The index refers to the index number shown in the most recent listing.
 * The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code>
 </strong></p>
@@ -668,8 +668,8 @@ Format: record INDEX d/[DATE] s/[SYMPTOMS] i/[ILLNESS] t/[TREATMENT] r/[REMARKS]
 <ul>
 <li>
 <p>list<br>
-record 1 d/19 March 2018 s/Runny nose, Headache i/Flu t/Zyrtec<br>
-Edits the record for the first person to Date:19 March 2018 Symptoms:Runny nose, Headache
+record 1 in/2 d/19 March 2018 s/Runny nose, Headache i/Flu t/Zyrtec<br>
+Edits the second record for the first person to Date:19 March 2018 Symptoms:Runny nose, Headache
 Illness:Flu Treatment:Zyrtec`.</p>
 </li>
 </ul>
@@ -929,7 +929,7 @@ e.g.<code>remark</code> or <code>rk 1 r/Likes to drink coffee.</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-28 05:43:11 UTC
+Last updated 2018-03-28 06:50:17 UTC
 </div>
 </div>
 </body>
