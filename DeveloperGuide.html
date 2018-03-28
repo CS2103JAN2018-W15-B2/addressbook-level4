@@ -1954,7 +1954,13 @@ b. Require developers to download those libraries manually (this creates extra w
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User inputs login command word, username and password</p>
+<p>User inputs login command word</p>
+</li>
+<li>
+<p>IMDB displays login screen</p>
+</li>
+<li>
+<p>User inputs username and password</p>
 </li>
 <li>
 <p>IMDB shows a success message</p>
@@ -1970,35 +1976,39 @@ b. Require developers to download those libraries manually (this creates extra w
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Username and password do not match</p>
+<p>1a. User is already logged in</p>
 <div class="ulist none">
 <ul class="none">
 <li>
 <p>1a1. IMDB shows an error message</p>
 </li>
 <li>
-<p>1a2. User inputs login command word, username and password</p>
-</li>
-<li>
-<p>Steps 1a1-1a2 are repeated until username and password match</p>
+<p>1a2. User enters exit command and restarts IMDB</p>
 <div class="paragraph">
-<p>Use case resumes at step 2</p>
+<p>Use case resumes at step 1</p>
 </div>
 </li>
 </ul>
 </div>
 </li>
-<li>
-<p>1b. User is already logged in</p>
+</ul>
+</div>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. IMDB shows an error message</p>
+<p>3a. Username and password do not match</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. IMDB shows an error message</p>
 </li>
 <li>
-<p>1b2. User enters exit command and restarts IMDB</p>
+<p>3a2. User inputs username and password</p>
+</li>
+<li>
+<p>Steps 3a1-3a2 are repeated until username and password match</p>
 <div class="paragraph">
-<p>Use case resumes at step 1</p>
+<p>Use case resumes at step 4</p>
 </div>
 </li>
 </ul>
@@ -2476,7 +2486,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-28 05:23:29 UTC
+Last updated 2018-03-28 05:43:11 UTC
 </div>
 </div>
 </body>
