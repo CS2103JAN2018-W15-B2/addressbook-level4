@@ -623,14 +623,15 @@ Selects the 1st patient in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-the-medical-records-for-a-patient-code-record-code-coming-in-v1-4"><a class="link" href="#viewing-the-medical-records-for-a-patient-code-record-code-coming-in-v1-4">3.2.11. Viewing the medical records for a patient : <code>record</code> [coming in v1.4]</a></h4>
+<h4 id="viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-in-v1-4"><a class="link" href="#viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-in-v1-4">3.2.11. Viewing and editing the medical records for a patient : <code>record</code> [since in v1.4]</a></h4>
 <div class="paragraph">
 <p>Views all the medical records for a patient specified by the index number used in the last patient listing.<br>
-Format: record INDEX</p>
+Format: <code>record INDEX in/[RECORD INDEX]</code> or <code>rec INDEX in/[RECORD INDEX]</code></p>
 </div>
 <div class="paragraph">
 <p><strong>
-* Selects the person at the specified <code>INDEX</code> and displays all the medical records for that patient.
+* Selects the person at the specified <code>INDEX</code> and displays all the medical records for that patient in a separate window.
+* If the specified index is more than the number of medical records, a new medical record will be created instead.
 * The index refers to the index number shown in the most recent listing.
 * The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code>
 </strong></p>
@@ -641,22 +642,23 @@ Format: record INDEX</p>
 <div class="ulist">
 <ul>
 <li>
-<p>list<br>
-record 1<br>
-Displays all the medical records for the first person in the result of the list command.</p>
+<p><code>list</code><br>
+<code>record 1 in/1</code><br>
+Displays the first medical record for the first person in the result of the list command.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-the-medical-records-for-a-patient-record-since-v1-3"><a class="link" href="#editing-the-medical-records-for-a-patient-record-since-v1-3">3.2.12. Editing the medical records for a patient : record [since v1.3]</a></h4>
+<h4 id="deleting-the-medical-records-for-a-patient-code-remover-code-since-in-v1-4"><a class="link" href="#deleting-the-medical-records-for-a-patient-code-remover-code-since-in-v1-4">3.2.12. Deleting the medical records for a patient : <code>remover</code> [since in v1.4]</a></h4>
 <div class="paragraph">
-<p>Edits the medical records for a patient specified by the index number used in the last patient listing.<br>
-Format: record INDEX in/[RECORD INDEX] d/[DATE] s/[SYMPTOMS] i/[ILLNESS] t/[TREATMENT] r/[REMARKS]</p>
+<p>Deletes the medical record specified by the record index for a patient specified by the index number used in the last patient listing.<br>
+Format: <code>remover INDEX in/[RECORD INDEX]</code> or <code>rr INDEX in/[RECORD INDEX]</code></p>
 </div>
 <div class="paragraph">
 <p><strong>
-* Selects the person at the specified <code>INDEX</code> and edits the medical records at the specified <code>RECORDINDEX</code> for that patient.
+* Selects the person at the specified <code>INDEX</code> and deletes the medical record at <code>[RECORD INDEX]</code>, shifting all other medical records up the list.
+* If the deletion of the medical record would leave the list of records empty, a default medical record will be generated.
 * The index refers to the index number shown in the most recent listing.
 * The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code>
 </strong></p>
@@ -667,10 +669,9 @@ Format: record INDEX in/[RECORD INDEX] d/[DATE] s/[SYMPTOMS] i/[ILLNESS] t/[TREA
 <div class="ulist">
 <ul>
 <li>
-<p>list<br>
-record 1 in/2 d/19 March 2018 s/Runny nose, Headache i/Flu t/Zyrtec<br>
-Edits the second record for the first person to Date:19 March 2018 Symptoms:Runny nose, Headache
-Illness:Flu Treatment:Zyrtec`.</p>
+<p><code>list</code><br>
+<code>remover 1 in/1</code><br>
+Deletes the first medical record for the first person in the result of the list command.</p>
 </li>
 </ul>
 </div>
@@ -899,6 +900,14 @@ e.g.<code>select</code> or <code>s 2</code></p>
 e.g.<code>remark</code> or <code>rk 1 r/Likes to drink coffee.</code></p>
 </li>
 <li>
+<p><strong>Record</strong> : <code>record</code> or <code>rec INDEX in/[RECORD INDEX]</code><br>
+e.g.<code>record</code> or <code>rec 1 in/2</code></p>
+</li>
+<li>
+<p><strong>Remover</strong> : <code>remover</code> or <code>rr INDEX in/[RECORD INDEX]</code><br>
+e.g.<code>remover</code> or <code>rr 1 in/2</code></p>
+</li>
+<li>
 <p><strong>Add patient into visiting queue</strong> : <code>addq</code> or <code>aq</code></p>
 </li>
 <li>
@@ -929,7 +938,7 @@ e.g.<code>remark</code> or <code>rk 1 r/Likes to drink coffee.</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-02 16:52:12 UTC
+Last updated 2018-04-03 11:59:29 UTC
 </div>
 </div>
 </body>
