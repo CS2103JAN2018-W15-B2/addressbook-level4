@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -14,6 +15,8 @@ import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.appointment.Appointment;
+import seedu.address.model.appointment.AppointmentEntry;
+import seedu.address.model.appointment.UniqueAppointmentEntryList;
 import seedu.address.model.appointment.UniqueAppointmentList;
 import seedu.address.model.patient.Patient;
 import seedu.address.model.patient.UniquePatientList;
@@ -30,7 +33,7 @@ public class Imdb implements ReadOnlyImdb {
 
     private final UniquePatientList persons;
     private final UniqueTagList tags;
-    private final UniqueAppointmentList appointments;
+    private final UniqueAppointmentEntryList appointments;
     private final UniquePatientVisitingQueue visitingQueue;
 
     /*
@@ -43,7 +46,7 @@ public class Imdb implements ReadOnlyImdb {
     {
         persons = new UniquePatientList();
         tags = new UniqueTagList();
-        appointments = new UniqueAppointmentList();
+        appointments = new UniqueAppointmentEntryList();
         visitingQueue = new UniquePatientVisitingQueue();
     }
 
@@ -67,8 +70,8 @@ public class Imdb implements ReadOnlyImdb {
         this.tags.setTags(tags);
     }
 
-    public void setAppointments(Set<Appointment> appointments) {
-        this.appointments.setAppointment(appointments);
+    public void setQueue(Set<Integer> queueNos) {
+        this.visitingQueue.setVisitingQueue(queueNos);
     }
 
     /**
@@ -80,12 +83,19 @@ public class Imdb implements ReadOnlyImdb {
         List<Patient> syncedPatientList = newData.getPersonList().stream()
                 .map(this::syncWithMasterTagList)
                 .collect(Collectors.toList());
-        setAppointments(new HashSet<>(newData.getAppointmentList()));
+
+        setQueue(new LinkedHashSet<>(newData.getUniquePatientQueueNo()));
 
         try {
             setPersons(syncedPatientList);
         } catch (DuplicatePatientException e) {
             throw new AssertionError("AddressBooks should not have duplicate persons");
+        }
+
+        try {
+            syncWithMasterAppointment(newData.getPersonList());
+        } catch (UniqueAppointmentEntryList.DuplicatedAppointmentEntryException e) {
+            throw new AssertionError("IMDB should not have duplicate appointment");
         }
     }
 
@@ -150,6 +160,19 @@ public class Imdb implements ReadOnlyImdb {
     }
 
     /**
+     *  Updates the master appointment list to include appointment in all patients.
+     */
+    private void syncWithMasterAppointment(List<Patient> patientList) throws
+            UniqueAppointmentEntryList.DuplicatedAppointmentEntryException {
+
+        for (Patient p :patientList) {
+            final UniqueAppointmentList patientAppt = new UniqueAppointmentList(p.getAppointments());
+
+            appointments.mergeFrom(patientAppt, p.getName().fullName);
+        }
+    }
+
+    /**
      * Removes {@code key} from this {@code Imdb}.
      * @throws PatientNotFoundException if the {@code key} is not in this {@code Imdb}.
      */
@@ -167,10 +190,26 @@ public class Imdb implements ReadOnlyImdb {
         tags.add(t);
     }
 
-    public void addAppointment(Appointment appt) throws UniqueAppointmentList.DuplicatedAppointmentException {
-        appointments.add(appt);
+    /**
+     * remove a patient appointment
+     * @throws UniqueAppointmentList.DuplicatedAppointmentException
+     * @throws UniqueAppointmentEntryList.DuplicatedAppointmentEntryException
+     */
+    public void addAppointment(Patient patient, String dateTimeString) throws
+            UniqueAppointmentList.DuplicatedAppointmentException,
+            UniqueAppointmentEntryList.DuplicatedAppointmentEntryException {
+        Appointment newAppt = new Appointment(dateTimeString);
+        patient.addAppointment(newAppt);
+        addAppointmentEntry(newAppt, patient.getName().toString());
     }
 
+    private void addAppointmentEntry(Appointment appt, String patientName) throws
+            UniqueAppointmentEntryList.DuplicatedAppointmentEntryException {
+        AppointmentEntry appointmentEntry = new AppointmentEntry(appt, patientName);
+        appointments.add(appointmentEntry);
+    }
+
+    //@@author Kai Yong
     /**
      * Adds a patient to the visiting queue.
      * Also checks the new patient's tags and updates {@link #tags} with any new tags found,
@@ -178,25 +217,17 @@ public class Imdb implements ReadOnlyImdb {
      *
      * @throws DuplicatePatientException if an equivalent patient already exists.
      */
-    public void addPatientToQueue(Patient p) throws DuplicatePatientException {
+    public void addPatientToQueue(int p) throws DuplicatePatientException {
         requireNonNull(p);
-        Patient patient = syncWithMasterTagList(p);
-        visitingQueue.add(patient);
+        visitingQueue.add(p);
     }
 
-    public Patient removePatientFromQueue() throws PatientNotFoundException {
+    //@@author Kai Yong
+    public int removePatientFromQueue() throws PatientNotFoundException {
         return visitingQueue.removePatient();
     }
 
-    /**
-     * Remove a patient's appointment
-     * @return true if the appointment is deleted successfully
-     */
-    public boolean deletePatientAppointment(Patient patient, Index index) {
-        requireAllNonNull(patient, index);
-        return patient.deletePatientAppointment(index);
-    }
-
+    //@@author
     /**
      * Remove {@code tag} from {@code patient}
      */
@@ -247,13 +278,43 @@ public class Imdb implements ReadOnlyImdb {
     }
 
     @Override
-    public ObservableList<Appointment> getAppointmentList() {
+    public ObservableList<AppointmentEntry> getAppointmentEntryList() {
         return appointments.asObservableList();
     }
 
     @Override
     public ObservableList<Patient> getUniquePatientQueue() {
+        UniquePatientList patientQueueList = getPatientQueueList();
+        return patientQueueList.asObservableList();
+    }
+
+    @Override
+    public ObservableList<Integer> getUniquePatientQueueNo() {
         return visitingQueue.asObservableList();
+    }
+
+    private UniquePatientList getPatientQueueList() {
+        UniquePatientList queueList = new UniquePatientList();
+
+        for (int patientIndex : visitingQueue.getVisitingQueue()) {
+            try {
+                queueList.add(persons.getPatientByIndex(patientIndex));
+            } catch (DuplicatePatientException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return queueList;
+    }
+
+
+    /**
+     * Remove a patient's appointment
+     * @return true if the appointment is deleted successfully
+     */
+    public boolean deletePatientAppointment(Patient patient, Index index) {
+        requireAllNonNull(patient, index);
+        return patient.deletePatientAppointment(index);
     }
 
     @Override
@@ -261,8 +322,7 @@ public class Imdb implements ReadOnlyImdb {
         return other == this // short circuit if same object
                 || (other instanceof Imdb // instanceof handles nulls
                 && this.persons.equals(((Imdb) other).persons)
-                && this.tags.equalsOrderInsensitive(((Imdb) other).tags)
-                && this.appointments.equalsOrderInsensitive(((Imdb) other).appointments));
+                && this.tags.equalsOrderInsensitive(((Imdb) other).tags));
     }
 
     @Override

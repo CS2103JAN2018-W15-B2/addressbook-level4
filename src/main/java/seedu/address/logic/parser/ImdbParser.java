@@ -6,6 +6,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import seedu.address.logic.commands.AddAppointmentCommand;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddConditionCommand;
 import seedu.address.logic.commands.AddPatientQueueCommand;
@@ -13,6 +14,7 @@ import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteAppointmentCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteConditionCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
@@ -20,16 +22,16 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.LoginCommand;
+import seedu.address.logic.commands.PrintCommand;
 import seedu.address.logic.commands.RecordCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.RemarkCommand;
 import seedu.address.logic.commands.RemovePatientQueueCommand;
+import seedu.address.logic.commands.RemoveRecordCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.ViewAppointmentCommand;
-
 import seedu.address.logic.login.LoginManager;
-
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -204,11 +206,27 @@ public class ImdbParser {
 
             case AddConditionCommand.COMMAND_WORD:
                 throw new ParseException(String.format(LoginCommand.MESSAGE_NOT_LOGGED_IN,
-                        AddConditionCommand.MESSAGE_USAGE));
+                        LoginCommand.MESSAGE_USAGE));
 
             case AddConditionCommand.COMMAND_ALIAS:
                 throw new ParseException(String.format(LoginCommand.MESSAGE_NOT_LOGGED_IN,
-                        AddConditionCommand.MESSAGE_USAGE));
+                        LoginCommand.MESSAGE_USAGE));
+
+            case PrintCommand.COMMAND_WORD:
+                throw new ParseException(String.format(LoginCommand.MESSAGE_NOT_LOGGED_IN,
+                        LoginCommand.MESSAGE_USAGE));
+
+            case PrintCommand.COMMAND_ALIAS:
+                throw new ParseException(String.format(LoginCommand.MESSAGE_NOT_LOGGED_IN,
+                        LoginCommand.MESSAGE_USAGE));
+
+            case DeleteConditionCommand.COMMAND_WORD:
+                throw new ParseException(String.format(LoginCommand.MESSAGE_NOT_LOGGED_IN,
+                        DeleteConditionCommand.MESSAGE_USAGE));
+
+            case DeleteConditionCommand.COMMAND_ALIAS:
+                throw new ParseException(String.format(LoginCommand.MESSAGE_NOT_LOGGED_IN,
+                        DeleteConditionCommand.MESSAGE_USAGE));
 
             default:
                 throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
@@ -320,11 +338,29 @@ public class ImdbParser {
             case RecordCommand.COMMAND_ALIAS:
                 return new RecordCommandParser().parse(arguments);
 
+            case RemoveRecordCommand.COMMAND_WORD:
+                return new RemoveRecordCommandParser().parse(arguments);
+
+            case RemoveRecordCommand.COMMAND_ALIAS:
+                return new RemoveRecordCommandParser().parse(arguments);
+
             case AddConditionCommand.COMMAND_WORD:
                 return new AddConditionCommandParser().parse(arguments);
 
             case AddConditionCommand.COMMAND_ALIAS:
                 return new AddConditionCommandParser().parse(arguments);
+
+            case DeleteConditionCommand.COMMAND_WORD:
+                return new DeleteConditionCommandParser().parse(arguments);
+
+            case DeleteConditionCommand.COMMAND_ALIAS:
+                return new DeleteConditionCommandParser().parse(arguments);
+
+            case PrintCommand.COMMAND_WORD:
+                return new PrintCommandParser().parse(arguments);
+
+            case PrintCommand.COMMAND_ALIAS:
+                return new PrintCommandParser().parse(arguments);
 
             default:
                 throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
@@ -435,18 +471,16 @@ public class ImdbParser {
 
             case DeleteAppointmentCommand.COMMAND_ALIAS:
                 return new DeleteAppointmentCommandParser().parse(arguments);
+            case AddAppointmentCommand.COMMAND_WORD:
+                return new AddAppointmentCommandParser().parse(arguments);
+            case AddAppointmentCommand.COMMAND_ALIAS:
+                return new AddAppointmentCommandParser().parse(arguments);
 
             case AddPatientQueueCommand.COMMAND_WORD:
                 return new AddPatientQueueCommandParser().parse(arguments);
 
             case AddPatientQueueCommand.COMMAND_ALIAS:
                 return new AddPatientQueueCommandParser().parse(arguments);
-
-            case RecordCommand.COMMAND_WORD:
-                return new RecordCommandParser().parse(arguments);
-
-            case RecordCommand.COMMAND_ALIAS:
-                return new RecordCommandParser().parse(arguments);
 
             case RemovePatientQueueCommand.COMMAND_WORD:
                 return new RemovePatientQueueCommandParser().parse(arguments);
@@ -459,6 +493,18 @@ public class ImdbParser {
 
             case AddConditionCommand.COMMAND_ALIAS:
                 return new AddConditionCommandParser().parse(arguments);
+
+            case DeleteConditionCommand.COMMAND_WORD:
+                return new DeleteConditionCommandParser().parse(arguments);
+
+            case DeleteConditionCommand.COMMAND_ALIAS:
+                return new DeleteConditionCommandParser().parse(arguments);
+
+            case PrintCommand.COMMAND_WORD:
+                return new PrintCommandParser().parse(arguments);
+
+            case PrintCommand.COMMAND_ALIAS:
+                return new PrintCommandParser().parse(arguments);
 
             default:
                 throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

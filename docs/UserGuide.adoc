@@ -255,17 +255,17 @@ Examples:
 * `ac 2 asthma` +
 `asthma` will be added to the list of conditions that the patient at index `2` has.
 
-==== Removing the condition of an existing patient: `removec` [coming in v1.4]
+==== Removing the condition of an existing patient: `delc` [since in v1.4]
 
-Adds a medical condition to an existing patient.
-Format: `removec` or `rc`
+Removes a medical condition to an existing patient.
+Format: `delc` or `dc`
 
 Examples:
 
-* `removec 1 aspirin` +
+* `delc 1 aspirin` +
 `aspirin` will be removed from the list of conditions that the patient at index `1` has.
 
-* `rc 2 asthma` +
+* `dc 2 asthma` +
 `asthma` will be removed from the list of conditions that the patient at index `2` has.
 
 ==== Listing all patients : `list` or `ls`
@@ -273,7 +273,7 @@ Examples:
 Shows a list of all patients in the IMDB. +
 Format: `list` or `ls`
 
-==== Viewing certain details only: `filter` [coming in v1.4]
+==== Viewing certain details only: `filter` [coming in v1.5]
 
 Switches between showing personal details only, medical information only.
 Format: `filter` or `fil`
@@ -326,44 +326,45 @@ Selects the 2nd patient in the IMDB.
 `s 1` +
 Selects the 1st patient in the results of the `find` command.
 
-==== Viewing the medical records for a patient : `record` [coming in v1.4]
+==== Viewing and editing the medical records for a patient : `record` [since in v1.4]
 
 Views all the medical records for a patient specified by the index number used in the last patient listing. +
-Format: record INDEX
+Format: `record INDEX in/[RECORD INDEX]` or `rec INDEX in/[RECORD INDEX]`
 
 **
-* Selects the person at the specified `INDEX` and displays all the medical records for that patient.
+* Selects the person at the specified `INDEX` and displays all the medical records for that patient in a separate window.
+* If the specified index is more than the number of medical records, a new medical record will be created instead.
 * The index refers to the index number shown in the most recent listing.
 * The index *must be a positive integer* `1, 2, 3, ...`
 **
 
 Examples:
 
-* list +
-record 1 +
-Displays all the medical records for the first person in the result of the list command.
+* `list` +
+`record 1 in/1` +
+Displays the first medical record for the first person in the result of the list command.
 
-==== Editing the medical records for a patient : record [since v1.3]
+==== Deleting the medical records for a patient : `remover` [since in v1.4]
 
-Edits the medical records for a patient specified by the index number used in the last patient listing. +
-Format: record INDEX in/[RECORD INDEX] d/[DATE] s/[SYMPTOMS] i/[ILLNESS] t/[TREATMENT] r/[REMARKS]
+Deletes the medical record specified by the record index for a patient specified by the index number used in the last patient listing. +
+Format: `remover INDEX in/[RECORD INDEX]` or `rr INDEX in/[RECORD INDEX]`
 
 **
-* Selects the person at the specified `INDEX` and edits the medical records at the specified `RECORDINDEX` for that patient.
+* Selects the person at the specified `INDEX` and deletes the medical record at `[RECORD INDEX]`, shifting all other medical records up the list.
+* If the deletion of the medical record would leave the list of records empty, a default medical record will be generated.
 * The index refers to the index number shown in the most recent listing.
 * The index *must be a positive integer* `1, 2, 3, ...`
 **
 
 Examples:
 
-* list +
-record 1 in/2 d/19 March 2018 s/Runny nose, Headache i/Flu t/Zyrtec +
-Edits the second record for the first person to Date:19 March 2018 Symptoms:Runny nose, Headache
-Illness:Flu Treatment:Zyrtec`.
+* `list` +
+`remover 1 in/1` +
+Deletes the first medical record for the first person in the result of the list command.
 
 ==== Printing a patient's formatted medical records : `print` [coming in v1.4]
 
-Formats and prints out a patient's medical records. +
+Formats and prints a patient's medical records into a pdf, which will be stored in the "record" folder. +
 Format: `print INDEX`
 
 ==== Attaching and viewing the X-ray scans for a patient `[coming in v2.0]`
@@ -443,18 +444,18 @@ List of medical appointments made by Betsy.
 * `va John` +
 List of medical appointments made by John.
 
-==== Viewing medical appointments by date: `viewappt` [coming in v1.4]
+==== Viewing medical appointments by month: `viewappt` [coming in v1.4]
 
-Shows a list of medical appointments of a particular date.
-Format: `viewappt DATE` or `va DATE`
+Shows a list of medical appointments in month view.
+Format: `viewappt` or `va`
 
 Examples:
 
-* `viewappt 19/3/2018` +
-List of medical appointments on 19/3/2018.
+* `viewappt` +
+List of medical appointments on current month. User can also navigate to other months to view medical appointments for the particular month.
 
-* `va 23/3/2019` +
-List of medical appointments on 23/3/2018.
+* `va` +
+List of medical appointments on current month. User can also navigate to other months to view medical appointments for the particular month.
 
 ==== Viewing the schedule for a patient across all specialists `[coming in v2.0]`
 
@@ -488,6 +489,10 @@ e.g. `find` or `f James Jake`
 e.g.`select` or `s 2`
 * *Remark* : `remark` or `rk INDEX r/[REMARK]` +
 e.g.`remark` or `rk 1 r/Likes to drink coffee.`
+* *Record* : `record` or `rec INDEX in/[RECORD INDEX]` +
+e.g.`record` or `rec 1 in/2`
+* *Remover* : `remover` or `rr INDEX in/[RECORD INDEX]` +
+e.g.`remover` or `rr 1 in/2`
 * *Add patient into visiting queue* : `addq` or `aq`
 * *Remove patient from visiting queue* : `removeq` or `rq`
 * *View appointments* : `viewappt` or `va`

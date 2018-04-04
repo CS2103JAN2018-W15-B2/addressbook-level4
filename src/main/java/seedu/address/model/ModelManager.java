@@ -14,7 +14,11 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.events.model.AppointmentChangedEvent;
 import seedu.address.commons.events.model.ImdbChangedEvent;
+import seedu.address.commons.events.ui.ShowCalendarViewRequestEvent;
+import seedu.address.model.appointment.AppointmentEntry;
+import seedu.address.model.appointment.UniqueAppointmentEntryList;
 import seedu.address.model.appointment.UniqueAppointmentList;
+import seedu.address.model.patient.NameContainsKeywordsPredicate;
 import seedu.address.model.patient.Patient;
 import seedu.address.model.patient.exceptions.DuplicatePatientException;
 import seedu.address.model.patient.exceptions.PatientNotFoundException;
@@ -29,7 +33,8 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final Imdb imdb;
     private final FilteredList<Patient> filteredPatients;
-    private final FilteredList<Patient> patientVisitingQueue;
+    private final FilteredList<Integer> patientVisitingQueue;
+    private final FilteredList<AppointmentEntry> appointmentEntries;
 
     /**
      * Initializes a ModelManager with the given Imdb and userPrefs.
@@ -42,7 +47,8 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.imdb = new Imdb(addressBook);
         filteredPatients = new FilteredList<>(this.imdb.getPersonList());
-        patientVisitingQueue = new FilteredList<>(this.imdb.getUniquePatientQueue());
+        patientVisitingQueue = new FilteredList<>(this.imdb.getUniquePatientQueueNo());
+        appointmentEntries = new FilteredList<>(this.imdb.getAppointmentEntryList());
     }
 
     public ModelManager() {
@@ -67,6 +73,10 @@ public class ModelManager extends ComponentManager implements Model {
 
     private void indicateAppointmentChanged(Patient patient) {
         raise(new AppointmentChangedEvent(patient, imdb));
+    }
+
+    private void indicateCalendarChanged() {
+        raise(new ShowCalendarViewRequestEvent(imdb.getAppointmentEntryList()));
     }
 
     @Override
@@ -119,9 +129,24 @@ public class ModelManager extends ComponentManager implements Model {
     public Patient getPatientFromList(Predicate<Patient> predicate) {
         filteredPatients.setPredicate(predicate);
         if (filteredPatients.size() > 0) {
-            return filteredPatients.get(0);
+            Patient targetPatient = filteredPatients.get(0);
+            updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+            return targetPatient;
         }
         return null;
+    }
+
+    private int getPatientIndex(Predicate<Patient> predicate) throws PatientNotFoundException {
+
+        filteredPatients.setPredicate(predicate);
+        int patientIndex;
+        if (filteredPatients.size() > 0) {
+            patientIndex = filteredPatients.getSourceIndex(0);
+            updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+            return patientIndex;
+        }
+
+        throw new PatientNotFoundException();
     }
 
     @Override
@@ -132,22 +157,36 @@ public class ModelManager extends ComponentManager implements Model {
         return isDeleteSuccess;
     }
 
-    public UniqueAppointmentList getPatientAppointments(Patient patient) {
-        return null;
+    @Override
+    public ObservableList<AppointmentEntry> getAppointmentEntryList() {
+        return imdb.getAppointmentEntryList();
     }
 
     @Override
-    public synchronized void addPatientToQueue(Patient patient) throws DuplicatePatientException {
-        requireNonNull(patient);
-        imdb.addPatientToQueue(patient);
+    public synchronized void addPatientAppointment(Patient patient, String dateTimeString) throws
+            UniqueAppointmentList.DuplicatedAppointmentException,
+            UniqueAppointmentEntryList.DuplicatedAppointmentEntryException {
+        requireNonNull(patient, dateTimeString);
+        imdb.addAppointment(patient, dateTimeString);
+        indicateAppointmentChanged(patient);
+    }
+
+    @Override
+    public synchronized Patient addPatientToQueue(NameContainsKeywordsPredicate predicate) throws
+            DuplicatePatientException, PatientNotFoundException {
+        requireNonNull(predicate);
+        int patientIndex = getPatientIndex(predicate);
+        imdb.addPatientToQueue(patientIndex);
         indicateAddressBookChanged();
+
+        return filteredPatients.get(patientIndex);
     }
 
     @Override
     public synchronized Patient removePatientFromQueue() throws PatientNotFoundException {
-        Patient patientToRemove = imdb.removePatientFromQueue();
+        int patientIndexToRemove = imdb.removePatientFromQueue();
         indicateAddressBookChanged();
-        return patientToRemove;
+        return filteredPatients.get(patientIndexToRemove);
     }
 
     @Override

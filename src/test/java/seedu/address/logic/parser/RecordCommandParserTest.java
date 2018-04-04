@@ -1,13 +1,8 @@
+//@@author nhs-work
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ILLNESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INDEX;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_SYMPTOM;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TREATMENT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
@@ -16,7 +11,6 @@ import org.junit.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.RecordCommand;
-import seedu.address.model.patient.Record;
 
 public class RecordCommandParserTest {
 
@@ -27,8 +21,8 @@ public class RecordCommandParserTest {
 
     @Test
     public void parse_missingParts_failure() {
-        // no index specified
-        assertParseFailure(parser, VALID_NAME_AMY, MESSAGE_INVALID_FORMAT);
+        // no patient index specified
+        assertParseFailure(parser, PREFIX_INDEX + "1 ", MESSAGE_INVALID_FORMAT);
 
         // no field specified
         assertParseFailure(parser, "1", MESSAGE_INVALID_FORMAT);
@@ -40,10 +34,10 @@ public class RecordCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + NAME_DESC_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-5" + PREFIX_INDEX + "1 ", MESSAGE_INVALID_FORMAT);
 
         // zero index
-        assertParseFailure(parser, "0" + NAME_DESC_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + PREFIX_INDEX + "1 ", MESSAGE_INVALID_FORMAT);
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
@@ -57,14 +51,9 @@ public class RecordCommandParserTest {
         Index targetIndex = INDEX_SECOND_PERSON;
         final StringBuilder builder = new StringBuilder();
         builder.append(targetIndex.getOneBased())
-                .append(" " + PREFIX_INDEX + "1 ")
-                .append(PREFIX_DATE + "1st March 2018 ")
-                .append(PREFIX_SYMPTOM + "Headache, runny nose ")
-                .append(PREFIX_ILLNESS + "Flu ")
-                .append(PREFIX_TREATMENT + "Zyrtec");
+                .append(" " + PREFIX_INDEX + "1 ");
 
-        RecordCommand expectedCommand = new RecordCommand(targetIndex, 1,
-                new Record("1st March 2018", "Headache, runny nose", "Flu", "Zyrtec"));
+        RecordCommand expectedCommand = new RecordCommand(targetIndex, Index.fromZeroBased(0));
 
         assertParseSuccess(parser, builder.toString(), expectedCommand);
     }
