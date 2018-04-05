@@ -724,8 +724,13 @@ Format: <code>print INDEX</code></p>
 <div class="sect3">
 <h4 id="adding-a-patient-into-the-visiting-queue-with-patient-name-code-addq-code-since-v1-2"><a class="link" href="#adding-a-patient-into-the-visiting-queue-with-patient-name-code-addq-code-since-v1-2">3.3.1. Adding a patient into the visiting queue with patient name: <code>addq</code> [since v1.2]</a></h4>
 <div class="paragraph">
-<p>Adds patient into visiting queue (registration).
-Format: <code>addq PATIENT_NAME</code> or <code>aq PATIENT_NAME</code></p>
+<p>Adds patient into visiting queue (registration).</p>
+</div>
+<div class="paragraph">
+<p><strong>This command is only accessible to medical staffs.</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addq PATIENT_NAME</code> or <code>aq PATIENT_NAME</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -746,8 +751,13 @@ John will be added at the back of the visiting queue.</p>
 <div class="sect3">
 <h4 id="removing-a-patient-from-the-visiting-queue-with-patient-name-code-removeq-code-since-v1-2"><a class="link" href="#removing-a-patient-from-the-visiting-queue-with-patient-name-code-removeq-code-since-v1-2">3.3.2. Removing a patient from the visiting queue with patient name: <code>removeq</code> [since v1.2]</a></h4>
 <div class="paragraph">
-<p>Removes the first patient from the visiting queue (check-out).
-Format: <code>removeq</code> or <code>rq</code></p>
+<p>Removes the first patient from the visiting queue (check-out).</p>
+</div>
+<div class="paragraph">
+<p><strong>This command is only accessible to medical staffs.</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>removeq</code> or <code>rq</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -765,6 +775,29 @@ John will be removed if he is the first patient in the queue.</p>
 </ul>
 </div>
 </div>
+<div class="sect3">
+<h4 id="viewing-visiting-queue-code-viewq-code-since-v1-2"><a class="link" href="#viewing-visiting-queue-code-viewq-code-since-v1-2">3.3.3. Viewing visiting queue: <code>viewq</code> [since v1.2]</a></h4>
+<div class="paragraph">
+<p>Show the list of patients in the visiting queue.</p>
+</div>
+<div class="paragraph">
+<p><strong>This command is accessible both to medical staffs and doctors.</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>viewq</code> or <code>vq</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewq</code><br>
+List of patients in the visiting queue will be displayed.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="appointment-commands"><a class="link" href="#appointment-commands">3.4. Appointment Commands</a></h3>
@@ -772,10 +805,15 @@ John will be removed if he is the first patient in the queue.</p>
 <p>The commands listed in this section are commands that pertain to the patient&#8217;s appointment.</p>
 </div>
 <div class="sect3">
-<h4 id="adding-a-medical-appointment-with-code-addappt-code-coming-in-v1-4"><a class="link" href="#adding-a-medical-appointment-with-code-addappt-code-coming-in-v1-4">3.4.1. Adding a medical appointment with: <code>addappt</code> [coming in v1.4]</a></h4>
+<h4 id="adding-a-medical-appointment-with-code-addappt-code-since-v1-4"><a class="link" href="#adding-a-medical-appointment-with-code-addappt-code-since-v1-4">3.4.1. Adding a medical appointment with: <code>addappt</code> [since v1.4]</a></h4>
 <div class="paragraph">
-<p>Adds a medical appointment with patient name, date, time.
-Format: <code>addappt PATIENT_NAME DATE TIME</code> or <code>aa PATIENT_NAME DATE TIME</code></p>
+<p>Adds a medical appointment with patient name, date, time.</p>
+</div>
+<div class="paragraph">
+<p><strong>This command is only accessible to medical staffs.</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addappt PATIENT_NAME DATE TIME</code> or <code>aa PATIENT_NAME DATE TIME</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -794,32 +832,15 @@ Adds a medical appointment for John on 23/3/2018 at 2:30pm.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-medical-appointment-by-patient-name-and-appointment-index-number-code-delappt-code-coming-in-v1-3"><a class="link" href="#deleting-a-medical-appointment-by-patient-name-and-appointment-index-number-code-delappt-code-coming-in-v1-3">3.4.2. Deleting a medical appointment by patient name and appointment index number: <code>delappt</code> [coming in v1.3]</a></h4>
+<h4 id="viewing-medical-appointments-by-patient-name-code-viewappt-code-since-v1-3"><a class="link" href="#viewing-medical-appointments-by-patient-name-code-viewappt-code-since-v1-3">3.4.2. Viewing medical appointments by patient name: <code>viewappt</code> [since v1.3]</a></h4>
 <div class="paragraph">
-<p>Deletes a medical appointment of the patient.
-Format: <code>delappt PATIENT_NAME APPOINTMENT_INDEX_NO</code> or <code>da PATIENT_NAME APPOINTMENT_INDEX_NO</code></p>
+<p>Shows a list of medical appointments of the patient.</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>This command is only accessible to medical staffs.</strong><br></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delappt Betsy 2</code><br>
-Delete a medical appointment of Betsy with index number 2.</p>
-</li>
-<li>
-<p><code>da John 1</code><br>
-Delete a medical appointment of John with index number 1.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="viewing-medical-appointments-by-patient-name-code-viewappt-code-coming-in-v1-3"><a class="link" href="#viewing-medical-appointments-by-patient-name-code-viewappt-code-coming-in-v1-3">3.4.3. Viewing medical appointments by patient name: <code>viewappt</code> [coming in v1.3]</a></h4>
 <div class="paragraph">
-<p>Shows a list of medical appointments of the patient.
-Format: <code>viewappt PATIENT_NAME</code> or <code>va PATIENT_NAME</code></p>
+<p>Format: <code>viewappt PATIENT_NAME</code> or <code>va PATIENT_NAME</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -838,10 +859,44 @@ List of medical appointments made by John.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-medical-appointments-by-month-code-viewappt-code-coming-in-v1-4"><a class="link" href="#viewing-medical-appointments-by-month-code-viewappt-code-coming-in-v1-4">3.4.4. Viewing medical appointments by month: <code>viewappt</code> [coming in v1.4]</a></h4>
+<h4 id="deleting-a-medical-appointment-by-patient-name-and-appointment-index-number-code-delappt-code-since-v1-3"><a class="link" href="#deleting-a-medical-appointment-by-patient-name-and-appointment-index-number-code-delappt-code-since-v1-3">3.4.3. Deleting a medical appointment by patient name and appointment index number: <code>delappt</code> [since v1.3]</a></h4>
 <div class="paragraph">
-<p>Shows a list of medical appointments in month view.
-Format: <code>viewappt</code> or <code>va</code></p>
+<p>Deletes a medical appointment of the patient.</p>
+</div>
+<div class="paragraph">
+<p><strong>This command is only accessible to medical staffs.</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delappt PATIENT_NAME APPOINTMENT_INDEX_NO</code> or <code>da PATIENT_NAME APPOINTMENT_INDEX_NO</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewappt Betsy</code><br>
+<code>delappt Betsy 2</code><br>
+Delete a medical appointment of Betsy with index number 2.</p>
+</li>
+<li>
+<p><code>va John</code><br>
+<code>da John 1</code><br>
+Delete a medical appointment of John with index number 1.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-medical-appointments-in-calendar-code-viewappt-code-since-v1-4"><a class="link" href="#viewing-medical-appointments-in-calendar-code-viewappt-code-since-v1-4">3.4.4. Viewing medical appointments in calendar: <code>viewappt</code> [since v1.4]</a></h4>
+<div class="paragraph">
+<p>Shows a list of medical appointments in calendar month view.</p>
+</div>
+<div class="paragraph">
+<p><strong>This command is only accessible to medical staffs.</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>viewappt</code> or <code>va</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -934,19 +989,29 @@ e.g.<code>record</code> or <code>rec 1 in/2</code></p>
 e.g.<code>remover</code> or <code>rr 1 in/2</code></p>
 </li>
 <li>
-<p><strong>Add patient into visiting queue</strong> : <code>addq</code> or <code>aq</code></p>
+<p><strong>Add patient into visiting queue</strong> : <code>addq</code> or <code>aq</code>
+e.g.<code>addq john</code> or <code>aq john</code></p>
 </li>
 <li>
 <p><strong>Remove patient from visiting queue</strong> : <code>removeq</code> or <code>rq</code></p>
 </li>
 <li>
-<p><strong>View appointments</strong> : <code>viewappt</code> or <code>va</code></p>
+<p><strong>View visiting queue</strong> : <code>viewq</code> or <code>vq</code></p>
 </li>
 <li>
-<p><strong>Add new appointment</strong> : <code>addappt</code> or <code>aa</code></p>
+<p><strong>View appointments in calendar</strong> : <code>viewappt</code> or <code>va</code><br>
+e.g.<code>viewappt john</code> or <code>viewappt john</code></p>
 </li>
 <li>
-<p><strong>Delete appointment</strong> : <code>delappt</code> or <code>da</code></p>
+<p><strong>View appointments by patient name</strong> : <code>viewappt</code> or <code>va</code></p>
+</li>
+<li>
+<p><strong>Add new appointment</strong> : <code>addappt</code> or <code>aa</code><br>
+e.g.<code>addappt betsy 19/3/2018 1300</code> or <code>aa betsy 19/3/2018 1300</code></p>
+</li>
+<li>
+<p><strong>Delete appointment</strong> : <code>delappt</code> or <code>da</code><br>
+e.g.<code>delappt betsy 2</code> or <code>da betsy 2</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code> or <code>hi</code></p>
@@ -964,7 +1029,7 @@ e.g.<code>remover</code> or <code>rr 1 in/2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 07:20:33 UTC
+Last updated 2018-04-05 14:23:18 UTC
 </div>
 </div>
 </body>
