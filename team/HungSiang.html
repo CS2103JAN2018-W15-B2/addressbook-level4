@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Ng Hung Siang - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Ng Hung Siang - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-integrated-medical-database-imdb"><a class="link" href="#project-integrated-medical-database-imdb">PROJECT: Integrated Medical DataBase (IMDB)</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>IMDB is an application for the management of health records digitally by private clinics with multiple branches. The user (either a medical staff or a doctor) interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>records for each patient and the ability to edit those records</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the doctor to add, modify and delete a patient&#8217;s medical records which store information pertaining to a particular visit they made to the clinic.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because the doctor can track a patient&#8217;s symptoms, illnesses, suspected diseases and treatments administered over a period of time. This allows a doctor to accurately gauge a patient&#8217;s current health status.</p>
+</li>
+<li>
+<p>Highlights: This enhancement includes a new variable to the patient class. It required an in-depth analysis of design alternatives as it stores a list of records, which then stored various other new classes. The implementation too was challenging as it required a way to
+store and retrieve a list of nested classes. Its also implemented a new window which needed to accept and authenticate user inputs to ensure a valid medical record.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added a remark class and command that allows the medical staff to navigate to enter miscellaneous information of a patient that did not belong to any existing fields.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PR reviewed (with non-trivial review comments): <a href="https://github.com/CS2103JAN2018-W15-B2/main/pull/101">#101</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-in-v1-4"><a class="link" href="#viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-in-v1-4">Viewing and editing the medical records for a patient : <code>record</code> [since in v1.4]</a></h4>
+<div class="paragraph">
+<p>Views all the medical records for a patient specified by the index number used in the last patient listing.<br>
+<strong>This command is only accessible to doctors.</strong><br>
+Format: <code>record INDEX in/[RECORD INDEX]</code> or <code>rec INDEX in/[RECORD INDEX]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the person at the specified <code>INDEX</code> and displays all the medical records for that patient in a separate window.</p>
+</li>
+<li>
+<p>If the specified index is more than the number of medical records, a new medical record will be created instead.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>record 1 in/1</code><br>
+Displays the first medical record for the first person in the result of the list command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-the-medical-records-for-a-patient-code-remover-code-since-in-v1-4"><a class="link" href="#deleting-the-medical-records-for-a-patient-code-remover-code-since-in-v1-4">Deleting the medical records for a patient : <code>remover</code> [since in v1.4]</a></h4>
+<div class="paragraph">
+<p>Deletes the medical record specified by the record index for a patient specified by the index number used in the last patient listing.<br>
+Format: <code>remover INDEX in/[RECORD INDEX]</code> or <code>rr INDEX in/[RECORD INDEX]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the person at the specified <code>INDEX</code> and deletes the medical record at <code>[RECORD INDEX]</code>, shifting all other medical records up the list.</p>
+</li>
+<li>
+<p>If the deletion of the medical record would leave the list of records empty, a default medical record will be generated.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>remover 1 in/1</code><br>
+Deletes the first medical record for the first person in the result of the list command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-remarks-for-a-patient-code-remark-code-or-code-rk-code-since-v1-2"><a class="link" href="#editing-remarks-for-a-patient-code-remark-code-or-code-rk-code-since-v1-2">Editing remarks for a patient : <code>remark</code> or <code>rk</code> [since v1.2]</a></h4>
+<div class="paragraph">
+<p>Edits the remark for a patient specified by the index number used in the last patient listing.<br>
+Format: <code>remark INDEX r/[REMARK]</code> or <code>rk INDEX r/[REMARK]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the patient at the specified <code>INDEX</code> and edits the remarks for that patient.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>remark 1 r/Likes to drink coffee.</code><br>
+Edits the remark for the first patient to Likes to drink coffee.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>remark 1 r/</code><br>
+Removes the remark for the first patient.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="edit-records-feature"><a class="link" href="#edit-records-feature">Edit records feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The edit records mechanism is facilitated by a <code>RecordCommand</code>.
+It supports editing the records of a <code>Patient</code> to match the user input. <code>RecordCommand</code> inherits from <code>UndoableCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>The edit records mechanism functions like that of the <code>EditCommand</code>. It searches for the patient to be edited and the record to be edited based on the indexes provided
+by the user. It then creates a new patient with the same attributes as the patient to be edited, changing the records attribute to
+match the user input. The <code>RecordCommand</code> then calls for the utility method updatePerson under <code>Model</code>, to replace the patient to be
+edited with the edited patient.</p>
+</div>
+<div class="paragraph">
+<p>Suppose that the user has just launched the application. The current patient queue is shown in the figure below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Figure%203.5.1.1.PNG" alt="Figure 3.5.1.1" width="800">
+</div>
+<div class="title">Figure 1. The current queue</div>
+</div>
+<div class="paragraph">
+<p>The user now decides to edit the first record of the first person in the list.</p>
+</div>
+<div class="paragraph">
+<p><code>RecordCommand</code> will search for the first person in the list and store it as the person to be edited.
+<code>RecordCommand</code> will then create a new patient with the same attributes as the patient to be edited, except the for the first records
+which will be based on the user input. This new patient will be stored as the edited patient as shown in the figure below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Figure%203.5.1.2.PNG" alt="Figure 3.5.1.2" width="800">
+</div>
+<div class="title">Figure 2. The patient before and after editing</div>
+</div>
+<div class="paragraph">
+<p><code>RecordCommand</code> will finally call the for the utility method updatePerson under <code>Model</code>, to replace the patient to be edited with the edited patient,
+the new list will be as shown in the figure below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Figure%203.5.1.3.PNG" alt="Figure 3.5.1.3" width="800">
+</div>
+<div class="title">Figure 3. The queue with updated details</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p>The following is an exploration of possible alternative implementations, the various aspects of
+each implementation and the pros and cons of each implementation:</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-recordcommand-code"><a class="link" href="#aspect-implementation-of-code-recordcommand-code">Aspect: Implementation of <code>RecordCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create a duplicate <code>Patient</code> and utilise updatePerson to replace the <code>Patient</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to implement due to existing utility methods.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of memory usage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a public method in <code>Record</code> for updating the record which will be called by <code>Patient</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will use less memory (no need to create new patient object).</p>
+</li>
+<li>
+<p>Cons: Will require public access to <code>Record</code> stored in <code>Patient</code> (possible security concerns).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-record-command"><a class="link" href="#aspect-data-structure-to-support-the-record-command">Aspect: Data structure to support the record command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create a <code>RecordList</code> that is stored in <code>Patient</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to understand for new developers as it follows existing structures.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of memory usage. May be complex as <code>RecordList</code> then stores <code>Record</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a String that is stored in <code>Patient</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will use less memory (no need to create new record object).</p>
+</li>
+<li>
+<p>Cons: Will require a method in Patient to update and verify validity of record. Violates Single Responsibility Principle and Separation of Concerns as <code>Patient</code> now needs to do two different things.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-09 15:26:26 UTC
+</div>
+</div>
+</body>
+</html>
