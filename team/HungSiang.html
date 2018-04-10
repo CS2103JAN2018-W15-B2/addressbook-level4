@@ -245,23 +245,30 @@ edited with the edited patient.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/Figure%203.5.1.1.PNG" alt="Figure 3.5.1.1" width="800">
+<img src="../images/Figure%203.5.1.1.png" alt="Figure 3.5.1.1" width="800">
 </div>
 <div class="title">Figure 1. The current queue</div>
 </div>
 <div class="paragraph">
-<p>The user now decides to edit the first record of the first person in the list.</p>
-</div>
-<div class="paragraph">
-<p><code>RecordCommand</code> will search for the first person in the list and store it as the person to be edited.
-<code>RecordCommand</code> will then create a new patient with the same attributes as the patient to be edited, except the for the first records
-which will be based on the user input. This new patient will be stored as the edited patient as shown in the figure below.</p>
+<p>The user now decides to edit the first record of the first person in the list. Upon entering the command, a new window will pop up with each field displaying the
+details of the patient&#8217;s current record as shown in the figure below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/Figure%203.5.1.2.PNG" alt="Figure 3.5.1.2" width="800">
+<img src="../images/Figure%203.5.1.2.png" alt="Figure 3.5.1.2" width="800">
 </div>
-<div class="title">Figure 2. The patient before and after editing</div>
+<div class="title">Figure 2. The medical record window</div>
+</div>
+<div class="paragraph">
+<p>After the user hits the enter button or clicks on the confirm button, <code>RecordCommand</code> will search for the first person in the list and store it as the person to be edited.
+<code>RecordCommand</code> will then create a new patient with the same attributes as the patient to be edited, except for the first record
+which will be edited based on the user&#8217;s input into the medical record window. This new patient will be stored as the edited patient as shown in the figure below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Figure%203.5.1.3.png" alt="Figure 3.5.1.3" width="800">
+</div>
+<div class="title">Figure 3. The patient before and after editing</div>
 </div>
 <div class="paragraph">
 <p><code>RecordCommand</code> will finally call the for the utility method updatePerson under <code>Model</code>, to replace the patient to be edited with the edited patient,
@@ -269,9 +276,9 @@ the new list will be as shown in the figure below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/Figure%203.5.1.3.PNG" alt="Figure 3.5.1.3" width="800">
+<img src="../images/Figure%203.5.1.4.png" alt="Figure 3.5.1.4" width="800">
 </div>
-<div class="title">Figure 3. The queue with updated details</div>
+<div class="title">Figure 4. The queue with updated details</div>
 </div>
 </div>
 <div class="sect3">
@@ -338,7 +345,61 @@ each implementation and the pros and cons of each implementation:</p>
 <p>Pros: Will use less memory (no need to create new record object).</p>
 </li>
 <li>
-<p>Cons: Will require a method in Patient to update and verify validity of record. Violates Single Responsibility Principle and Separation of Concerns as <code>Patient</code> now needs to do two different things.</p>
+<p>Cons: Will require a method in Patient to update and verify validity of record. Violates Single Responsibility Principle and
+Separation of Concerns as <code>Patient</code> now needs to do two different things.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-medical-record-entries"><a class="link" href="#aspect-implementation-of-medical-record-entries">Aspect: Implementation of medical record entries</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create a new window to display the details of the existing medical record</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows user to view the rest of the system while typing into the medical record window.</p>
+</li>
+<li>
+<p>Allows user to have a larger field so that they can check for mistakes in a glance.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>May introduce confusion due to  additional window being created.</p>
+</li>
+<li>
+<p>May result in slow speed and memory issues due to  additional window being created.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Allow user to type in full medical record information in the command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will use less memory (no need to create new window).</p>
+</li>
+<li>
+<p>Cons: Will require user to key in the whole medical record in one go (not feasible).</p>
 </li>
 </ul>
 </div>
@@ -353,7 +414,7 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 14:58:10 UTC
+Last updated 2018-04-10 15:02:21 UTC
 </div>
 </div>
 </body>
