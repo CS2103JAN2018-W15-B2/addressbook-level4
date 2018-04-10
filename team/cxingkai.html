@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Chew Xing Kai - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Chew Xing Kai - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-integrated-medical-database-imdb"><a class="link" href="#project-integrated-medical-database-imdb">PROJECT: Integrated Medical DataBase (IMDB)</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Integrated Medical DataBase (IMDB) is a desktop application used by clinics for managing health records digitally.
+Doctors can use it to check for a patient&#8217;s health profile, and medical staff can use it to manage queues and patient appointments.
+The user interacts with it using a Command Line Interface, and it has a Graphical User Interface created with JavaFX.
+It is written in Java, and has about 10 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: Added the <strong>login command</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Opens a window that allows users to log into IMDB. Some commands can only be executed when logged in as a particular user role.</p>
+</li>
+<li>
+<p>Justification: Adds a layer of security, protecting sensitive information of patients from users without security clearance.</p>
+</li>
+<li>
+<p>Highlights: Implementing this command was challenging as it involved handling data input from another window, using a static class LoginManager to authenticate and store login information.
+This feature can also be extended in the future by adding additional user roles such as administrator.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Added the <strong>print command</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Prints a selected user&#8217;s medical records as a pdf file.</p>
+</li>
+<li>
+<p>Justification: Can be used by doctors to explain a patient&#8217;s medical condition.</p>
+</li>
+<li>
+<p>Highlights: This command can be extended to include graphical information like x-ray images.</p>
+</li>
+<li>
+<p>Credits: iText 5 was used to create the pdf file.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W15-B2/main/blob/master/collated/functional/cxingkai.md">Collated code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs for other teams in the class</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated a third party library (iText) to the project [<a href="https://github.com/CS2103JAN2018-W15-B2/main/pull/146">#146</a>]</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="logging-into-the-system-code-login-code-or-code-lg-code-since-v1-2"><a class="link" href="#logging-into-the-system-code-login-code-or-code-lg-code-since-v1-2">Logging into the system: <code>login</code> or <code>lg</code> [since v1.2]</a></h4>
+<div class="paragraph">
+<p>Opens a window for the user to log into the IMDB with a matching username and password.<br>
+Format: <code>login</code> or <code>lg</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>login</code><br>
+Username: alice<br>
+Password: password123<br>
+This logs the user in as alice, who is a doctor.</p>
+</li>
+<li>
+<p><code>login</code><br>
+Username: bob<br>
+Password: password456<br>
+This logs the user in as bob, who is a medical staff.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="printing-a-patient-s-formatted-medical-records-code-print-code-or-code-p-code-since-v1-4"><a class="link" href="#printing-a-patient-s-formatted-medical-records-code-print-code-or-code-p-code-since-v1-4">Printing a patient&#8217;s formatted medical records : <code>print</code> or <code>p</code> [since v1.4]</a></h4>
+<div class="paragraph">
+<p>Formats and prints a patient&#8217;s medical records into a pdf. The pdf file is located in the same directory as the IMDB application.<br>
+<strong>This command is only accessible to doctors.</strong><br>
+Format: <code>print INDEX</code> or <code>p INDEX</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="login-system"><a class="link" href="#login-system">Login System</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The action of logging into IMDB is facilitated by <code>LoginCommand</code> and the static class <code>LoginManager</code>, which also contains a static attribute of class <code>LoginState</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>LoginCommand</code> takes in username and password input from the user, then calls the static class <code>LoginManager</code> to authenticate the given username and password, meaning that it will check through a csv file of correct usernames and passwords. If the given username and password are found in that file, then the value stored in <code>LoginState</code> will be changed to reflect the role of the user who logged in (doctor or medical staff).</p>
+</div>
+<div class="paragraph">
+<p>If <code>LoginState</code> shows that no user is currently logged in, certain commands that access the database such as <code>AddCommand</code> and <code>ListCommand</code> will throw an exception telling the user to log in. Once logged in, the user can perform those commands.</p>
+</div>
+<div class="paragraph">
+<p>There is no need for a logout command, since <code>ExitCommand</code> can be used to exit the application, and when the application is opened again, <code>LoginState</code> will be reset.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p>The following is an exploration of possible alternative implementations, the various aspects of
+each implementation and the pros and cons of each implementation:</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-loginstate-code"><a class="link" href="#aspect-implementation-of-code-loginstate-code">Aspect: Implementation of <code>LoginState</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a static <code>LoginManager</code> class with a static <code>LoginState</code> attribute</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The methods of <code>LoginManager</code> can be called anywhere, and its stored <code>LoginState</code> attribute will not be changed except through the authenticate method.</p>
+</li>
+<li>
+<p>Cons: Need to implement as a final class with a private constructor, since Java does not support public static classes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Store a login state in LoginCommand</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can store login state as an int instead of an object instance.</p>
+</li>
+<li>
+<p>Cons: Will require a method in LoginCommand to update login state and verify username and password. Violates Single Responsibility Principle and Separation of Concerns as <code>LoginCommand</code> now needs to do two different things. Also, there is a need to somehow pass the login state to IMDBParser.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-10 14:58:10 UTC
+</div>
+</div>
+</body>
+</html>
