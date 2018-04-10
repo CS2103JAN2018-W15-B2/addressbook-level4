@@ -540,29 +540,7 @@ Format: <code>list</code> or <code>ls</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-certain-details-only-code-filter-code-coming-in-v1-5"><a class="link" href="#viewing-certain-details-only-code-filter-code-coming-in-v1-5">3.2.8. Viewing certain details only: <code>filter</code> [coming in v1.5]</a></h4>
-<div class="paragraph">
-<p>Switches between showing personal details only, medical information only.
-Format: <code>filter</code> or <code>fil</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>filter Betsy p</code><br>
-Displays only the personal details of Betsy.</p>
-</li>
-<li>
-<p><code>fil John m</code><br>
-Displays only the medical information of John.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="locating-patients-by-name-code-find-code-or-code-f-code"><a class="link" href="#locating-patients-by-name-code-find-code-or-code-f-code">3.2.9. Locating patients by name: <code>find</code> or <code>f</code></a></h4>
+<h4 id="locating-patients-by-name-code-find-code-or-code-f-code"><a class="link" href="#locating-patients-by-name-code-find-code-or-code-f-code">3.2.8. Locating patients by name: <code>find</code> or <code>f</code></a></h4>
 <div class="paragraph">
 <p>Finds patients whose names contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code> or <code>f KEYWORD [MORE_KEYWORDS]</code></p>
@@ -607,7 +585,7 @@ Returns any patient having names <code>Betsy</code>, <code>Tim</code>, or <code>
 </div>
 </div>
 <div class="sect3">
-<h4 id="selecting-a-patient-code-select-code-or-code-s-code"><a class="link" href="#selecting-a-patient-code-select-code-or-code-s-code">3.2.10. Selecting a patient : <code>select</code> or <code>s</code></a></h4>
+<h4 id="selecting-a-patient-code-select-code-or-code-s-code"><a class="link" href="#selecting-a-patient-code-select-code-or-code-s-code">3.2.9. Selecting a patient : <code>select</code> or <code>s</code></a></h4>
 <div class="paragraph">
 <p>Selects the patient identified by the index number used in the last patient listing.<br>
 Format: <code>select INDEX</code> or <code>s INDEX</code></p>
@@ -617,7 +595,7 @@ Format: <code>select INDEX</code> or <code>s INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Selects the patient and loads the Google search page the patient at the specified <code>INDEX</code>.</p>
+<p>Selects the patient and loads up the details of the patient at the specified <code>INDEX</code>.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the most recent listing.</p>
@@ -648,7 +626,7 @@ Selects the 1st patient in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-in-v1-4"><a class="link" href="#viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-in-v1-4">3.2.11. Viewing and editing the medical records for a patient : <code>record</code> [since in v1.4]</a></h4>
+<h4 id="viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-in-v1-4"><a class="link" href="#viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-in-v1-4">3.2.10. Viewing and editing the medical records for a patient : <code>record</code> [since in v1.4]</a></h4>
 <div class="paragraph">
 <p>Views all the medical records for a patient specified by the index number used in the last patient listing.<br>
 <strong>This command is only accessible to doctors.</strong><br>
@@ -688,7 +666,7 @@ Displays the first medical record for the first person in the result of the list
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-the-medical-records-for-a-patient-code-remover-code-since-in-v1-4"><a class="link" href="#deleting-the-medical-records-for-a-patient-code-remover-code-since-in-v1-4">3.2.12. Deleting the medical records for a patient : <code>remover</code> [since in v1.4]</a></h4>
+<h4 id="deleting-the-medical-records-for-a-patient-code-remover-code-since-in-v1-4"><a class="link" href="#deleting-the-medical-records-for-a-patient-code-remover-code-since-in-v1-4">3.2.11. Deleting the medical records for a patient : <code>remover</code> [since in v1.4]</a></h4>
 <div class="paragraph">
 <p>Deletes the medical record specified by the record index for a patient specified by the index number used in the last patient listing.<br>
 Format: <code>remover INDEX in/[RECORD INDEX]</code> or <code>rr INDEX in/[RECORD INDEX]</code></p>
@@ -727,7 +705,7 @@ Deletes the first medical record for the first person in the result of the list 
 </div>
 </div>
 <div class="sect3">
-<h4 id="printing-a-patient-s-formatted-medical-records-code-print-code-or-code-p-code-since-v1-4"><a class="link" href="#printing-a-patient-s-formatted-medical-records-code-print-code-or-code-p-code-since-v1-4">3.2.13. Printing a patient&#8217;s formatted medical records : <code>print</code> or <code>p</code> [since v1.4]</a></h4>
+<h4 id="printing-a-patient-s-formatted-medical-records-code-print-code-or-code-p-code-since-v1-4"><a class="link" href="#printing-a-patient-s-formatted-medical-records-code-print-code-or-code-p-code-since-v1-4">3.2.12. Printing a patient&#8217;s formatted medical records : <code>print</code> or <code>p</code> [since v1.4]</a></h4>
 <div class="paragraph">
 <p>Formats and prints a patient&#8217;s medical records into a pdf. The pdf file is located in the same directory as the IMDB application.<br>
 <strong>This command is only accessible to doctors.</strong><br>
@@ -735,7 +713,7 @@ Format: <code>print INDEX</code> or <code>p INDEX</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="attaching-and-viewing-the-x-ray-scans-for-a-patient-code-coming-in-v2-0-code"><a class="link" href="#attaching-and-viewing-the-x-ray-scans-for-a-patient-code-coming-in-v2-0-code">3.2.14. Attaching and viewing the X-ray scans for a patient <code>[coming in v2.0]</code></a></h4>
+<h4 id="attaching-and-viewing-the-x-ray-scans-for-a-patient-code-coming-in-v2-0-code"><a class="link" href="#attaching-and-viewing-the-x-ray-scans-for-a-patient-code-coming-in-v2-0-code">3.2.13. Attaching and viewing the X-ray scans for a patient <code>[coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>IMDB will be able to attach images(X-ray scans) to a patient and retrieve the images for viewing.</p>
 </div>
@@ -1054,7 +1032,7 @@ e.g.<code>delappt betsy 2</code> or <code>da betsy 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 16:01:48 UTC
+Last updated 2018-04-10 18:00:59 UTC
 </div>
 </div>
 </body>
