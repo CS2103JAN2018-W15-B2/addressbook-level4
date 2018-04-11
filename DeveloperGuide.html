@@ -48,10 +48,11 @@
 <li><a href="#implement-nric-dob-and-blood-type-detail-fields">3.3. Implement NRIC, DOB and Blood Type detail fields</a></li>
 <li><a href="#add-conditions-to-the-list-of-conditions-of-a-patient">3.4. Add conditions to the list of conditions of a patient</a></li>
 <li><a href="#patient-visting-queue-waiting-list-for-registration">3.5. Patient Visting Queue (waiting list for registration)</a></li>
-<li><a href="#edit-records-feature">3.6. Edit records feature</a></li>
-<li><a href="#login-system">3.7. Login System</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#patient-appointment">3.6. Patient Appointment</a></li>
+<li><a href="#edit-records-feature">3.7. Edit records feature</a></li>
+<li><a href="#login-system">3.8. Login System</a></li>
+<li><a href="#logging">3.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1114,8 +1115,7 @@ each implementation and the pros and cons of each implementation:</p>
 It supports adding and removing a patient from the visiting queue. <code>AddPatientQueueCommand</code> and <code>RemovePatientQueueCommand</code> inherit from <code>Command</code>.</p>
 </div>
 <div class="paragraph">
-<p>The add patient into visiting queue mechanism functions like that of the <code>AddCommand</code> but using the patient name only. It searches for the patient to be added based on the patient name provided
-by the user. If the patient already exists in the system then the patient will be added into the visiting queue. The <code>AddPatientQueueCommand</code> then calls for the utility method addPatientToQueue under <code>Model</code>, to update the visiting queue and trigger a IMDBChangedEvent to the <code>UI</code> to update PatientListPanel.</p>
+<p>The add patient into visiting queue mechanism functions like that of the <code>AddCommand</code> but using the index only. It store the actual index of patient in the patient list. User can find patients with certain keywords in patients' name using <code>FindCommand</code> then add patient into queue according to the list index displayed. The <code>AddPatientQueueCommand</code> then calls for the utility method addPatientToQueue under <code>Model</code>, to update the visiting queue and trigger a IMDBChangedEvent to the <code>UI</code> to update VisitingQueuePanel.</p>
 </div>
 <div class="paragraph">
 <p>Suppose that the user has just launched the application and logged in as a medical staff. The empty queue is shown in Figure 3.4.1.1 below.</p>
@@ -1130,7 +1130,7 @@ by the user. If the patient already exists in the system then the patient will b
 <p>The user now decides to add a patient into the queue.</p>
 </div>
 <div class="paragraph">
-<p><code>AddPatientQueueCommand</code> will search for the patient in the patient list. If the patient is found in the list, <code>AddPatientQueueCommand</code> will then call the for the utility method addPatientToQueue under <code>Model</code>, to add the patient into the visiting queue.
+<p><code>AddPatientQueueCommand</code> will check if the index given is valid and is in the bound of the current list displayed. If the given index is valid and in the bound, <code>AddPatientQueueCommand</code> will then call the for the utility method addPatientToQueue under <code>Model</code>, to add the patient index into the visiting queue.
 The updated queue is shown in the figure below.</p>
 </div>
 <div class="imageblock">
@@ -1140,7 +1140,7 @@ The updated queue is shown in the figure below.</p>
 <div class="title">Figure 29. The updated queue</div>
 </div>
 <div class="paragraph">
-<p>The remove patient from visiting queue mechanism functions like that of the <code>DeleteCommand</code> but without any parameters. It removes the first patient of the queue. The <code>RemovePatientQueueCommand</code> then calls for the utility method removePatientFromQueue under <code>Model</code>, to update the visiting queue and trigger a IMDBChangedEvent to <code>UI</code> to update PatientListPanel.</p>
+<p>The remove patient from visiting queue mechanism functions like that of the <code>DeleteCommand</code> with and without parameter. It removes the first patient of the queue if user do not provide any parameters. If user want to remove specific patient in the queue, the user can provide the patient index as parameter in the command. The <code>RemovePatientQueueCommand</code> then calls for the utility method removePatientFromQueue under <code>Model</code>, to update the visiting queue and trigger a IMDBChangedEvent to <code>UI</code> to update VisitingQueuePanel.</p>
 </div>
 <div class="paragraph">
 <p>Suppose that the queue contains patients as shown in the figure below.</p>
@@ -1176,14 +1176,14 @@ each implementation and the pros and cons of each implementation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Using LinkedList as queue to store patients</p>
+<p><strong>Alternative 1 (current choice):</strong> Using LinkedList as queue to store patient index only</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Will be easy to implement due to existing utility methods.</p>
 </li>
 <li>
-<p>Cons: May have utility limitation.</p>
+<p>Cons: May have utility limitation and have to take care how other commands affect the patient index in the list for example DeleteCommand</p>
 </li>
 </ul>
 </div>
@@ -1242,27 +1242,27 @@ each implementation and the pros and cons of each implementation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Patient will only removed from the top of the list</p>
+<p><strong>Alternative 1 (current choice):</strong> Patient can be removed from the queue regardless which position he or she is in the queue.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Easy to implement.</p>
 </li>
 <li>
-<p>Cons: Cannot remove a patient in a certain position.</p>
+<p>Cons: Removing patient based on their index can be error prone since list index is flexible with the operation that user typed in.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Patient can be removed from the queue no matter which position the patient is in the queue</p>
+<p><strong>Alternative 2:</strong> Patient can be removed from the queue by their NRIC</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Improve the functionality of RemovePatientQueue command.</p>
+<p>Pros: Get rid of the error caused by removing patient from queue by index.</p>
 </li>
 <li>
-<p>Cons: Will require another implentation to remove patient in the specified position from the queue.</p>
+<p>Cons: Will require extra checking and verification.</p>
 </li>
 </ul>
 </div>
@@ -1273,9 +1273,79 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-records-feature"><a class="link" href="#edit-records-feature">3.6. Edit records feature</a></h3>
+<h3 id="patient-appointment"><a class="link" href="#patient-appointment">3.6. Patient Appointment</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.6.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The patient appointment mechanism is facilitated by <code>Appointment</code>, <code>AppointmentEntry</code>, <code>DateTime</code>, <code>UniqueAppointmentEntryList</code>, <code>UniqueAppointmentList</code>, <code>AddAppointmentCommand</code>, <code>DeleteAppointmentCommand</code>, <code>ViewAppoinmentCommand</code>, <code>AddAppointmenetCommandParser</code>, <code>DeleteAppoinmentCommandParser</code> and <code>ViewAppointmentCommandParser</code>.
+It supports adding, deleteting and viewing patient appointments. <code>AddAppointmentCommand</code>, <code>DeleteAppointmentCommand</code> and <code>ViewAppoinmentCommand</code> inherit from <code>Command</code>.</p>
+</div>
+<div class="paragraph">
+<p>The add new patient appointment mechanism functions like that of the <code>AddCommand</code> with patient index, date, and time as parameters. It create a new appointment object with date time and stored in patient&#8217;s list of appointments record. User can find patients with certain keywords in patients' name using <code>FindCommand</code> then add a new appointment according to the list index displayed. The <code>AddPatientQueueCommand</code> then calls for the utility method addPatientAppointment under <code>Model</code>, to add a new patient appointment and trigger a IMDBChangedEvent to the <code>UI</code> to update PatientAppointmentPanel or CalendarPanel.</p>
+</div>
+<div class="paragraph">
+<p>Suppose that the user has just launched the application and logged in as a medical staff. The empty queue is shown in Figure below.</p>
+</div>
+<div class="paragraph">
+<p>The delete appointment mechanism functions like that of the <code>DeleteCommand</code> with patient index and appointment index in list of appointment for the particular patient.  The <code>RemovePatientQueueCommand</code> then calls for the utility method deletePatientAppointment under <code>Model</code>, to update the remove the patient appointment and trigger a IMDBChangedEvent to <code>UI</code> to update PatientAppointmentPanel or CalendarPanel.</p>
+</div>
+<div class="paragraph">
+<p>The view appointment mechanism functions like that of the <code>findCommand</code> and <code>listCommand</code> depends on whether patient index is provided.  If patient index is provided, the <code>viewAppointmentCommand</code> then calls for the utility method getPatientFromList by patient index under <code>Model</code>, to get the patient and trigger a IMDBChangedEvent to <code>UI</code> to update PatientAppointmentPanel to display list of past and future appoinments made by this patient. If patient index is not provided, the <code>viewAppointmentCommand</code> then calls for the utility method getAppointmentEntryList under <code>Model</code>, to get ta list of appointments made by all patients and trigger a IMDBChangedEvent to <code>UI</code> to update CalendarPanel.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>The following is an exploration of possible alternative implementations, the various aspects of
+each implementation and the pros and cons of each implementation:</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-addappointmentcommand-and-deleteappointmentcommand-and-viewappointmentcommand"><a class="link" href="#aspect-data-structure-to-support-the-addappointmentcommand-and-deleteappointmentcommand-and-viewappointmentcommand">Aspect: Data structure to support the AddAppointmentCommand and DeleteAppointmentCommand and viewAppointmentCommand</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Using separate customised data structure to store appointment for particular patient and appointments for all patient to be displayed on the calendar panel</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to implement due to existing utility methods.</p>
+</li>
+<li>
+<p>Cons: May have redundant methods in both data structure</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a appointment superclass or interface and extends from it</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can customise functionalities of the data structure and get rid of redundant methods.</p>
+</li>
+<li>
+<p>Cons: May not find similar behaviour between this two classes.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-addappointmentcommand"><a class="link" href="#aspect-implementation-of-addappointmentcommand">Aspect: Implementation of AddAppointmentCommand</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-deleteappointmentcommand"><a class="link" href="#aspect-implementation-of-deleteappointmentcommand">Aspect: Implementation of DeleteAppointmentCommand</a></h5>
+
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-records-feature"><a class="link" href="#edit-records-feature">3.7. Edit records feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.7.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The edit records mechanism is facilitated by a <code>RecordCommand</code>.
 It supports editing the records of a <code>Patient</code> to match the user input. <code>RecordCommand</code> inherits from <code>UndoableCommand</code>.</p>
@@ -1328,7 +1398,7 @@ the new list will be as shown in the figure below.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.7.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>The following is an exploration of possible alternative implementations, the various aspects of
 each implementation and the pros and cons of each implementation:</p>
@@ -1456,9 +1526,9 @@ Separation of Concerns as <code>Patient</code> now needs to do two different thi
 </div>
 </div>
 <div class="sect2">
-<h3 id="login-system"><a class="link" href="#login-system">3.7. Login System</a></h3>
+<h3 id="login-system"><a class="link" href="#login-system">3.8. Login System</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">3.8.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The action of logging into IMDB is facilitated by <code>LoginCommand</code> and the static class <code>LoginManager</code>, which also contains a static attribute of class <code>LoginState</code>.</p>
 </div>
@@ -1473,7 +1543,7 @@ Separation of Concerns as <code>Patient</code> now needs to do two different thi
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.8.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>The following is an exploration of possible alternative implementations, the various aspects of
 each implementation and the pros and cons of each implementation:</p>
@@ -1514,14 +1584,14 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1552,7 +1622,7 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2618,7 +2688,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-11 04:07:26 UTC
+Last updated 2018-04-11 05:32:32 UTC
 </div>
 </div>
 </body>
