@@ -159,7 +159,7 @@ This app will not work with earlier versions of Java 8.
 <p>Double-click the file to start the app. The GUI should appear in a few seconds as shown in the figure below.</p>
 <div class="imageblock">
 <div class="content">
-<img src="../images/Ui.png" alt="Ui" width="790">
+<img src="../images/Ui_new.PNG" alt="Ui new" width="990">
 </div>
 <div class="title">Figure 1: IMDB in action</div>
 </div>
@@ -202,6 +202,37 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
+<div class="paragraph">
+<p><strong>UI Walkthrough</strong></p>
+</div>
+<div class="paragraph">
+<p>*Before introducing the commands, a brief walkthrough of the user interface is shown in Figure 2 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_walkthrough.png" alt="ui walkthrough" width="990">
+</div>
+<div class="title">Figure 2: User Interface Walkthrough of IMDB</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Command box: where you can type command in</p>
+</li>
+<li>
+<p>Command result: where message will be displayed after a command is entered</p>
+</li>
+<li>
+<p>Multipurpose panel: where patient&#8217;s details, appointments will be displayed here</p>
+</li>
+<li>
+<p>Patient list panel: where list of patients in the database is displayed</p>
+</li>
+<li>
+<p>Visiting queue panel: where list of patients who are waiting for consultation is displayed</p>
+</li>
+</ol>
+</div>
 <div class="paragraph">
 <p><strong>Command Format</strong></p>
 </div>
@@ -795,20 +826,20 @@ Format: <code>print INDEX</code> or <code>p INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="queue-commands"><a class="link" href="#queue-commands">Queue Commands</a></h3>
+<h3 id="visiting-queue-commands"><a class="link" href="#visiting-queue-commands">Visiting Queue Commands</a></h3>
 <div class="paragraph">
 <p>The commands listed in this section are commands that pertain to the queue.</p>
 </div>
 <div class="sect3">
-<h4 id="adding-a-patient-into-the-visiting-queue-with-patient-name-code-addq-code-since-v1-2"><a class="link" href="#adding-a-patient-into-the-visiting-queue-with-patient-name-code-addq-code-since-v1-2">Adding a patient into the visiting queue with patient name: <code>addq</code> [since v1.2]</a></h4>
+<h4 id="adding-a-patient-into-the-visiting-queue-with-index-code-addq-code-since-v1-2"><a class="link" href="#adding-a-patient-into-the-visiting-queue-with-index-code-addq-code-since-v1-2">Adding a patient into the visiting queue with index: <code>addq</code> [since v1.2]</a></h4>
 <div class="paragraph">
 <p>Adds patient into visiting queue (registration).</p>
 </div>
 <div class="paragraph">
-<p><strong>This command is only accessible to medical staffs.</strong><br></p>
+<p><strong>This command is only accessible to medical staffs and is not undoable.</strong><br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>addq PATIENT_NAME</code> or <code>aq PATIENT_NAME</code></p>
+<p>Format: <code>addq INDEX</code> or <code>aq INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -816,23 +847,31 @@ Format: <code>print INDEX</code> or <code>p INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addq Betsy</code><br>
-Betsy will be added at the back of the visiting queue.</p>
+<p><code>list</code><br>
+<code>addq 3</code><br>
+Charlotte Oliveiro will be added into the visiting queue.</p>
 </li>
 <li>
-<p><code>aq John</code><br>
-John will be added at the back of the visiting queue.</p>
+<p><code>find bernice</code><br>
+<code>aq 2</code><br>
+Bernice Lee will be added into the visiting queue as shown in Figure 3 below.</p>
 </li>
 </ul>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/addq_duplicate.PNG" alt="addq duplicate" width="990">
+</div>
+<div class="title">Figure 3: Add patient to queue according to list index</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="removing-a-patient-from-the-visiting-queue-with-patient-name-code-removeq-code-since-v1-2"><a class="link" href="#removing-a-patient-from-the-visiting-queue-with-patient-name-code-removeq-code-since-v1-2">Removing a patient from the visiting queue with patient name: <code>removeq</code> [since v1.2]</a></h4>
+<h4 id="removing-a-patient-from-the-visiting-queue-code-removeq-code-since-v1-2"><a class="link" href="#removing-a-patient-from-the-visiting-queue-code-removeq-code-since-v1-2">Removing a patient from the visiting queue: <code>removeq</code> [since v1.2]</a></h4>
 <div class="paragraph">
 <p>Removes the first patient from the visiting queue (check-out).</p>
 </div>
 <div class="paragraph">
-<p><strong>This command is only accessible to medical staffs.</strong><br></p>
+<p><strong>This command is only accessible to medical staffs and is not undoable.</strong><br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>removeq</code> or <code>rq</code></p>
@@ -843,26 +882,26 @@ John will be added at the back of the visiting queue.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>removeq Betsy</code><br>
+<p><code>removeq</code><br>
 Betsy will be removed if she is the first patient in the queue.</p>
 </li>
 <li>
-<p><code>rq John</code><br>
+<p><code>rq</code><br>
 John will be removed if he is the first patient in the queue.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-visiting-queue-code-viewq-code-since-v1-2"><a class="link" href="#viewing-visiting-queue-code-viewq-code-since-v1-2">Viewing visiting queue: <code>viewq</code> [since v1.2]</a></h4>
+<h4 id="removing-a-patient-from-the-visiting-queue-by-index-code-removeq-code-since-v1-5rc"><a class="link" href="#removing-a-patient-from-the-visiting-queue-by-index-code-removeq-code-since-v1-5rc">Removing a patient from the visiting queue by index: <code>removeq</code> [since v1.5rc]</a></h4>
 <div class="paragraph">
-<p>Show the list of patients in the visiting queue.</p>
+<p>Removes a specific patient from the visiting queue by index (check-out).</p>
 </div>
 <div class="paragraph">
-<p><strong>This command is accessible both to medical staffs and doctors.</strong><br></p>
+<p><strong>This command is only accessible to medical staffs and is not undoable.</strong><br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>viewq</code> or <code>vq</code></p>
+<p>Format: <code>removeq</code> or <code>rq</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -870,8 +909,12 @@ John will be removed if he is the first patient in the queue.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>viewq</code><br>
-List of patients in the visiting queue will be displayed.</p>
+<p><code>removeq 4</code><br>
+Bernice will be removed if she is the 4th patient in the patient list and she is in the visiting queue.</p>
+</li>
+<li>
+<p><code>rq 2</code><br>
+Alex will be removed if he is the 2nd patient in the patient list and he is in the visiting queue.</p>
 </li>
 </ul>
 </div>
@@ -888,7 +931,7 @@ List of patients in the visiting queue will be displayed.</p>
 <p>Adds a medical appointment with patient name, date, time.</p>
 </div>
 <div class="paragraph">
-<p><strong>This command is only accessible to medical staffs.</strong><br></p>
+<p><strong>This command is only accessible to medical staffs and is not undoable.</strong><br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>addappt PATIENT_NAME DATE TIME</code> or <code>aa PATIENT_NAME DATE TIME</code></p>
@@ -942,7 +985,7 @@ List of medical appointments made by John.</p>
 <p>Deletes a medical appointment of the patient.</p>
 </div>
 <div class="paragraph">
-<p><strong>This command is only accessible to medical staffs.</strong><br></p>
+<p><strong>This command is only accessible to medical staffs and is not undoable.</strong><br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>delappt PATIENT_NAME APPOINTMENT_INDEX_NO</code> or <code>da PATIENT_NAME APPOINTMENT_INDEX_NO</code></p>
@@ -996,6 +1039,12 @@ List of medical appointments on current month. User can also navigate to other m
 <h4 id="viewing-the-schedule-for-a-patient-across-all-specialists-code-coming-in-v2-0-code"><a class="link" href="#viewing-the-schedule-for-a-patient-across-all-specialists-code-coming-in-v2-0-code">Viewing the schedule for a patient across all specialists <code>[coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>IMDB will be able to view the schedule for a patient across all specialists so that medical staff can arrange non-conflicting appointments.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-the-duty-schedule-for-doctors-across-all-specialists-code-coming-in-v2-0-code"><a class="link" href="#viewing-the-duty-schedule-for-doctors-across-all-specialists-code-coming-in-v2-0-code">Viewing the duty schedule for doctors across all specialists <code>[coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>IMDB will be able to view the duty schedule for doctors across all specialists so that medical staff can make arrangements if patient specifies which doctor he or she would like to visit for the appointment.</p>
 </div>
 </div>
 </div>
@@ -1068,13 +1117,14 @@ e.g.<code>remover</code> or <code>rr 1 in/2</code></p>
 </li>
 <li>
 <p><strong>Add patient into visiting queue</strong> : <code>addq</code> or <code>aq</code>
-e.g.<code>addq john</code> or <code>aq john</code></p>
+e.g.<code>addq 2</code> or <code>aq 1</code></p>
 </li>
 <li>
 <p><strong>Remove patient from visiting queue</strong> : <code>removeq</code> or <code>rq</code></p>
 </li>
 <li>
-<p><strong>View visiting queue</strong> : <code>viewq</code> or <code>vq</code></p>
+<p><strong>Remove patient from visiting queue by index</strong> : <code>removeq</code> or <code>rq</code>
+e.g.<code>removeq 2</code> or <code>rq 1</code></p>
 </li>
 <li>
 <p><strong>View appointments in calendar</strong> : <code>viewappt</code> or <code>va</code><br>
@@ -1135,7 +1185,7 @@ This app will not work with earlier versions of Java 8.
 <p>Double-click the file to start the app. The GUI should appear in a few seconds as shown in the figure below.</p>
 <div class="imageblock">
 <div class="content">
-<img src="../images/Ui.png" alt="Ui" width="790">
+<img src="../images/Ui_new.PNG" alt="Ui new" width="990">
 </div>
 <div class="title">Figure 1: IMDB in action</div>
 </div>
@@ -1438,7 +1488,7 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 18:57:54 UTC
+Last updated 2018-04-11 04:07:26 UTC
 </div>
 </div>
 </body>
