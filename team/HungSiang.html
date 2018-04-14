@@ -95,8 +95,31 @@ store and retrieve a list of nested classes. Its also implemented a new window w
 <h4 id="viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-in-v1-4"><a class="link" href="#viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-in-v1-4">Viewing and editing the medical records for a patient : <code>record</code> [since in v1.4]</a></h4>
 <div class="paragraph">
 <p>Views the medical record at the specified record index for a patient specified by the index number used in the last patient listing.<br>
-<strong>This command is only accessible to doctors.</strong><br>
 Format: <code>record INDEX in/[RECORD INDEX]</code> or <code>rec INDEX in/[RECORD INDEX]</code></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This command is undoable.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+This command is only accessible to doctors.
+</td>
+</tr>
+</table>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -138,8 +161,31 @@ Displays the first medical record for the first person in the result of the list
 <h4 id="deleting-the-medical-records-for-a-patient-code-remover-code-since-in-v1-4"><a class="link" href="#deleting-the-medical-records-for-a-patient-code-remover-code-since-in-v1-4">Deleting the medical records for a patient : <code>remover</code> [since in v1.4]</a></h4>
 <div class="paragraph">
 <p>Deletes the medical record specified by the record index for a patient specified by the index number used in the last patient listing.<br>
-<strong>This command is only accessible to doctors.</strong><br>
 Format: <code>remover INDEX in/[RECORD INDEX]</code> or <code>rr INDEX in/[RECORD INDEX]</code></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This command is undoable.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+This command is only accessible to doctors.
+</td>
+</tr>
+</table>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -193,6 +239,18 @@ Format: <code>remark INDEX r/[REMARK]</code> or <code>rk INDEX r/[REMARK]</code>
 </ul>
 </div>
 </div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This command is undoable.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -415,7 +473,7 @@ Separation of Concerns as <code>Patient</code> now needs to do two different thi
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 13:59:36 UTC
+Last updated 2018-04-14 15:20:00 UTC
 </div>
 </div>
 </body>
