@@ -238,7 +238,7 @@ It supports editing the records of a <code>Patient</code> to match the user inpu
 <div class="paragraph">
 <p>The edit records mechanism functions like that of the <code>EditCommand</code>. It searches for the patient to be edited and the record to be edited based on the indexes provided
 by the user. It then creates a new patient with the same attributes as the patient to be edited, changing the records attribute to
-match the user input. The <code>RecordCommand</code> then calls for the utility method updatePerson under <code>Model</code>, to replace the patient to be
+match the user input. The <code>RecordCommand</code> then calls for the utility method <code>updatePerson</code> under <code>Model</code>, to replace the patient to be
 edited with the edited patient.</p>
 </div>
 <div class="paragraph">
@@ -272,7 +272,7 @@ which will be edited based on the user&#8217;s input into the medical record win
 <div class="title">Figure 3. The patient before and after editing</div>
 </div>
 <div class="paragraph">
-<p><code>RecordCommand</code> will finally call the for the utility method updatePerson under <code>Model</code>, to replace the patient to be edited with the edited patient,
+<p><code>RecordCommand</code> will finally call the for the utility method <code>updatePerson</code> under <code>Model</code>, to replace the patient to be edited with the edited patient,
 the new list will be as shown in the figure below.</p>
 </div>
 <div class="imageblock">
@@ -293,7 +293,7 @@ each implementation and the pros and cons of each implementation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Create a duplicate <code>Patient</code> and utilise updatePerson to replace the <code>Patient</code></p>
+<p><strong>Alternative 1 (current choice):</strong> Create a duplicate <code>Patient</code> and utilise <code>updatePerson</code> to replace the <code>Patient</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -415,7 +415,7 @@ Separation of Concerns as <code>Patient</code> now needs to do two different thi
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 08:10:41 UTC
+Last updated 2018-04-14 11:18:14 UTC
 </div>
 </div>
 </body>

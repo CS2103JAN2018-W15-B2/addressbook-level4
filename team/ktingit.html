@@ -1460,7 +1460,7 @@ Removes <code>asthma</code> from the list of conditions that the patient at inde
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The additional fields added is managed by the <code>AddCommand</code> and the <code>EditCommand</code>.
+<p>The additional fields added are managed by the <code>AddCommand</code> and the <code>EditCommand</code>.
 They are included as fields to be filled in when adding a new <code>Patient</code> or when editing an existing <code>Patient</code>.</p>
 </div>
 <div class="paragraph">
@@ -1480,7 +1480,7 @@ They are included as fields to be filled in when adding a new <code>Patient</cod
 </div>
 <div class="paragraph">
 <p><code>EditCommand</code> will search for the first person in the list and store it as the person to be edited.
-<code>EditCommand</code> will then create a new patient with the same attributes as the patient to be edited, except the remarks attribute
+<code>EditCommand</code> will then create a new patient with the same attributes as the patient to be edited, except the <code>BloodType</code> attribute
 which will be based on the user input. This new patient will be stored as the edited patient as shown in Figure 23 below.</p>
 </div>
 <div class="imageblock">
@@ -1490,7 +1490,7 @@ which will be based on the user input. This new patient will be stored as the ed
 <div class="title">Figure 2. The patient before and after editing</div>
 </div>
 <div class="paragraph">
-<p><code>EditCommand</code> will finally call the for the utility method updatePerson under <code>Model</code>, to replace the patient to be edited with the edited patient,
+<p><code>EditCommand</code> will finally call the for the utility method <code>updatePerson</code> under <code>Model</code>, to replace the patient to be edited with the edited patient,
 the new list will be as shown in Figure 24 below.</p>
 </div>
 <div class="imageblock">
@@ -1523,8 +1523,8 @@ It allows the user to simply add on more conditions to the list of conditions a 
 </div>
 <div class="paragraph">
 <p><code>AddConditionCommand</code> will select the person in the list based on the index provided and store it as the person to be edited.
-<code>AddConditionCommand</code> will then create a new patient with the same attributes as the patient to be edited, except the with additional conditions
-which will be based on the user input. This new patient will be stored as the edited patient as shown in Figure 26 below.</p>
+<code>AddConditionCommand</code> will then create a new patient with the same attributes as the patient to be edited, except the <code>Condition</code> attribute which now has additional conditions
+based on the user input. This new patient will be stored as the edited patient as shown in Figure 26 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1533,7 +1533,7 @@ which will be based on the user input. This new patient will be stored as the ed
 <div class="title">Figure 5. The patient before and after editing</div>
 </div>
 <div class="paragraph">
-<p><code>EditCommand</code> will finally call the for the utility method updatePerson under <code>Model</code>, to replace the patient to be edited with the edited patient,
+<p><code>EditCommand</code> will finally call the for the utility method <code>updatePerson</code> under <code>Model</code>, to replace the patient to be edited with the edited patient,
 the new list will be as shown in Figure 27 below.</p>
 </div>
 <div class="imageblock">
@@ -1554,7 +1554,7 @@ each implementation and the pros and cons of each implementation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Create a duplicate <code>Patient</code> and utilise updatePerson to replace the <code>Patient</code></p>
+<p><strong>Alternative 1 (current choice):</strong> Create a duplicate <code>Patient</code> and utilise <code>updatePerson</code> to replace the <code>Patient</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -1589,7 +1589,7 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 08:10:41 UTC
+Last updated 2018-04-14 11:18:14 UTC
 </div>
 </div>
 </body>
