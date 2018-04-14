@@ -24,7 +24,7 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a>
+<li><a href="#setting-up">1. Setting Up</a>
 <ul class="sectlevel2">
 <li><a href="#prerequisites">1.1. Prerequisites</a></li>
 <li><a href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></li>
@@ -35,23 +35,22 @@
 <li><a href="#design">2. Design</a>
 <ul class="sectlevel2">
 <li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#events-driven-nature">2.2. Events-Driven nature</a></li>
-<li><a href="#Design-Ui">2.3. UI component</a></li>
-<li><a href="#Design-Logic">2.4. Logic component</a></li>
-<li><a href="#Design-Model">2.5. Model component</a></li>
-<li><a href="#Design-Storage">2.6. Storage component</a></li>
+<li><a href="#Design-Ui">2.2. UI component</a></li>
+<li><a href="#Design-Logic">2.3. Logic component</a></li>
+<li><a href="#Design-Model">2.4. Model component</a></li>
+<li><a href="#Design-Storage">2.5. Storage component</a></li>
 </ul>
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
+<li><a href="#undo-redo-feature">3.1. Undo/redo feature</a></li>
 <li><a href="#edit-remarks-feature">3.2. Edit remarks feature</a></li>
-<li><a href="#implement-nric-dob-and-blood-type-detail-fields">3.3. Implement NRIC, DOB and Blood Type detail fields</a></li>
+<li><a href="#implement-nric-dob-and-blood-type-detail-fields">3.3. Implement NRIC, DOB and blood type detail fields</a></li>
 <li><a href="#add-conditions-to-the-list-of-conditions-of-a-patient">3.4. Add conditions to the list of conditions of a patient</a></li>
-<li><a href="#patient-visting-queue-waiting-list-for-registration">3.5. Patient Visting Queue (waiting list for registration)</a></li>
-<li><a href="#patient-appointment">3.6. Patient Appointment</a></li>
+<li><a href="#patient-visiting-queue-waiting-list-for-registration">3.5. Patient visiting queue (waiting list for registration)</a></li>
+<li><a href="#patient-appointment">3.6. Patient appointment</a></li>
 <li><a href="#edit-records-feature">3.7. Edit records feature</a></li>
-<li><a href="#login-system">3.8. Login System</a></li>
+<li><a href="#login-system">3.8. Login system</a></li>
 <li><a href="#print-medical-records">3.9. Print Medical Records</a></li>
 <li><a href="#logging">3.10. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.11. Configuration</a></li>
@@ -59,26 +58,26 @@
 </li>
 <li><a href="#documentation">4. Documentation</a>
 <ul class="sectlevel2">
-<li><a href="#editing-documentation">4.1. Editing Documentation</a></li>
-<li><a href="#publishing-documentation">4.2. Publishing Documentation</a></li>
-<li><a href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></li>
+<li><a href="#editing-documentation">4.1. Editing documentation</a></li>
+<li><a href="#publishing-documentation">4.2. Publishing documentation</a></li>
+<li><a href="#converting-documentation-to-pdf-format">4.3. Converting documentation to PDF format</a></li>
 </ul>
 </li>
 <li><a href="#Testing">5. Testing</a>
 <ul class="sectlevel2">
-<li><a href="#running-tests">5.1. Running Tests</a></li>
+<li><a href="#running-tests">5.1. Running tests</a></li>
 <li><a href="#types-of-tests">5.2. Types of tests</a></li>
-<li><a href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></li>
+<li><a href="#troubleshooting-testing">5.3. Troubleshooting testing</a></li>
 </ul>
 </li>
 <li><a href="#dev-ops">6. Dev Ops</a>
 <ul class="sectlevel2">
-<li><a href="#build-automation">6.1. Build Automation</a></li>
-<li><a href="#continuous-integration">6.2. Continuous Integration</a></li>
-<li><a href="#coverage-reporting">6.3. Coverage Reporting</a></li>
-<li><a href="#documentation-previews">6.4. Documentation Previews</a></li>
-<li><a href="#making-a-release">6.5. Making a Release</a></li>
-<li><a href="#managing-dependencies">6.6. Managing Dependencies</a></li>
+<li><a href="#build-automation">6.1. Build automation</a></li>
+<li><a href="#continuous-integration">6.2. Continuous integration</a></li>
+<li><a href="#coverage-reporting">6.3. Coverage reporting</a></li>
+<li><a href="#documentation-previews">6.4. Documentation previews</a></li>
+<li><a href="#making-a-release">6.5. Making a release</a></li>
+<li><a href="#managing-dependencies">6.6. Managing dependencies</a></li>
 </ul>
 </li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
@@ -97,17 +96,20 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting Up</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section details how you can go about setting up IMDB.</p>
 </div>
 <div class="sect2">
 <h3 id="prerequisites"><a class="link" href="#prerequisites">1.1. Prerequisites</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>JDK <code>1.8.0_60</code></strong> or later</p>
+<div class="paragraph">
+<p>Please ensure the following are installed before setting up IMDB:<br>
+. <strong>JDK <code>1.8.0_60</code></strong> or later</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -121,7 +123,11 @@ This app will not work with earlier versions of Java 8.
 </tr>
 </table>
 </div>
-</li>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p><strong>IntelliJ</strong> IDE</p>
 <div class="admonitionblock note">
@@ -360,9 +366,8 @@ This class is written using <a href="https://github.com/google/guava/wiki/EventB
 <div class="paragraph">
 <p><br></p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="events-driven-nature"><a class="link" href="#events-driven-nature">2.2. Events-Driven nature</a></h3>
+<div class="sect3">
+<h4 id="events-driven-nature"><a class="link" href="#events-driven-nature">2.1.1. Events-driven nature</a></h4>
 <div class="paragraph">
 <p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.
 <br>
@@ -411,8 +416,9 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>The sections below give more details of each component.</p>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.3. UI component</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
 <div class="paragraph">
 <p>The diagram below is an overview of the structure of the <code>UI</code> component.<br></p>
 </div>
@@ -450,7 +456,7 @@ You may wish to refer to the following for more information about the API of the
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.4. Logic component</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
 <div class="paragraph">
 <p>The diagram below is an overview of the structure of the <code>Logic</code> component.<br></p>
 </div>
@@ -512,7 +518,7 @@ You may wish to refer to the following for more information about the API of the
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.5. Model component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
 <div class="paragraph">
 <p>The diagram below is an overview of the structure of the <code>Model</code> component.<br></p>
 </div>
@@ -546,7 +552,7 @@ You may wish to refer to the following for more information about the API of the
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.6. Storage component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
 <div class="paragraph">
 <p>The diagram below is an overview of the structure of the <code>Storage</code> component.<br></p>
 </div>
@@ -582,7 +588,7 @@ You may wish to refer to the following for more information about the API of the
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.1. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.1. Undo/redo feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1004,7 +1010,7 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="implement-nric-dob-and-blood-type-detail-fields"><a class="link" href="#implement-nric-dob-and-blood-type-detail-fields">3.3. Implement NRIC, DOB and Blood Type detail fields</a></h3>
+<h3 id="implement-nric-dob-and-blood-type-detail-fields"><a class="link" href="#implement-nric-dob-and-blood-type-detail-fields">3.3. Implement NRIC, DOB and blood type detail fields</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1133,7 +1139,7 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="patient-visting-queue-waiting-list-for-registration"><a class="link" href="#patient-visting-queue-waiting-list-for-registration">3.5. Patient Visting Queue (waiting list for registration)</a></h3>
+<h3 id="patient-visiting-queue-waiting-list-for-registration"><a class="link" href="#patient-visiting-queue-waiting-list-for-registration">3.5. Patient visiting queue (waiting list for registration)</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1303,7 +1309,7 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="patient-appointment"><a class="link" href="#patient-appointment">3.6. Patient Appointment</a></h3>
+<h3 id="patient-appointment"><a class="link" href="#patient-appointment">3.6. Patient appointment</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.6.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1559,7 +1565,7 @@ Separation of Concerns as <code>Patient</code> now needs to do two different thi
 </div>
 </div>
 <div class="sect2">
-<h3 id="login-system"><a class="link" href="#login-system">3.8. Login System</a></h3>
+<h3 id="login-system"><a class="link" href="#login-system">3.8. Login system</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">3.8.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1754,25 +1760,25 @@ We chose asciidoc over Markdown because asciidoc, although a bit more complex th
 </table>
 </div>
 <div class="sect2">
-<h3 id="editing-documentation"><a class="link" href="#editing-documentation">4.1. Editing Documentation</a></h3>
+<h3 id="editing-documentation"><a class="link" href="#editing-documentation">4.1. Editing documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
 Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">4.2. Publishing Documentation</a></h3>
+<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">4.2. Publishing documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></h3>
+<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">4.3. Converting documentation to PDF format</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
 </div>
 <div class="paragraph">
-<p>Here are the steps to convert the project documentation files to PDF format.</p>
+<p>Here are the steps to convert the project documentation files to PDF format:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1803,7 +1809,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <h2 id="Testing"><a class="link" href="#Testing">5. Testing</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">5.1. Running Tests</a></h3>
+<h3 id="running-tests"><a class="link" href="#running-tests">5.1. Running tests</a></h3>
 <div class="paragraph">
 <p>There are three ways to run tests.</p>
 </div>
@@ -1872,7 +1878,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>GUI Tests</strong> - These are tests involving the GUI. They include,</p>
+<p><strong>GUI Tests</strong> - These are tests involving the GUI. They include:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -1885,7 +1891,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 </div>
 </li>
 <li>
-<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include,</p>
+<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -1907,7 +1913,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></h3>
+<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">5.3. Troubleshooting testing</a></h3>
 <div class="paragraph">
 <p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
 </div>
@@ -1928,31 +1934,31 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="build-automation"><a class="link" href="#build-automation">6.1. Build Automation</a></h3>
+<h3 id="build-automation"><a class="link" href="#build-automation">6.1. Build automation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="continuous-integration"><a class="link" href="#continuous-integration">6.2. Continuous Integration</a></h3>
+<h3 id="continuous-integration"><a class="link" href="#continuous-integration">6.2. Continuous integration</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <em>Continuous Integration</em> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">6.3. Coverage Reporting</a></h3>
+<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">6.3. Coverage reporting</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://coveralls.io/">Coveralls</a> to track the code coverage of our projects. See <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="documentation-previews"><a class="link" href="#documentation-previews">6.4. Documentation Previews</a></h3>
+<h3 id="documentation-previews"><a class="link" href="#documentation-previews">6.4. Documentation previews</a></h3>
 <div class="paragraph">
 <p>When a pull request has changes to asciidoc files, you can use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="making-a-release"><a class="link" href="#making-a-release">6.5. Making a Release</a></h3>
+<h3 id="making-a-release"><a class="link" href="#making-a-release">6.5. Making a release</a></h3>
 <div class="paragraph">
 <p>Here are the steps to create a new release.</p>
 </div>
@@ -1974,7 +1980,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">6.6. Managing Dependencies</a></h3>
+<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">6.6. Managing dependencies</a></h3>
 <div class="paragraph">
 <p>A project often depends on third-party libraries. For example, Address Book depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives.<br>
 a. Include those libraries in the repo (this bloats the repo size)<br>
@@ -2909,7 +2915,7 @@ Expected: Nothing is printed. Error details shown in the status message.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 16:58:29 UTC
+Last updated 2018-04-14 17:55:05 UTC
 </div>
 </div>
 </body>
