@@ -184,6 +184,24 @@ Format: <code>print INDEX</code> or <code>p INDEX</code></p>
 <p>The action of logging into IMDB is facilitated by <code>LoginCommand</code> and the static class <code>LoginManager</code>, which also contains a static attribute of class <code>LoginState</code>.</p>
 </div>
 <div class="paragraph">
+<p>The static class <code>LoginManager</code> is implemented by a final class as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">final</span> <span class="type">class</span> <span class="class">LoginManager</span> {
+    <span class="directive">private</span> <span class="directive">static</span> LoginState currLoginState = <span class="keyword">new</span> LoginState(NO_USER_STATE, NO_USER_STRING);
+    <span class="directive">private</span> <span class="directive">static</span> <span class="predefined-type">String</span> passwordPath = <span class="string"><span class="delimiter">&quot;</span><span class="content">/data/passwords.csv</span><span class="delimiter">&quot;</span></span>;
+
+    <span class="directive">private</span> LoginManager() {
+            currLoginState = <span class="keyword">new</span> LoginState(NO_USER_STATE, NO_USER_STRING);
+    }
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> authenticate (<span class="predefined-type">String</span> username, <span class="predefined-type">String</span> password) {
+        <span class="comment">// Check if username and password match and are in the passwords list and updates currLoginState</span>
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p><code>LoginCommand</code> takes in username and password input from the user, then calls the static class <code>LoginManager</code> to authenticate the given username and password, meaning that it will check through a csv file of correct usernames and passwords. If the given username and password are found in that file, then the value stored in <code>LoginState</code> will be changed to reflect the role of the user who logged in (doctor or medical staff).</p>
 </div>
 <div class="paragraph">
@@ -234,12 +252,67 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="print-medical-records"><a class="link" href="#print-medical-records">Print Medical Records</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>When <code>PrintCommand</code> is called, an instance of <code>PrintFormatter</code> is created, and a reference to the target <code>Patient</code> is passed to it.</p>
+</div>
+<div class="paragraph">
+<p><code>PrintFormatter</code> retrieves medical records and other information of the <code>Patient</code>, then uses iText (an external library) to format and print the records on a PDF.</p>
+</div>
+<div class="paragraph">
+<p>After the PDF is created, <code>PrintFormatter</code> will try to use an existing application to open it. If that fails, an exception is thrown.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="paragraph">
+<p>The following is an exploration of possible alternative implementations, the various aspects of
+each implementation and the pros and cons of each implementation:</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-file-format-of-printed-document"><a class="link" href="#aspect-file-format-of-printed-document">Aspect: File format of printed document</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Print records onto a PDF</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: PDF files are compatible across multiple platform. Also, PDFs cannot be altered without leaving an electronic footprint, so they are secure, which is important when there is confidential patient data.</p>
+</li>
+<li>
+<p>Cons: It is difficult to write on a pdf with basic Java methods, so an external library will have to be used.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Print records onto a txt file</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Simple to implement using basic Java methods.</p>
+</li>
+<li>
+<p>Cons: Document would not look visually appealing. Also, txt files do not support pictures, which might be needed in the future (e.g. for X-ray photos).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 11:18:14 UTC
+Last updated 2018-04-14 13:59:36 UTC
 </div>
 </div>
 </body>
