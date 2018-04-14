@@ -237,10 +237,10 @@ each implementation and the pros and cons of each implementation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: The methods of <code>LoginManager</code> can be called anywhere, and its stored <code>LoginState</code> attribute will not be changed except through the authenticate method.</p>
+<p>Pros: Will allow the methods of <code>LoginManager</code> can be called anywhere, and its stored <code>LoginState</code> attribute will not be changed except through the authenticate method.</p>
 </li>
 <li>
-<p>Cons: Need to implement as a final class with a private constructor, since Java does not support public static classes.</p>
+<p>Cons: Must implement the class as a final class with a private constructor, since Java does not support public static classes.</p>
 </li>
 </ul>
 </div>
@@ -292,10 +292,10 @@ each implementation and the pros and cons of each implementation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: PDF files are compatible across multiple platform. Also, PDFs cannot be altered without leaving an electronic footprint, so they are secure, which is important when there is confidential patient data.</p>
+<p>Pros: Will result in PDF files that are compatible across multiple platform. Also, PDFs cannot be altered without leaving an electronic footprint, so they are secure, which is important when there is confidential patient data.</p>
 </li>
 <li>
-<p>Cons: It is difficult to write on a pdf with basic Java methods, so an external library will have to be used.</p>
+<p>Cons: Will result in difficulty in writing to a pdf with basic Java methods, so an external library will have to be used.</p>
 </li>
 </ul>
 </div>
@@ -305,10 +305,10 @@ each implementation and the pros and cons of each implementation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Simple to implement using basic Java methods.</p>
+<p>Pros: Will be easy to implement using basic Java methods.</p>
 </li>
 <li>
-<p>Cons: Document would not look visually appealing. Also, txt files do not support pictures, which might be needed in the future (e.g. for X-ray photos).</p>
+<p>Cons: Will result in a visually unappealing document. Also, txt files do not support pictures, which might be needed in the future (e.g. for X-ray photos).</p>
 </li>
 </ul>
 </div>
@@ -323,7 +323,7 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 18:34:25 UTC
+Last updated 2018-04-14 18:44:07 UTC
 </div>
 </div>
 </body>
