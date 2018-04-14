@@ -85,7 +85,14 @@
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
-<li><a href="#glossary">Appendix E: Glossary</a></li>
+<li><a href="#instructions-for-manual-testing">Appendix E: Instructions for Manual Testing</a>
+<ul class="sectlevel2">
+<li><a href="#launch-and-shutdown">E.1. Launch and Shutdown</a></li>
+<li><a href="#login">E.2. Login</a></li>
+<li><a href="#print">E.3. Print</a></li>
+</ul>
+</li>
+<li><a href="#glossary">Appendix F: Glossary</a></li>
 </ul>
 </div>
 </div>
@@ -2764,7 +2771,122 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix E: Instructions for Manual Testing</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Given below are instructions to test the app manually.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">E.1. Launch and Shutdown</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initial launch</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Download the jar file and copy into an empty folder</p>
+</li>
+<li>
+<p>Double-click the jar file<br>
+Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Saving window preferences</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
+</li>
+<li>
+<p>Re-launch the app by double-clicking the jar file.<br>
+Expected: The most recent window size and location is retained.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="login"><a class="link" href="#login">E.2. Login</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Logging into IMDB as a doctor</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>login</code></p>
+</li>
+<li>
+<p>A login window will be opened. In that window, type "alice" for the username field and "password123" for the password field.<br>
+Expected: IMDB shows successful login message, and all commands for doctor can be executed.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Logging into IMDB as a medical staff</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>login</code></p>
+</li>
+<li>
+<p>A login window will be opened. In that window, type "bob" for the username field and "password456" for the password field.<br>
+Expected: IMDB shows successful login message, and all commands for doctor can be executed.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="print"><a class="link" href="#print">E.3. Print</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Printing a patient&#8217;s medical records while all patients are listed.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all patients using the <code>list</code> command, multiple patients in the list, first patient has some records.</p>
+</li>
+<li>
+<p>Test case: <code>print 1</code><br>
+Expected: Medical records of first patient in the list is printed into a PDF, which is opened by a PDF-reading program.</p>
+</li>
+<li>
+<p>Test case: <code>print 0</code><br>
+Expected: Nothing is printed. Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="glossary"><a class="link" href="#glossary">Appendix F: Glossary</a></h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
@@ -2787,7 +2909,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 15:20:00 UTC
+Last updated 2018-04-14 16:58:29 UTC
 </div>
 </div>
 </body>
