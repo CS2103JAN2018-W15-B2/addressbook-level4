@@ -32,7 +32,7 @@
 <li><a href="#patient-commands">3.2. Patient Commands</a></li>
 <li><a href="#visiting-queue-commands">3.3. Visiting Queue Commands</a></li>
 <li><a href="#appointment-commands">3.4. Appointment Commands</a></li>
-<li><a href="#saving-the-data">3.5. Saving the data</a></li>
+<li><a href="#saving-data">3.5. Saving Data</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -44,9 +44,9 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Integrated Medical DataBase (IMDB) is an application for the management of health records digitally.
-Of note is the fact that IMDB is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI)
-while still having the benefits of a Graphical User Interface (GUI).
+<p>Integrated Medical DataBase (IMDB) is a desktop records management application targeted at private clinics that may have multiple branches.
+It aims to replace how private clinics handle the management of patient records, making the process much more easier and efficient.
+IMDB is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI).
 This makes it perfect for doctors or staff who can type faster than they can navigate with a mouse.
 If your clinic has medical staff who can type fast, IMDB can get your patient management tasks done faster than traditional pen and paper or even normal GUI apps.
 Head to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started.</p>
@@ -61,7 +61,7 @@ Head to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get s
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Information.<br>
+Information<br>
 </td>
 </tr>
 </table>
@@ -73,7 +73,7 @@ Information.<br>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Tips.<br>
+Tips<br>
 </td>
 </tr>
 </table>
@@ -85,7 +85,7 @@ Tips.<br>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Warning.
+Warning<br>
 </td>
 </tr>
 </table>
@@ -164,19 +164,22 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>login</code></strong>: Launches the login GUI. Enter "bob" for username and "password456" for password. This will log you into the IMDB as Bob. Note that some commands will not work unless you are logged in.</p>
+<p><strong><code>login</code></strong>: launches the login GUI. Enter "bob" for username and "password456" for password. This will log you into the IMDB as Bob. Note that some commands will not work unless you are logged in.</p>
 </li>
 <li>
-<p><strong><code>list</code></strong> : lists all patients</p>
+<p><strong><code>list</code></strong> : lists all patients.</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe ic/S1234567A p/98765432 e/johnd@example.com a/John street, block 123, #01-01 dob/11/11/1991 b/B+</code> : adds a patient named <code>John Doe</code> to the IMDB.</p>
+<p><strong><code>select</code> </strong><code>2</code>* : displays the information of the 2nd patient shown in the current list.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd patient shown in the current list</p>
+<p><strong><code>add</code> </strong><code>n/John Doe ic/S1234567A p/98765432 e/johnd@example.com a/John street, block 123, #01-01 dob/11/11/1991 b/B+</code> : adds a patient named <code>John Doe</code> to the IMDB.</p>
 </li>
 <li>
-<p><strong><code>exit</code></strong> : exits the app</p>
+<p><strong><code>delete</code> </strong><code>3</code> : deletes the 3rd patient shown in the current list.</p>
+</li>
+<li>
+<p><strong><code>exit</code></strong> : exits the app.</p>
 </li>
 </ul>
 </div>
@@ -197,7 +200,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong>UI Walkthrough</strong></p>
 </div>
 <div class="paragraph">
-<p>*Before introducing the commands, a brief walkthrough of the user interface is shown in Figure 2 below.</p>
+<p>Before introducing the commands, a brief walkthrough of the user interface is shown in Figure 2 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -248,7 +251,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect2">
 <h3 id="general-commands"><a class="link" href="#general-commands">3.1. General Commands</a></h3>
 <div class="paragraph">
-<p>The commands listed in this section are used to enable the management of IMDB.</p>
+<p>The commands listed in this section are related to the general usage of IMDB.</p>
 </div>
 <div class="sect3">
 <h4 id="viewing-help-code-help-code-or-code-h-code"><a class="link" href="#viewing-help-code-help-code-or-code-h-code">3.1.1. Viewing help : <code>help</code> or <code>h</code></a></h4>
@@ -318,7 +321,7 @@ Format: <code>undo</code> or <code>u</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the IMDB&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify the IMDB&#8217;s content (<code>add</code>, <code>addc</code>, <code>clear</code>, <code>delete</code>, <code>delc</code>, and <code>edit</code>).</p>
 </div>
 </td>
 </tr>
@@ -488,7 +491,7 @@ Format: <code>exit</code> or <code>x</code></p>
 <div class="sect2">
 <h3 id="patient-commands"><a class="link" href="#patient-commands">3.2. Patient Commands</a></h3>
 <div class="paragraph">
-<p>The commands listed in this section are used to enable the management of patients’ records/details.</p>
+<p>The commands listed in this section enables the management of patients’ records and details.</p>
 </div>
 <div class="sect3">
 <h4 id="listing-all-patients-code-list-code-or-code-ls-code"><a class="link" href="#listing-all-patients-code-list-code-or-code-ls-code">3.2.1. Listing all patients : <code>list</code> or <code>ls</code></a></h4>
@@ -706,8 +709,8 @@ This command is undoable.
 <ul>
 <li>
 <p><code>list</code><br>
-<code>remark 1 r/Likes to drink coffee.</code><br>
-Edits the remark for the first patient to Likes to drink coffee.</p>
+<code>remark 1 r/has a pacemaker</code><br>
+Edits the remark for the first patient to <code>has a pacemaker</code>.</p>
 </li>
 <li>
 <p><code>find Betsy</code><br>
@@ -775,8 +778,8 @@ This command is undoable.
 <div class="ulist">
 <ul>
 <li>
-<p><code>delc 1 c/aspirin</code><br>
-Removes <code>aspirin</code> from the list of conditions that the patient at index <code>1</code> has.</p>
+<p><code>delc 1 c/aspirin c/asthma</code><br>
+Removes <code>aspirin</code> and <code>asthma</code> from the list of conditions that the patient at index <code>1</code> has.</p>
 </li>
 <li>
 <p><code>dc 2 c/asthma</code><br>
@@ -869,7 +872,7 @@ Selects the 1st patient in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-in-v1-4"><a class="link" href="#viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-in-v1-4">3.2.10. Viewing and editing the medical records for a patient : <code>record</code> [since in v1.4]</a></h4>
+<h4 id="viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-v1-4"><a class="link" href="#viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-v1-4">3.2.10. Viewing and editing the medical records for a patient : <code>record</code> [since v1.4]</a></h4>
 <div class="paragraph">
 <p>Views the medical record at the specified record index for a patient specified by the index number used in the last patient listing.<br>
 Format: <code>record INDEX in/[RECORD INDEX]</code> or <code>rec INDEX in/[RECORD INDEX]</code></p>
@@ -935,7 +938,7 @@ Displays the first medical record for the first person in the result of the list
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-the-medical-records-for-a-patient-code-remover-code-since-in-v1-4"><a class="link" href="#deleting-the-medical-records-for-a-patient-code-remover-code-since-in-v1-4">3.2.11. Deleting the medical records for a patient : <code>remover</code> [since in v1.4]</a></h4>
+<h4 id="deleting-the-medical-records-for-a-patient-code-remover-code-since-v1-4"><a class="link" href="#deleting-the-medical-records-for-a-patient-code-remover-code-since-v1-4">3.2.11. Deleting the medical records for a patient : <code>remover</code> [since v1.4]</a></h4>
 <div class="paragraph">
 <p>Deletes the medical record specified by the record index for a patient specified by the index number used in the last patient listing.<br>
 Format: <code>remover INDEX in/[RECORD INDEX]</code> or <code>rr INDEX in/[RECORD INDEX]</code></p>
@@ -1026,12 +1029,12 @@ This command is only accessible to doctors.
 <div class="sect2">
 <h3 id="visiting-queue-commands"><a class="link" href="#visiting-queue-commands">3.3. Visiting Queue Commands</a></h3>
 <div class="paragraph">
-<p>The commands listed in this section are used to enable the management of the visiting queue of the clinic.</p>
+<p>The commands listed in this section are realted to the management of the visiting queue of the clinic.</p>
 </div>
 <div class="sect3">
 <h4 id="adding-a-patient-into-the-visiting-queue-with-index-code-addq-code-since-v1-2"><a class="link" href="#adding-a-patient-into-the-visiting-queue-with-index-code-addq-code-since-v1-2">3.3.1. Adding a patient into the visiting queue with index: <code>addq</code> [since v1.2]</a></h4>
 <div class="paragraph">
-<p>Adds a patient into the end of the visiting queue (registration).<br></p>
+<p>Adds a patient to the end of the visiting queue (registration).<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>addq INDEX</code> or <code>aq INDEX</code></p>
@@ -1135,7 +1138,7 @@ Removes the first patient in the queue.</p>
 <div class="sect3">
 <h4 id="removing-a-patient-from-the-visiting-queue-by-index-code-removeq-code-since-v1-5rc"><a class="link" href="#removing-a-patient-from-the-visiting-queue-by-index-code-removeq-code-since-v1-5rc">3.3.3. Removing a patient from the visiting queue by index: <code>removeq</code> [since v1.5rc]</a></h4>
 <div class="paragraph">
-<p>Removes a patient from the visiting queue specified by the index number used in the last patient listing. (check-out).<br></p>
+<p>Removes a patient from the visiting queue by the index number of the current list view (check-out).<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>removeq INDEX</code> or <code>rq INDEX</code></p>
@@ -1188,11 +1191,11 @@ This command is only accessible to medical staff.
 <ul>
 <li>
 <p><code>removeq 4</code><br>
-Removes the fourth patient in the patient list from the visiting queue if this patient is in the visiting queue.</p>
+Removes the fourth patient in the patient list from the visiting queue.</p>
 </li>
 <li>
 <p><code>rq 2</code><br>
-Removes the second patient in the patient list from the visiting queue if this patient is in the visiting queue.</p>
+Removes the second patient in the patient list from the visiting queue.</p>
 </li>
 </ul>
 </div>
@@ -1201,12 +1204,12 @@ Removes the second patient in the patient list from the visiting queue if this p
 <div class="sect2">
 <h3 id="appointment-commands"><a class="link" href="#appointment-commands">3.4. Appointment Commands</a></h3>
 <div class="paragraph">
-<p>The commands listed in this section are used to enable the management of patients’ appointments.</p>
+<p>The commands listed in this section are related to the management of patients’ appointments.</p>
 </div>
 <div class="sect3">
 <h4 id="adding-a-medical-appointment-with-code-addappt-code-since-v1-4"><a class="link" href="#adding-a-medical-appointment-with-code-addappt-code-since-v1-4">3.4.1. Adding a medical appointment with: <code>addappt</code> [since v1.4]</a></h4>
 <div class="paragraph">
-<p>Adds a medical appointment to a patient specified by their name, with the appointment&#8217;s date and time.</p>
+<p>Adds a medical appointment to a patient.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>addappt PATIENT_NAME DATE TIME</code> or <code>aa PATIENT_NAME DATE TIME</code></p>
@@ -1256,7 +1259,7 @@ Adds a medical appointment for John on 23/3/2018 at 2:30pm.</p>
 <div class="sect3">
 <h4 id="viewing-medical-appointments-by-patient-name-code-viewappt-code-since-v1-3"><a class="link" href="#viewing-medical-appointments-by-patient-name-code-viewappt-code-since-v1-3">3.4.2. Viewing medical appointments by patient name: <code>viewappt</code> [since v1.3]</a></h4>
 <div class="paragraph">
-<p>Shows the list of medical appointments of a patient specified by their name.</p>
+<p>Shows the list of medical appointments of a patient.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>viewappt PATIENT_NAME</code> or <code>va PATIENT_NAME</code></p>
@@ -1278,7 +1281,31 @@ Lists the medical appointments made by John.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-medical-appointment-by-patient-name-and-appointment-index-number-code-delappt-code-since-v1-3"><a class="link" href="#deleting-a-medical-appointment-by-patient-name-and-appointment-index-number-code-delappt-code-since-v1-3">3.4.3. Deleting a medical appointment by patient name and appointment index number: <code>delappt</code> [since v1.3]</a></h4>
+<h4 id="viewing-medical-appointments-in-calendar-code-viewappt-code-since-v1-4"><a class="link" href="#viewing-medical-appointments-in-calendar-code-viewappt-code-since-v1-4">3.4.3. Viewing medical appointments in calendar: <code>viewappt</code> [since v1.4]</a></h4>
+<div class="paragraph">
+<p>Shows the list of medical appointments in a calendar month view.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>viewappt</code> or <code>va</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewappt</code><br>
+Lists the medical appointments in the current month. User can also navigate to other months to view medical appointments for that particular month.</p>
+</li>
+<li>
+<p><code>va</code><br>
+Lists the medical appointments in the current month. User can also navigate to other months to view medical appointments for that particular month.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-medical-appointment-by-patient-name-and-appointment-index-number-code-delappt-code-since-v1-3"><a class="link" href="#deleting-a-medical-appointment-by-patient-name-and-appointment-index-number-code-delappt-code-since-v1-3">3.4.4. Deleting a medical appointment by patient name and appointment index number: <code>delappt</code> [since v1.3]</a></h4>
 <div class="paragraph">
 <p>Deletes the medical appointment at the given index of a patient specified by their name.</p>
 </div>
@@ -1316,30 +1343,6 @@ Deletes the medical appointment made by John with index number 1.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-medical-appointments-in-calendar-code-viewappt-code-since-v1-4"><a class="link" href="#viewing-medical-appointments-in-calendar-code-viewappt-code-since-v1-4">3.4.4. Viewing medical appointments in calendar: <code>viewappt</code> [since v1.4]</a></h4>
-<div class="paragraph">
-<p>Shows the list of medical appointments in a calendar month view.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>viewappt</code> or <code>va</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>viewappt</code><br>
-Lists the medical appointments in the current month. User can also navigate to other months to view medical appointments for that particular month.</p>
-</li>
-<li>
-<p><code>va</code><br>
-Lists the medical appointments in the current month. User can also navigate to other months to view medical appointments for that particular month.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
 <h4 id="viewing-the-schedule-for-a-patient-across-all-specialists-code-coming-in-v2-0-code"><a class="link" href="#viewing-the-schedule-for-a-patient-across-all-specialists-code-coming-in-v2-0-code">3.4.5. Viewing the schedule for a patient across all specialists <code>[coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>IMDB will be able to view the schedule for a patient across all specialists so that medical staff can arrange non-conflicting appointments.</p>
@@ -1353,7 +1356,7 @@ Lists the medical appointments in the current month. User can also navigate to o
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.5. Saving the data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">3.5. Saving Data</a></h3>
 <div class="paragraph">
 <p>IMDB data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -1373,6 +1376,9 @@ There is no need to save manually.</p>
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section provides a summary of command syntax and aliases.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -1472,7 +1478,7 @@ e.g.<code>viewappt john</code> or <code>viewappt john</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 18:25:00 UTC
+Last updated 2018-04-14 18:34:25 UTC
 </div>
 </div>
 </body>
