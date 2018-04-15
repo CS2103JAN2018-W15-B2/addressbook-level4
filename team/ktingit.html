@@ -78,7 +78,17 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI to better make use of spacing after patient list was decluttered (Pull requests <a href="https://github.com/CS2103JAN2018-W15-B2/main/pull/199">#199</a>)</p>
+<p>Updated the GUI to better make use of spacing after patient list was decluttered(Pull requests <a href="https://github.com/CS2103JAN2018-W15-B2/main/pull/199">#199</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other teams during the testing session</p>
 </li>
 </ul>
 </div>
@@ -88,7 +98,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide</p>
+<p>Did extensive changes, both language and content wise, to the User Guide and Development Guide</p>
 </li>
 </ul>
 </div>
@@ -109,7 +119,7 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users. In addition to these, I also made many minor changes to language and content that are not listed.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -311,6 +321,66 @@ Adds a new patient named Betsy.</p>
 </div>
 </div>
 <div class="sect3">
+<h4 id="editing-a-patient-code-edit-code"><a class="link" href="#editing-a-patient-code-edit-code">Editing a patient : <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing patient in the IMDB.<br>
+Format: <code>edit INDEX [n/NAME] [ic/NRIC] [p/PHONE] [e/EMAIL] [a/ADDRESS] [dob/DOB] [b/BLOOD TYPE][c/CONDITION]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This command is undoable.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code>.</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When editing conditions, the existing conditions of the patient will be removed i.e adding of conditions is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all the patient&#8217;s conditions by typing <code>c/</code> without specifying any conditions after it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
+Edits the phone number and email address of the 1st patient to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+</li>
+<li>
+<p><code>e 2 n/Betsy Crower c/</code><br>
+Edits the name of the 2nd patient to be <code>Betsy Crower</code> and clears all existing conditions.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
 <h4 id="selecting-a-patient-code-select-code"><a class="link" href="#selecting-a-patient-code-select-code">Selecting a patient : <code>select</code></a></h4>
 <div class="paragraph">
 <p>Selects the patient identified by the index number used in the last patient listing and loads up that patient&#8217;s details.<br>
@@ -427,10 +497,21 @@ Removes <code>asthma</code> from the list of conditions that the patient at inde
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project. In addition to these, I also made many minor changes to language and content that are not listed.</em></p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction-2"><a class="link" href="#introduction-2">Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Integrated Medical DataBase (IMDB) is a desktop records management application targeted at private clinics that may have multiple branches.
+It aims to replace how private clinics handle the management of patient records, making the process much more easier and efficient.
+It provides features that are essential for a clinic to manage patient records effectively and securely such as user authentication, managing patient records, managing pateint appointments, maintaining of a visting queue, and the printing of medical records.
+This guide provides the necessary information for developers who are interested in contributing to the application - from the steps required to set-up, to detailed descriptions of the current features that the application features.</p>
+</div>
 <div class="sect2">
 <h3 id="edit-conditions-feature"><a class="link" href="#edit-conditions-feature">Edit conditions feature</a></h3>
 <div class="sect3">
@@ -546,12 +627,84 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="display-patient-details-feature"><a class="link" href="#display-patient-details-feature">Display patient details feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The displaying of patient details mechanism is managed by <code>SelectCommand</code>.
+<code>SelectCommand</code> now shows the details of a patient rather than just a dummy page.
+This is achieved by modifying the <code>loadPersonPage</code> method within <code>BrowserPanel</code> like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="type">void</span> loadPersonPage(Patient patient) {
+        <span class="local-variable">this</span>.patient = patient;
+        name.setText(patient.getName().fullName);
+        nric.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">NRIC: </span><span class="delimiter">&quot;</span></span> + patient.getNric().value);
+        phone.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Phone: </span><span class="delimiter">&quot;</span></span> + patient.getPhone().value);
+        address.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Address: </span><span class="delimiter">&quot;</span></span> + patient.getAddress().value);
+        dob.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Date of Birth: </span><span class="delimiter">&quot;</span></span> + patient.getDob().value);
+        bloodType.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Blood Type: </span><span class="delimiter">&quot;</span></span> + patient.getBloodType().value);
+        email.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Email: </span><span class="delimiter">&quot;</span></span> + patient.getEmail().value);
+        remark.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Remarks: </span><span class="delimiter">&quot;</span></span> + patient.getRemark().value);
+        recordList.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Records: </span><span class="delimiter">&quot;</span></span> + patient.getRecordList().toString());
+
+        initTagLabels(patient);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The patient list also no longer displays all the details of patients for security reasons as well as to reduce clutter.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="paragraph">
+<p>The following is an exploration of possible alternative implementations, the various aspects of
+each implementation and the pros and cons of each implementation:</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-selectcommand-code"><a class="link" href="#aspect-implementation-of-code-selectcommand-code">Aspect: Implementation of <code>SelectCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Modify the loadPersonPage method in the browserPanel class to fetch and display patient details</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be secure as details are kept within the app.</p>
+</li>
+<li>
+<p>Cons: Will have to rewrite how MainWindow and BrowserPanel works.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a method to convert patient details to a html file, then simply load that html file using the existing functionality.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to implement as we simply need a method to convert patient details to a html file.</p>
+</li>
+<li>
+<p>Cons: Might be security issues as the html file is easily accessible from outside the app.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 15:10:58 UTC
+Last updated 2018-04-15 15:17:32 UTC
 </div>
 </div>
 </body>
