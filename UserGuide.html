@@ -260,8 +260,8 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help : <code>help</code></a></h4>
 <div class="paragraph">
-<p>Opens the user guide in a separate window as shown in Figure 3 below.<br>
-Format: <code>help</code> or <code>h</code></p>
+<p>Opens the user guide in a separate window.<br>
+Format: <code>help</code></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -275,7 +275,7 @@ Format: <code>help</code> or <code>h</code></p>
 <div class="paragraph">
 <p>Opens a window for the user to log into the IMDB with a matching username and password as shown in Figure 4 below.<br>
 There are two placeholder accounts currently in the IMDB. There is alice, who is a doctor, and bob, who is a medical staff member. Some commands are restricted based on which role the user is logged into.<br>
-Format: <code>login</code> or <code>lg</code></p>
+Format: <code>login</code></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -300,7 +300,7 @@ Logs the user in as alice, who is a doctor as shown in Figure 5 below.</p>
 <div class="content">
 <img src="images/login_window_doctor.PNG" alt="login window doctor" width="990">
 </div>
-<div class="title">Figure 5: IMDB main window (Logged in as Alice)</div>
+<div class="title">Figure 5: IMDB main window (logged in as alice)</div>
 </div>
 <div class="ulist">
 <ul>
@@ -316,14 +316,14 @@ Logs the user in as bob, who is a medical staff as shown in Figure 6 below.</p>
 <div class="content">
 <img src="images/login_window_staff.PNG" alt="login window staff" width="990">
 </div>
-<div class="title">Figure 6: IMDB main window (Logged in as Bob)</div>
+<div class="title">Figure 6: IMDB main window (logged in as bob)</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.1.3. Listing entered commands : <code>history</code></a></h4>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code> or <code>hi</code></p>
+Format: <code>history</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -344,7 +344,7 @@ Format: <code>history</code> or <code>hi</code></p>
 <h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.1.4. Undoing previous command : <code>undo</code></a></h4>
 <div class="paragraph">
 <p>Restores the IMDB to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code> or <code>u</code> or <code>z</code></p>
+Format: <code>undo</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -393,7 +393,7 @@ Reverses the <code>delete 1</code> command.<br></p>
 <h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.1.5. Redoing the previously undone command : <code>redo</code></a></h4>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code> or <code>r</code> or <code>y</code></p>
+Format: <code>redo</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -443,7 +443,7 @@ Reapplies the <code>clear</code> command.<br></p>
 <h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.1.6. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Clears all entries from the IMDB.<br>
-Format: <code>clear</code> or <code>c</code></p>
+Format: <code>clear</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -494,7 +494,7 @@ Format: <code>logout</code></p>
 <h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.1.8. Exiting the program : <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the program. This also logs the user out of the IMDB.<br>
-Format: <code>exit</code> or <code>x</code></p>
+Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -531,15 +531,14 @@ Format: <code>exit</code> or <code>x</code></p>
 <h4 id="listing-all-patients-code-list-code"><a class="link" href="#listing-all-patients-code-list-code">3.2.1. Listing all patients : <code>list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all patients in the IMDB.<br>
-Format: <code>list</code> or <code>ls</code></p>
+Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="adding-a-patient-code-add-code"><a class="link" href="#adding-a-patient-code-add-code">3.2.2. Adding a patient: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Adds a patient to the IMDB<br>
-Format: <code>add n/NAME ic/NRIC p/PHONE_NUMBER e/EMAIL a/ADDRESS dob/DOB b/BLOOD TYPE [c/CONDITION]&#8230;&#8203;</code> or
-        <code>a n/NAME ic/NRIC p/PHONE_NUMBER e/EMAIL a/ADDRESS dob/DOB b/BLOOD TYPE [c/CONDITION]&#8230;&#8203;</code></p>
+Format: <code>add n/NAME ic/NRIC p/PHONE_NUMBER e/EMAIL a/ADDRESS dob/DOB b/BLOOD TYPE [c/CONDITION]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -585,7 +584,7 @@ Adds a new patient named Betsy.</p>
 <h4 id="deleting-a-patient-code-delete-code"><a class="link" href="#deleting-a-patient-code-delete-code">3.2.3. Deleting a patient : <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified patient from the IMDB.<br>
-Format: <code>delete INDEX</code> or <code>d INDEX</code> or <code>rm INDEX</code></p>
+Format: <code>delete INDEX</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -647,8 +646,7 @@ Deletes the 1st patient in the results of the <code>find</code> command.</p>
 <h4 id="editing-a-patient-code-edit-code"><a class="link" href="#editing-a-patient-code-edit-code">3.2.4. Editing a patient : <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing patient in the IMDB.<br>
-Format: <code>edit INDEX [n/NAME] [ic/NRIC] [p/PHONE] [e/EMAIL] [a/ADDRESS] [dob/DOB] [b/BLOOD TYPE][c/CONDITION]&#8230;&#8203;</code> or
-        <code>e INDEX [n/NAME] [ic/NRIC] [p/PHONE] [e/EMAIL] [a/ADDRESS] [dob/DOB] [b/BLOOD TYPE] [c/CONDITION]&#8230;&#8203;</code></p>
+Format: <code>edit INDEX [n/NAME] [ic/NRIC] [p/PHONE] [e/EMAIL] [a/ADDRESS] [dob/DOB] [b/BLOOD TYPE][c/CONDITION]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -708,7 +706,7 @@ Edits the name of the 2nd patient to be <code>Betsy Crower</code> and clears all
 <h4 id="editing-remarks-for-a-patient-code-remark-code-since-v1-2"><a class="link" href="#editing-remarks-for-a-patient-code-remark-code-since-v1-2">3.2.5. Editing remarks for a patient : <code>remark</code> [since v1.2]</a></h4>
 <div class="paragraph">
 <p>Edits the remarks for a patient specified by the index number used in the last patient listing.<br>
-Format: <code>remark INDEX r/[REMARK]</code> or <code>rk INDEX r/[REMARK]</code></p>
+Format: <code>remark INDEX r/[REMARK]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -758,7 +756,7 @@ Removes the remark for the first patient.</p>
 <h4 id="adding-a-condition-to-an-existing-patient-code-addc-code-since-v1-3"><a class="link" href="#adding-a-condition-to-an-existing-patient-code-addc-code-since-v1-3">3.2.6. Adding a condition to an existing patient: <code>addc</code> [since v1.3]</a></h4>
 <div class="paragraph">
 <p>Adds a medical condition to an existing patient.<br>
-Format: <code>addc INDEX c/[CONDITION]</code> or <code>ac INDEX c/[CONDITION]</code></p>
+Format: <code>addc INDEX c/[CONDITION]</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -792,7 +790,7 @@ Adds <code>asthma</code> to the list of conditions that the patient at index <co
 <h4 id="removing-the-condition-of-an-existing-patient-code-delc-code-since-v1-4"><a class="link" href="#removing-the-condition-of-an-existing-patient-code-delc-code-since-v1-4">3.2.7. Removing the condition of an existing patient: <code>delc</code> [since v1.4]</a></h4>
 <div class="paragraph">
 <p>Removes a medical condition to an existing patient.<br>
-Format: <code>delc INDEX c/[CONDITION]</code> or <code>dc INDEX c/[CONDITION]</code></p>
+Format: <code>delc INDEX c/[CONDITION]</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -826,7 +824,7 @@ Removes <code>asthma</code> from the list of conditions that the patient at inde
 <h4 id="locating-patients-by-name-code-find-code"><a class="link" href="#locating-patients-by-name-code-find-code">3.2.8. Locating patients by name: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Finds patients whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code> or <code>f KEYWORD [MORE_KEYWORDS]</code></p>
+Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -871,7 +869,7 @@ Returns any patient having names <code>Betsy</code>, <code>Tim</code>, or <code>
 <h4 id="selecting-a-patient-code-select-code"><a class="link" href="#selecting-a-patient-code-select-code">3.2.9. Selecting a patient : <code>select</code></a></h4>
 <div class="paragraph">
 <p>Selects the patient identified by the index number used in the last patient listing and loads up that patient&#8217;s details.<br>
-Format: <code>select INDEX</code> or <code>s INDEX</code></p>
+Format: <code>select INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -909,7 +907,7 @@ Selects the 1st patient in the results of the <code>find</code> command.</p>
 <h4 id="viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-v1-4"><a class="link" href="#viewing-and-editing-the-medical-records-for-a-patient-code-record-code-since-v1-4">3.2.10. Viewing and editing the medical records for a patient : <code>record</code> [since v1.4]</a></h4>
 <div class="paragraph">
 <p>Views the medical record at the specified record index for a patient specified by the index number used in the last patient listing.<br>
-Format: <code>record INDEX in/[RECORD INDEX]</code> or <code>rec INDEX in/[RECORD INDEX]</code></p>
+Format: <code>record INDEX in/[RECORD INDEX]</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -966,7 +964,7 @@ This command is only accessible to doctors.
 <li>
 <p><code>list</code><br>
 <code>record 1 in/1</code><br>
-Displays the first medical record for the first person in the result of the list command as shown Figure 7 below.</p>
+Displays the first medical record for the first person in the result of the list command as shown in Figure 7 below.</p>
 </li>
 </ul>
 </div>
@@ -981,7 +979,7 @@ Displays the first medical record for the first person in the result of the list
 <h4 id="deleting-the-medical-records-for-a-patient-code-remover-code-since-v1-4"><a class="link" href="#deleting-the-medical-records-for-a-patient-code-remover-code-since-v1-4">3.2.11. Deleting the medical records for a patient : <code>remover</code> [since v1.4]</a></h4>
 <div class="paragraph">
 <p>Deletes the medical record specified by the record index for a patient specified by the index number used in the last patient listing.<br>
-Format: <code>remover INDEX in/[RECORD INDEX]</code> or <code>rr INDEX in/[RECORD INDEX]</code></p>
+Format: <code>remover INDEX in/[RECORD INDEX]</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1015,9 +1013,6 @@ This command is only accessible to doctors.
 <p>Deleting a medical record will shift all other medical records up the medical record list.</p>
 </li>
 <li>
-<p>If the deletion of the medical record would leave the list of records empty, an empty medical record will be generated.</p>
-</li>
-<li>
 <p>The index refers to the index number shown in the most recent listing.</p>
 </li>
 <li>
@@ -1043,8 +1038,8 @@ Deletes the first medical record for the first person in the result of the list 
 <div class="sect3">
 <h4 id="printing-a-patient-s-formatted-medical-records-code-print-code-since-v1-4"><a class="link" href="#printing-a-patient-s-formatted-medical-records-code-print-code-since-v1-4">3.2.12. Printing a patient&#8217;s formatted medical records : <code>print</code> [since v1.4]</a></h4>
 <div class="paragraph">
-<p>Formats and prints a patient&#8217;s medical records into a PDF file. This PDF file is located in the same directory as the IMDB application as shown in Figure 8 below.<br>
-Format: <code>print INDEX</code> or <code>p INDEX</code></p>
+<p>Formats and prints a patient&#8217;s medical records into a pdf file. This pdf file is located in the same directory as the IMDB application.<br>
+Format: <code>print INDEX</code></p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -1083,7 +1078,7 @@ This command is only accessible to doctors.
 <p>Adds a patient to the end of the visiting queue (registration).<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>addq INDEX</code> or <code>aq INDEX</code></p>
+<p>Format: <code>addq INDEX</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1156,7 +1151,7 @@ Adds Bernice Lee into the visiting queue as shown in Figure 9 below.</p>
 <p>Removes the first patient from the visiting queue (check-out).<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>removeq</code> or <code>rq</code></p>
+<p>Format: <code>removeq</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1204,7 +1199,7 @@ Removes the first patient in the queue.</p>
 <p>Removes a patient from the visiting queue by the index number of the current list view (check-out).<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>removeq INDEX</code> or <code>rq INDEX</code></p>
+<p>Format: <code>removeq INDEX</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1275,7 +1270,7 @@ Removes the second patient in the patient list from the visiting queue.</p>
 <p>Adds a medical appointment to a patient.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>addappt INDEX DATE TIME</code> or <code>aa PATIENT_NAME DATE TIME</code></p>
+<p>Format: <code>addappt PATIENT_NAME DATE TIME</code></p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -1324,7 +1319,7 @@ This command is only for medical staff.
 <p><code>viewappt</code><br>
 <code>addappt 1 19/6/2018 1000</code><br>
 <code>viewappt</code><br>
-Adds a medical appointment for the first person in the list on 19/3/2018 at 10am as shown in Figure 10.</p>
+Adds a medical appointment for the first person in the list on 19/3/2018 at 10am as shown in Figure 10 below.</p>
 </li>
 </ul>
 </div>
@@ -1349,7 +1344,7 @@ Adds a medical appointment for the first person in the list on 23/3/2018 at 2:30
 <p>Shows the list of medical appointments of a patient.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>viewappt INDEX</code> or <code>va INDEX</code></p>
+<p>Format: <code>viewappt PATIENT_NAME</code></p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -1384,7 +1379,7 @@ This command is for both doctor and medical staff.
 <ul>
 <li>
 <p><code>viewappt 1</code><br>
-Lists the medical appointments made by the first patient in the list as shown in Figure 11.</p>
+Lists the medical appointments made by the first patient in the list as shown in Figure 11 below.</p>
 </li>
 </ul>
 </div>
@@ -1392,7 +1387,7 @@ Lists the medical appointments made by the first patient in the list as shown in
 <div class="content">
 <img src="images/viewappt_patient_window.PNG" alt="viewappt patient window" width="990">
 </div>
-<div class="title">Figure 11: Patient Appointment panel in IMDB</div>
+<div class="title">Figure 11: Patient appointment panel in IMDB</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1409,7 +1404,7 @@ Lists the medical appointments made by the second patient in the list.</p>
 <p>Shows the list of medical appointments in a calendar month view.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>viewappt</code> or <code>va</code></p>
+<p>Format: <code>viewappt</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -1439,7 +1434,7 @@ Lists the medical appointments in the current month. User can also navigate to o
 <p>Deletes the medical appointment at the given index of a patient specified by their name.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delappt INDEX DATE TIME</code> or <code>da INDEX DATE TIME</code></p>
+<p>Format: <code>delappt PATIENT_NAME APPOINTMENT_INDEX_NO</code></p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -1484,7 +1479,7 @@ This command is only for medical staff.
 <li>
 <p><code>viewappt 1</code><br>
 <code>delappt 1 19/6/2018 1200</code><br>
-Deletes the medical appointment on 19/6/2018 12pm made by the first patient in the list as shown in Figure 13.</p>
+Deletes the medical appointment on 19/6/2018 12pm made by the first patient in the list as shown in Figure 13 below.</p>
 </li>
 </ul>
 </div>
@@ -1759,7 +1754,7 @@ e.g.<code>viewappt 1</code> or <code>va 1</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:21:58 UTC
+Last updated 2018-04-15 13:18:44 UTC
 </div>
 </div>
 </body>
