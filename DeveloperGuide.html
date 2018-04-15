@@ -48,8 +48,8 @@
 <li><a href="#undo-redo-feature">4.1. Undo/redo feature</a></li>
 <li><a href="#edit-remarks-feature">4.2. Edit remarks feature</a></li>
 <li><a href="#edit-conditions-feature">4.3. Edit conditions feature</a></li>
-<li><a href="#patient-visiting-queue-feature">4.4. Patient visiting queue feature</a></li>
-<li><a href="#patient-appointment-feature">4.5. Patient appointment feature</a></li>
+<li><a href="#patient-visiting-queue-features">4.4. Patient visiting queue features</a></li>
+<li><a href="#patient-appointment-features">4.5. Patient appointment features</a></li>
 <li><a href="#edit-records-feature">4.6. Edit records feature</a></li>
 <li><a href="#login-system-feature">4.7. Login system feature</a></li>
 <li><a href="#print-medical-records">4.8. Print Medical Records</a></li>
@@ -102,6 +102,13 @@
 <li><a href="#select">F.6. Select</a></li>
 <li><a href="#record">F.7. Record</a></li>
 <li><a href="#remark">F.8. Remark</a></li>
+<li><a href="#add-patient-into-visiting-queue">F.9. Add Patient into Visiting Queue</a></li>
+<li><a href="#remove-patient-from-visiting-queue">F.10. Remove Patient from Visiting Queue</a></li>
+<li><a href="#remove-patient-from-visiting-queue-by-index">F.11. Remove Patient from Visiting Queue by Index</a></li>
+<li><a href="#view-patient-appointments-in-calendar-view">F.12. View Patient Appointments in Calendar View</a></li>
+<li><a href="#view-patient-appointments-by-index">F.13. View Patient Appointments by Index</a></li>
+<li><a href="#add-patient-appointment">F.14. Add Patient Appointment</a></li>
+<li><a href="#delete-patient-appointment">F.15. Delete Patient Appointment</a></li>
 </ul>
 </li>
 <li><a href="#glossary">Appendix G: Glossary</a></li>
@@ -1158,7 +1165,7 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="patient-visiting-queue-feature"><a class="link" href="#patient-visiting-queue-feature">4.4. Patient visiting queue feature</a></h3>
+<h3 id="patient-visiting-queue-features"><a class="link" href="#patient-visiting-queue-features">4.4. Patient visiting queue features</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.4.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1166,9 +1173,31 @@ each implementation and the pros and cons of each implementation:</p>
 It supports the adding and removing of a patient from the visiting queue. <code>AddPatientQueueCommand</code> and <code>RemovePatientQueueCommand</code> inherit from <code>Command</code>.</p>
 </div>
 <div class="paragraph">
-<p>The addition mechanism functions like that of the <code>AddCommand</code> but uses only the index of the patient. It stores the actual index of the patient in the patient list.
+<p>The addition mechanism functions like that of the <code>AddCommand</code> but uses only the current list index of the patient. It stores the actual index of the patient in the unfiltered patient list in the visiting queue.
 The user can find patients with certain keywords in their name using <code>FindCommand</code> then add them into queue according to the list index displayed.
-The <code>AddPatientQueueCommand</code> then calls for the utility method <code>addPatientToQueue</code> under <code>Model</code>, to update the visiting queue and triggers an <code>IMDBChangedEvent</code> to the <code>UI</code> to update <code>VisitingQueuePanel</code>.</p>
+The <code>AddPatientQueueCommand</code> then calls for the utility method <code>addPatientToQueue</code> under <code>ModelManager</code>, to update the visiting queue and triggers an <code>IMDBChangedEvent</code> to the <code>UI</code> to update <code>VisitingQueuePanel</code>.</p>
+</div>
+<div class="paragraph">
+<p>Code snippet below shows how add patient into visiting queue work.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">Preprocess before adding patient to queue:
+
+    <span class="keyword">try</span> {
+        actualSourceIndex = ParserUtil.parseIndex(actualIndexInString);
+    } <span class="keyword">catch</span> (IllegalValueException e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">The target patient cannot be missing</span><span class="delimiter">&quot;</span></span>);
+    }
+
+Add operation:
+
+    <span class="keyword">try</span> {
+        toQueue = model.addPatientToQueue(actualSourceIndex);
+    } <span class="keyword">catch</span> (DuplicatePatientException e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_DUPLICATE_PERSON);
+    }</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Suppose that the user has just launched the application and logged in as a medical staff. The empty queue is shown in Figure 25 below.</p>
@@ -1183,7 +1212,7 @@ The <code>AddPatientQueueCommand</code> then calls for the utility method <code>
 <p>The user now decides to add a patient into the queue.</p>
 </div>
 <div class="paragraph">
-<p><code>AddPatientQueueCommand</code> will check if the index given is valid and is in the bound of the current list displayed. If the given index is valid and in the bound, <code>AddPatientQueueCommand</code> will then call the for the utility method <code>addPatientToQueue</code> under <code>Model</code>, to add the patient index into the visiting queue.
+<p><code>AddPatientQueueCommand</code> will check if the index given is valid and is in the bound of the current list displayed. If the given index is valid and in the bound, <code>AddPatientQueueCommand</code> will then call the for the utility method <code>addPatientToQueue</code> under <code>ModelManager</code>, to add the patient index into the visiting queue.
 The updated queue is shown in Figure 26 below.</p>
 </div>
 <div class="imageblock">
@@ -1194,8 +1223,44 @@ The updated queue is shown in Figure 26 below.</p>
 </div>
 <div class="paragraph">
 <p>The removal mechanism functions like that of the <code>DeleteCommand</code>. If no parameters are provided, it removes the first patient of the queue.
-If the user wants to remove a specific patient in the queue, the user can provide the patient index as parameter in the command.
+If the user wants to remove a specific patient in the queue, the user can provide the patient index displayed in the queue.
 The <code>RemovePatientQueueCommand</code> then calls for the utility method <code>removePatientFromQueue</code> under <code>Model</code>, to update the visiting queue and trigger an <code>IMDBChangedEvent</code> to <code>UI</code> to update the <code>VisitingQueuePanel</code>.</p>
+</div>
+<div class="paragraph">
+<p>Code snippet below shows how <code>RemovePatientQueueCommand</code> handle two different format of <code>removeq</code> command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">Preprocess before removing patient tfrom visiting queue:
+
+    <span class="keyword">if</span> (indexArguementIsExist) {
+        <span class="comment">//Unfilter patient list</span>
+        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
+
+        <span class="keyword">if</span> (targetIndex.getZeroBased() &gt;= model.getFilteredPersonList().size()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+    }
+
+Remove operation:
+
+    <span class="keyword">try</span> {
+        Patient patientToRemove;
+        <span class="keyword">if</span> (indexArguementIsExist) {
+            patientToRemove = model.removePatientFromQueueByIndex(targetIndex);
+        } <span class="keyword">else</span> {
+            patientToRemove = model.removePatientFromQueue();
+        }
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_REMOVE_SUCCESS, patientToRemove.getName().toString()));
+    } <span class="keyword">catch</span> (PatientNotFoundException e) {
+
+        <span class="keyword">if</span> (model.getVisitingQueue().size() &gt; <span class="integer">0</span>) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_PERSON_NOT_FOUND_QUEUE);
+        }
+
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_QUEUE_EMPTY);
+    }</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Suppose that the queue contains patients as shown in Figure 27 below.</p>
@@ -1210,7 +1275,7 @@ The <code>RemovePatientQueueCommand</code> then calls for the utility method <co
 <p>The user now decides to remove the first patient from the queue.</p>
 </div>
 <div class="paragraph">
-<p><code>RemovePatientQueueCommand</code> will then call the for the utility method <code>removePatientFromQueue</code> under <code>Model</code>, to remove the patient from the visiting queue.
+<p><code>RemovePatientQueueCommand</code> will then call the for the utility method <code>removePatientFromQueue</code> under <code>ModelManager</code>, to remove the patient from the visiting queue and triggers an <code>IMDBChangedEvent</code> to the <code>UI</code> to update <code>VisitingQueuePanel</code>.
 The updated queue is shown in Figure 28 below.</p>
 </div>
 <div class="imageblock">
@@ -1223,7 +1288,7 @@ The updated queue is shown in Figure 28 below.</p>
 <div class="sect3">
 <h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.2. Design Considerations</a></h4>
 <div class="paragraph">
-<p>The following is an exploration of possible alternative implementations, the various aspects of
+<p>The following is an exploration of possible alternative implementations for patient visiting queue features, the various aspects of
 each implementation and the pros and cons of each implementation:</p>
 </div>
 <div class="sect4">
@@ -1244,14 +1309,14 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Create a data structure class like linked list to store a patient in a queue</p>
+<p><strong>Alternative 2:</strong> Use ObservableList as queue to store patient object</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will be able to customise functionality of the data structure.</p>
+<p>Pros: Can get rid of possible bug caused by the flexibility of the list index.</p>
 </li>
 <li>
-<p>Cons: Will require time and more knowledge to do.</p>
+<p>Cons: May give redundancy for this feature because no modification will be done on the patient object.</p>
 </li>
 </ul>
 </div>
@@ -1328,7 +1393,7 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="patient-appointment-feature"><a class="link" href="#patient-appointment-feature">4.5. Patient appointment feature</a></h3>
+<h3 id="patient-appointment-features"><a class="link" href="#patient-appointment-features">4.5. Patient appointment features</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.5.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1336,25 +1401,111 @@ each implementation and the pros and cons of each implementation:</p>
 It supports the adding, deleting and viewing of patient appointments. <code>AddAppointmentCommand</code>, <code>DeleteAppointmentCommand</code> and <code>ViewAppoinmentCommand</code> inherit from <code>Command</code>.</p>
 </div>
 <div class="paragraph">
-<p>The add new patient appointment mechanism functions like that of the <code>AddCommand</code> with patient index, date, and time as parameters.
-It creates a new appointment object with date and time and is stored in the patient&#8217;s list of appointments.
-The user can find patients using the <code>FindCommand</code> and then add a new appointment according to the list index displayed.
+<p>The add new patient appointment mechanism functions like that of the <code>AddCommand</code> with current list index of the patient, date, and time as inputs. <code>AddAppointmenetCommandParser</code> will verify the user input format and pass to <code>AddAppointmentCommand</code> to handle adding of appointment operation. It also make sure that the date provided is after the current date (date of today) and is not book by other patients. If verification is correct, a new appointment object with date and time will be created and is stored in the patient&#8217;s list of appointments.
+The user can find patients using the <code>FindCommand</code> and then add a new appointment according to the current list index displayed.
 The <code>AddPatientQueueCommand</code> then calls for the utility method addPatientAppointment under <code>Model</code> to add a new patient appointment and trigger an <code>IMDBChangedEvent</code> to the <code>UI</code> to update PatientAppointmentPanel or CalendarPanel.</p>
 </div>
 <div class="paragraph">
-<p>Suppose that the user has just launched the application and logged in as a medical staff. The empty queue is shown in Figure below.</p>
+<p>Code snippet below shows how <code>AddAppointmenetCommandParser</code> verify user inputs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">String</span> trimmedArgs = args.trim();
+
+<span class="keyword">if</span> (trimmedArgs.isEmpty()) {
+    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            AddAppointmentCommand.MESSAGE_USAGE));
+}
+
+<span class="predefined-type">String</span><span class="type">[]</span> argsArray = trimmedArgs.split(<span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">s</span><span class="delimiter">&quot;</span></span>);
+
+<span class="keyword">if</span> (argsArray.length &lt; NO_OF_ARGUMENTS) {
+    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            AddAppointmentCommand.MESSAGE_USAGE));
+}
+
+<span class="keyword">try</span> {
+    Index targetPatientIndex = ParserUtil.parseIndex(argsArray[PATIENT_INDEX_INDEX]);
+    DateTime appointmentDateTime = ParserUtil.parseDateTime(argsArray[DATE_INDEX] + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>
+            + argsArray[TIME_INDEX]);
+    <span class="keyword">if</span> (DateTime.isBefore(argsArray[DATE_INDEX] + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + argsArray[TIME_INDEX])) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddAppointmentCommand.MESSAGE_USAGE));
+    }
+    <span class="keyword">return</span> <span class="keyword">new</span> AddAppointmentCommand(targetPatientIndex, appointmentDateTime);
+} <span class="keyword">catch</span> (IllegalValueException e) {
+    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            AddAppointmentCommand.MESSAGE_USAGE));
+}</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>The delete appointment mechanism functions like that of the <code>DeleteCommand</code> with patient index and appointment index in list of appointment for the particular patient.  The <code>RemovePatientQueueCommand</code> then calls for the utility method deletePatientAppointment under <code>Model</code>, to update the remove the patient appointment and trigger an <code>IMDBChangedEvent</code> to <code>UI</code> to update PatientAppointmentPanel or CalendarPanel.</p>
+<p>Suppose that the user has just launched the application and logged in as a medical staff. Bernice&#8217;s appointment list is shown Figure 29 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/appointment_list.png" alt="appointment list" width="800">
+</div>
+<div class="title">Figure 29. Bernice&#8217;s appointment list contain some appointments</div>
 </div>
 <div class="paragraph">
-<p>The view appointment mechanism functions like that of the <code>findCommand</code> and <code>listCommand</code> depends on whether patient index is provided.  If patient index is provided, the <code>viewAppointmentCommand</code> then calls for the utility method getPatientFromList by patient index under <code>Model</code>, to get the patient and trigger an <code>IMDBChangedEvent</code> to <code>UI</code> to update PatientAppointmentPanel to display list of past and future appoinments made by this patient. If patient index is not provided, the <code>viewAppointmentCommand</code> then calls for the utility method getAppointmentEntryList under <code>Model</code>, to get ta list of appointments made by all patients and trigger an <code>IMDBChangedEvent</code> to <code>UI</code> to update CalendarPanel.</p>
+<p>The user now decides to add a new appointment on 20/7/2018 3pm for Bernice.</p>
+</div>
+<div class="paragraph">
+<p><code>AddAppointmenetCommandParser</code> will verify if the input given is in correct format and the date given is valid. If the input is valid, <code>AddAppointmenetCommand</code> will then call for the utility method <code>addPatientAppointment</code> under <code>ModelManager</code>, to add the new appointment into the appointment list of Bernice. The update appointment list is shown in Figure 30 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/appointment_list_add.png" alt="appointment list add" width="800">
+</div>
+<div class="title">Figure 30. Bernice&#8217;s appointment list updated</div>
+</div>
+<div class="paragraph">
+<p>The delete appointment mechanism functions like that of the <code>DeleteCommand</code> with current list index of the patient, date, and time as inputs. <code>DeleteAppointmenetCommandParser</code> will verify the user input format and pass to <code>DeleteAppointmenetCommand</code> to handle deleting of appointment operation. The verification steps are similar to <code>DeleteAppointmenetCommandParser</code> If verification is correct, the <code>DeleteAppointmenetCommand</code> then calls for the utility method deletePatientAppointment under <code>ModelManager</code>, remove the appointment if the appointment is exist in the patient&#8217;s appointment list and trigger an <code>IMDBChangedEvent</code> to <code>UI</code> to update PatientAppointmentPanel or CalendarPanel.</p>
+</div>
+<div class="paragraph">
+<p>Suppose that the user has just launched the application and logged in as a medical staff. Bernice’s appointment list is shown Figure 31 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/appointment_list_add.png" alt="appointment list add" width="800">
+</div>
+<div class="title">Figure 31. Bernice&#8217;s appointment list updated</div>
+</div>
+<div class="paragraph">
+<p>Now the user receives Bernice&#8217;s request to cancel an appointment on 22/6/2018 11am.</p>
+</div>
+<div class="paragraph">
+<p><code>DeleteAppointmenetCommandParser</code> will verify if the input given is in correct format. If the input is valid, <code>DeleteAppointmenetCommand</code> will then call for the utility method <code>deletePatientAppointment</code> under <code>ModelManager</code>, to delete the appointment from the appointment list of Bernice. The updated appointment list is shown in Figure 31 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/appointment_list_del.png" alt="appointment list del" width="800">
+</div>
+<div class="title">Figure 32. Bernice&#8217;s appointment list updated</div>
+</div>
+<div class="paragraph">
+<p>The view appointment mechanism functions like that of the <code>findCommand</code> and <code>listCommand</code> depends on whether the current list index of the patient is provided.  If patient index is provided, the <code>viewAppointmentCommand</code> then calls for the utility method getPatientFromListByIndex by patient index under <code>ModelManager</code>, to get the patient and trigger an <code>IMDBChangedEvent</code> to <code>UI</code> to update PatientAppointmentPanel to display list of past and upcoming appoinments made by this patient. If the current list index of the patient is not provided, the <code>viewAppointmentCommand</code> then calls for the utility method getAppointmentEntryList under <code>ModelManager</code>, to get the list of appointments made by all patients and trigger an <code>IMDBChangedEvent</code> to <code>UI</code> to update CalendarPanel.</p>
+</div>
+<div class="paragraph">
+<p>Code snippet below shows how <code>ViewAppoinmentCommand</code> handle two different format of <code>viewappt</code> commands.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">if</span> (indexArgumentIsExist) {
+    targetPatient = model.getPatientFromListByIndex(targetIndex);
+    EventsCenter.getInstance().post(<span class="keyword">new</span> ShowPatientAppointmentRequestEvent(targetPatient));
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_SUCCESS_PATIENT, targetPatient.getName().fullName));
+} <span class="keyword">else</span> {
+    EventsCenter.getInstance().post(<span class="keyword">new</span> ShowCalendarViewRequestEvent(model.getAppointmentEntryList()));
+}</code></pre>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.2. Design Considerations</a></h4>
 <div class="paragraph">
-<p>The following is an exploration of possible alternative implementations, the various aspects of
+<p>The following is an exploration of possible alternative implementations for patient appointment features, the various aspects of
 each implementation and the pros and cons of each implementation:</p>
 </div>
 <div class="sect4">
@@ -1362,7 +1513,7 @@ each implementation and the pros and cons of each implementation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use separate customised data structure to store appointments for patients and display appointments for all patient on the calendar panel</p>
+<p><strong>Alternative 1 (current choice):</strong> Usetwo separate customised data structure to store appointments for each patient and appointments for all patient (master list) to be displayed on the calendar panel</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1392,11 +1543,69 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 <div class="sect4">
 <h5 id="aspect-implementation-of-addappointmentcommand"><a class="link" href="#aspect-implementation-of-addappointmentcommand">Aspect: Implementation of AddAppointmentCommand</a></h5>
-
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Add new appointment using current list index of patient.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to implement due to existing utility methods.</p>
+</li>
+<li>
+<p>Cons: Will be error prone since list index is flexible with the operation that user typed in..</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Add new appointment using patient&#8217;s NRIC.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will add the new appointment for the correct patient.</p>
+</li>
+<li>
+<p>Cons: Will require extra checking for patient&#8217;s NRIC uniqueness upon adding into IMDB.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect4">
 <h5 id="aspect-implementation-of-deleteappointmentcommand"><a class="link" href="#aspect-implementation-of-deleteappointmentcommand">Aspect: Implementation of DeleteAppointmentCommand</a></h5>
-
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Remove an appointment using date and time as input.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to implement due to existing utility methods.</p>
+</li>
+<li>
+<p>Cons: May delete the incorrect appointment if users do not check the input they type before entering the command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Remove appointment by appointment list index.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can prevent user from deleting the wrong appointment.</p>
+</li>
+<li>
+<p>Cons: Will require implementation to maintain the appointment index.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1477,7 +1686,7 @@ edited with the edited patient.</p>
 <div class="content">
 <img src="images/Figure%203.5.1.1.png" alt="Figure 3.5.1.1" width="800">
 </div>
-<div class="title">Figure 29. The current queue</div>
+<div class="title">Figure 33. The current queue</div>
 </div>
 <div class="paragraph">
 <p>The user now decides to edit the first record of the first person in the list. Upon entering the command, a new window will pop up with each field displaying the
@@ -1487,7 +1696,7 @@ details of the patient&#8217;s current record as shown in Figure 30 below.</p>
 <div class="content">
 <img src="images/Figure%203.5.1.2.png" alt="Figure 3.5.1.2" width="800">
 </div>
-<div class="title">Figure 30. The medical record window</div>
+<div class="title">Figure 34. The medical record window</div>
 </div>
 <div class="paragraph">
 <p>After the user hits the enter button or clicks on the confirm button, <code>RecordCommand</code> will search for the first person in the list and store it as the person to be edited.
@@ -1498,7 +1707,7 @@ which will be edited based on the user&#8217;s input into the medical record win
 <div class="content">
 <img src="images/Figure%203.5.1.3.png" alt="Figure 3.5.1.3" width="800">
 </div>
-<div class="title">Figure 31. The patient before and after editing</div>
+<div class="title">Figure 35. The patient before and after editing</div>
 </div>
 <div class="paragraph">
 <p><code>RecordCommand</code> will finally call the for the utility method <code>updatePerson</code> under <code>Model</code>, to replace the patient to be edited with the edited patient,
@@ -1508,7 +1717,7 @@ the new list will be as shown in Figure 32 below.</p>
 <div class="content">
 <img src="images/Figure%203.5.1.4.png" alt="Figure 3.5.1.4" width="800">
 </div>
-<div class="title">Figure 32. The queue with updated details</div>
+<div class="title">Figure 36. The queue with updated details</div>
 </div>
 </div>
 <div class="sect3">
@@ -1950,7 +2159,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 33. Saving documentation as PDF files in chrome</div>
+<div class="title">Figure 37. Saving documentation as PDF files in chrome</div>
 </div>
 </div>
 </div>
@@ -3892,6 +4101,156 @@ Expected: The first patient in the list is selected and his or her remarks are r
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="add-patient-into-visiting-queue"><a class="link" href="#add-patient-into-visiting-queue">F.9. Add Patient into Visiting Queue</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a patient from the current patient list into visiting queue.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>addq 1</code><br>
+Expected: The first patient in the list will be added into the visiting queue shown in visiting queue panel at the bottom.</p>
+</li>
+<li>
+<p>Type <code>addq 99999</code><br>
+Expected: Invalid index error is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="remove-patient-from-visiting-queue"><a class="link" href="#remove-patient-from-visiting-queue">F.10. Remove Patient from Visiting Queue</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Remove the first patient from the visiting queue.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>removeq</code><br>
+Expected: The first patient in the visiting queue will be removed from the queue.</p>
+</li>
+<li>
+<p>Type <code>removeq</code> when the visiting queue is empty<br>
+Expected: Error message will be shown that the queue is empty.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="remove-patient-from-visiting-queue-by-index"><a class="link" href="#remove-patient-from-visiting-queue-by-index">F.11. Remove Patient from Visiting Queue by Index</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Remove a specific patient from the visiting queue.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>removeq 3</code><br>
+Expected: The patient with index 3 in the visiting queue will be removed from the queue.</p>
+</li>
+<li>
+<p>Type <code>removeq 5</code> when the patient with index 3 does not exist in the visiting queue<br>
+Expected: Error message will be shown that the patient does not exist in the visiting queue.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="view-patient-appointments-in-calendar-view"><a class="link" href="#view-patient-appointments-in-calendar-view">F.12. View Patient Appointments in Calendar View</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>View list of patient appointments in calendar view.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>viewappt</code><br>
+Expected: All patient appointments will be displayed in the calendar view.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="view-patient-appointments-by-index"><a class="link" href="#view-patient-appointments-by-index">F.13. View Patient Appointments by Index</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>View list of patient appointments made by a specific patient from the current patient list.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>viewappt 3</code><br>
+Expected: List of appointments made by the the third patient in the list will be displayed at the right panel.</p>
+</li>
+<li>
+<p>Type <code>viewappt 99999</code>
+Expected: Invalid index error is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-patient-appointment"><a class="link" href="#add-patient-appointment">F.14. Add Patient Appointment</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add an appointment for a specific patient from the current patient list.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>addappt 1 19/8/2018 1500</code><br>
+Expected: New appointment will be added and the list of appointments of the patient will be updated. Changes will be reflected on the right panel.</p>
+</li>
+<li>
+<p>Type <code>addappt 1 19/8/2018</code>
+Expected: Error messages will shown that the command format is incorrect.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete-patient-appointment"><a class="link" href="#delete-patient-appointment">F.15. Delete Patient Appointment</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Delete an appointment made by a specific patient from the current patient list.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>delappt 1 19/8/2018 1500</code><br>
+Expected: The appointment will be deleted and the list of appointments of the patient will be updated. Changes will be reflected on the right panel.</p>
+</li>
+<li>
+<p>Type <code>delappt 1 19/8/2018</code>
+Expected: Error messages will shown that the command format is incorrect.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3918,7 +4277,7 @@ Expected: The first patient in the list is selected and his or her remarks are r
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 13:22:54 UTC
+Last updated 2018-04-15 14:38:10 UTC
 </div>
 </div>
 </body>
