@@ -100,6 +100,8 @@
 <li><a href="#add-conditions">F.4. Add Conditions</a></li>
 <li><a href="#remove-conditions">F.5. Remove Conditions</a></li>
 <li><a href="#select">F.6. Select</a></li>
+<li><a href="#record">F.7. Record</a></li>
+<li><a href="#remark">F.8. Remark</a></li>
 </ul>
 </li>
 <li><a href="#glossary">Appendix G: Glossary</a></li>
@@ -126,12 +128,12 @@ This guide provides the necessary information for developers who are interested 
 <div class="sect2">
 <h3 id="prerequisites"><a class="link" href="#prerequisites">2.1. Prerequisites</a></h3>
 <div class="paragraph">
-<p>Please ensure the following are installed before setting up IMDB:<br>
-. <strong>JDK <code>1.8.0_60</code></strong> or later</p>
+<p>Please ensure the following are installed before setting up IMDB:<br></p>
 </div>
-<div class="paragraph">
-<p>+</p>
-</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>JDK <code>1.8.0_60</code></strong> or later</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -145,11 +147,7 @@ This app will not work with earlier versions of Java 8.
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>+</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p><strong>IntelliJ</strong> IDE</p>
 <div class="admonitionblock note">
@@ -295,13 +293,13 @@ This will generate all resources required by the application and tests.</p>
 <div class="sect2">
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
 <div class="paragraph">
-<p>The <strong><em>Architecture Diagram</em></strong> given below explains the high-level design of the App.<br></p>
+<p>The high-level design of the IMDB is given in Figure 1 below.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Architecture.png" alt="Architecture" width="600">
 </div>
-<div class="title">Figure 1. Architecture Diagram</div>
+<div class="title">Figure 1. Architecture diagram</div>
 </div>
 <div class="paragraph">
 <p><br></p>
@@ -387,7 +385,7 @@ This class is written using <a href="https://github.com/google/guava/wiki/EventB
 </ul>
 </div>
 <div class="paragraph">
-<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.
+<p>For example, the <code>Logic</code> component (see Figure 2 below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.
 <br>
 <br></p>
 </div>
@@ -395,7 +393,7 @@ This class is written using <a href="https://github.com/google/guava/wiki/EventB
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 2. Class Diagram of the Logic Component</div>
+<div class="title">Figure 2. Class diagram of the logic component</div>
 </div>
 <div class="paragraph">
 <p><br></p>
@@ -404,7 +402,7 @@ This class is written using <a href="https://github.com/google/guava/wiki/EventB
 <div class="sect2">
 <h3 id="events-driven-nature"><a class="link" href="#events-driven-nature">3.2. Events-driven Nature</a></h3>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.
+<p>The <em>Sequence Diagram</em> given in Figure 3 below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.
 <br>
 <br></p>
 </div>
@@ -427,7 +425,7 @@ Note how the <code>Model</code> simply raises a <code>IMDBChangedEvent</code> wh
 </table>
 </div>
 <div class="paragraph">
-<p>The diagram below shows how the <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.</p>
+<p>Figure 4 below shows how the <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -454,17 +452,17 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="sect2">
 <h3 id="Design-Ui"><a class="link" href="#Design-Ui">3.3. UI component</a></h3>
 <div class="paragraph">
-<p>The diagram below is an overview of the structure of the <code>UI</code> component.<br></p>
+<p>The overview of the structure of the <code>UI</code> component is given below in Figure 5.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
 </div>
-<div class="title">Figure 5. Structure of the UI Component</div>
+<div class="title">Figure 5. Structure of the UI component</div>
 </div>
 <div class="paragraph">
 <p><br>
-You may wish to refer to the following for more information about the API of the <code>UI</code>: <a href="https://github.com/CS2103JAN2018-W15-B2/main/src/main/java/seedu/address/ui/Ui.java"><code>UI.java</code></a></p>
+You may wish to refer to the following for more information about the API of the <code>UI</code> component: <a href="https://github.com/CS2103JAN2018-W15-B2/main/src/main/java/seedu/address/ui/Ui.java"><code>UI.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
@@ -481,28 +479,28 @@ The <code>UI</code> component responds to events raised from various parts of th
 <div class="sect2">
 <h3 id="Design-Logic"><a class="link" href="#Design-Logic">3.4. Logic component</a></h3>
 <div class="paragraph">
-<p>The diagram below is an overview of the structure of the <code>Logic</code> component.<br></p>
+<p>The overview of the structure of the <code>Logic</code> component is given below in Figure 6.<br></p>
 </div>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 6. Structure of the Logic Component</div>
+<div class="title">Figure 6. Structure of the logic component</div>
 </div>
 <div class="paragraph">
-<p>The diagram below shows finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 6, &#8220;Structure of the Logic Component&#8221;</a><br></p>
+<p>Figure 7 below shows the finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 6, &#8220;Structure of the logic component&#8221;</a><br></p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
-<div class="title">Figure 7. Structure of Commands in the Logic Component.</div>
+<div class="title">Figure 7. Structure of commands in the logic component.</div>
 </div>
 <div class="paragraph">
 <p><br></p>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> :
+<p>You may wish to refer to the following for more information about the API of the <code>Logic</code> component:
 <a href="https://github.com/CS2103JAN2018-W15-B2/main/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="paragraph">
@@ -512,7 +510,7 @@ The command execution can then affect the <code>Model</code> (e.g. adding a pati
 Lastly, the result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below in Figure 8 is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
 </div>
 <div class="paragraph">
 <p><br></p>
@@ -521,7 +519,7 @@ Lastly, the result of the command execution is encapsulated as a <code>CommandRe
 <div class="content">
 <img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
 </div>
-<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 8. Interactions inside the logic component for the <code>delete 1</code> Command</div>
 </div>
 <div class="paragraph">
 <p><br></p>
@@ -530,16 +528,17 @@ Lastly, the result of the command execution is encapsulated as a <code>CommandRe
 <div class="sect2">
 <h3 id="Design-Model"><a class="link" href="#Design-Model">3.5. Model component</a></h3>
 <div class="paragraph">
-<p>The diagram below is an overview of the structure of the <code>Model</code> component.<br></p>
+<p>The overview of the structure of the <code>Model</code> component is given in Figure 9 below.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
 </div>
-<div class="title">Figure 9. Structure of the Model Component</div>
+<div class="title">Figure 9. Structure of the model component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-W15-B2/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p>You may wish to refer to the following for more information about the API of the <code>Model</code> component:
+ <a href="https://github.com/CS2103JAN2018-W15-B2/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>:</p>
@@ -564,16 +563,16 @@ Lastly, the result of the command execution is encapsulated as a <code>CommandRe
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.6. Storage component</a></h3>
 <div class="paragraph">
-<p>The diagram below is an overview of the structure of the <code>Storage</code> component.<br></p>
+<p>The overview of the structure of the <code>Storage</code> component is given in Figure 10 below.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
 </div>
-<div class="title">Figure 10. Structure of the Storage Component</div>
+<div class="title">Figure 10. Structure of the storage component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-W15-B2/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p>You may wish to refer to the following for more information about the API of the <code>Storage</code> component: <a href="https://github.com/CS2103JAN2018-W15-B2/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component:</p>
@@ -605,13 +604,13 @@ Lastly, the result of the command execution is encapsulated as a <code>CommandRe
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram shows the inheritance diagram for commands:</p>
+<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. Figure 11 shows the inheritance diagram for commands:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
-<div class="title">Figure 11. Structure of the Logic component</div>
+<div class="title">Figure 11. Structure of the logic component</div>
 </div>
 <div class="paragraph">
 <p>As you can see from the diagram, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
@@ -655,7 +654,9 @@ Lastly, the result of the command execution is encapsulated as a <code>CommandRe
 <p>Suppose that the user has just launched the application. The <code>UndoRedoStack</code> will be empty at the beginning.</p>
 </div>
 <div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th patient in the address book. The current state of the address book is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command), as shown in the diagram below.</p>
+<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th patient in the address book. The current state of the address book is saved
+before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code>
+(the current state is saved together with the command), as shown in Figure 12 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -664,7 +665,7 @@ Lastly, the result of the command execution is encapsulated as a <code>CommandRe
 <div class="title">Figure 12. Structure of the stacks before and after deletion</div>
 </div>
 <div class="paragraph">
-<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>, as shown in the diagram below. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new patient.</p>
+<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>, as shown in Figure 13 below. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new patient.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -688,7 +689,8 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 <p>The user now decides that adding the patient was a mistake, and decides to undo that action using <code>undo</code>.</p>
 </div>
 <div class="paragraph">
-<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>. We will restore the address book to the state before the <code>add</code> command executed, as shown in the diagram below.</p>
+<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>.
+We will restore the address book to the state before the <code>add</code> command executed, as shown in Figure 14 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -709,7 +711,7 @@ If the <code>undoStack</code> is empty, then there are no other commands left to
 </table>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
+<p>The sequence diagram shown in Figure 15 displays how the undo operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -733,7 +735,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </table>
 </div>
 <div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>, as shown in the diagram below. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
+<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>, as shown in Figure 16 below. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -742,7 +744,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="title">Figure 16. Structure of the stacks before and after clearing</div>
 </div>
 <div class="paragraph">
-<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution, as shown in the diagam below.</p>
+<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution, as shown in Figure 17 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -751,7 +753,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="title">Figure 17. Structure of the stacks before and after listing</div>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
+<p>Figure 18 summarizes what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -933,11 +935,11 @@ edited with the edited patient.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Suppose that the user has just launched the application. The current patient queue is shown in the figure below.</p>
+<p>Suppose that the user has just launched the application. The current patient queue is shown in Figure 19 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/Figure%203.2.1.1.png" alt="Figure 3.2.1.1" width="800">
+<img src="images/Figure%203.2.1.1.PNG" alt="Figure 3.2.1.1" width="800">
 </div>
 <div class="title">Figure 19. The current queue</div>
 </div>
@@ -947,21 +949,21 @@ edited with the edited patient.</p>
 <div class="paragraph">
 <p><code>RemarkCommand</code> will search for the first person in the list and store it as the person to be edited.
 <code>RemarkCommand</code> will then create a new patient with the same attributes as the patient to be edited, except the remarks attribute
-which will be based on the user input. This new patient will be stored as the edited patient as shown in the figure below.</p>
+which will be based on the user input. This new patient will be stored as the edited patient as shown in Figure 20 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/Figure%203.2.1.2.png" alt="Figure 3.2.1.2" width="800">
+<img src="images/Figure%203.2.1.2.PNG" alt="Figure 3.2.1.2" width="800">
 </div>
 <div class="title">Figure 20. The patient before and after editing</div>
 </div>
 <div class="paragraph">
 <p><code>RemarkCommand</code> will finally call the for the utility method <code>updatePerson</code> under <code>Model</code>, to replace the patient to be edited with the edited patient,
-the new list will be as shown in the figure below.</p>
+the new list will be as shown in Figure 21 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/Figure%203.2.1.3.png" alt="Figure 3.2.1.3" width="800">
+<img src="images/Figure%203.2.1.3.PNG" alt="Figure 3.2.1.3" width="800">
 </div>
 <div class="title">Figure 21. The queue with updated details</div>
 </div>
@@ -1081,7 +1083,7 @@ Delete <span class="predefined-type">Condition</span>:
 <p>It allows the user to simply add on to, or delete from, the list of conditions a patient has rather than have to retype all of the patient&#8217;s conditions.</p>
 </div>
 <div class="paragraph">
-<p>Suppose that the user has just launched the application. The current list is shown in Figure 25 below.</p>
+<p>Suppose that the user has just launched the application. The current list is shown in Figure 22 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1095,7 +1097,7 @@ Delete <span class="predefined-type">Condition</span>:
 <div class="paragraph">
 <p><code>AddConditionCommand</code> will select the person in the list based on the index provided and store it as the person to be edited.
 <code>AddConditionCommand</code> will then create a new patient with the same attributes as the patient to be edited, except the <code>Condition</code> attribute which now has additional conditions
-based on the user input. This new patient will be stored as the edited patient as shown in Figure 26 below.</p>
+based on the user input. This new patient will be stored as the edited patient as shown in Figure 23 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1105,7 +1107,7 @@ based on the user input. This new patient will be stored as the edited patient a
 </div>
 <div class="paragraph">
 <p><code>EditCommand</code> will finally call the for the utility method <code>updatePerson</code> under <code>Model</code>, to replace the patient to be edited with the edited patient,
-the new list will be as shown in Figure 27 below.</p>
+the new list will be as shown in Figure 24 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1169,7 +1171,7 @@ The user can find patients with certain keywords in their name using <code>FindC
 The <code>AddPatientQueueCommand</code> then calls for the utility method <code>addPatientToQueue</code> under <code>Model</code>, to update the visiting queue and triggers an <code>IMDBChangedEvent</code> to the <code>UI</code> to update <code>VisitingQueuePanel</code>.</p>
 </div>
 <div class="paragraph">
-<p>Suppose that the user has just launched the application and logged in as a medical staff. The empty queue is shown in Figure 3.4.1.1 below.</p>
+<p>Suppose that the user has just launched the application and logged in as a medical staff. The empty queue is shown in Figure 25 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1182,7 +1184,7 @@ The <code>AddPatientQueueCommand</code> then calls for the utility method <code>
 </div>
 <div class="paragraph">
 <p><code>AddPatientQueueCommand</code> will check if the index given is valid and is in the bound of the current list displayed. If the given index is valid and in the bound, <code>AddPatientQueueCommand</code> will then call the for the utility method <code>addPatientToQueue</code> under <code>Model</code>, to add the patient index into the visiting queue.
-The updated queue is shown in the figure below.</p>
+The updated queue is shown in Figure 26 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1196,7 +1198,7 @@ If the user wants to remove a specific patient in the queue, the user can provid
 The <code>RemovePatientQueueCommand</code> then calls for the utility method <code>removePatientFromQueue</code> under <code>Model</code>, to update the visiting queue and trigger an <code>IMDBChangedEvent</code> to <code>UI</code> to update the <code>VisitingQueuePanel</code>.</p>
 </div>
 <div class="paragraph">
-<p>Suppose that the queue contains patients as shown in the figure below.</p>
+<p>Suppose that the queue contains patients as shown in Figure 27 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1209,7 +1211,7 @@ The <code>RemovePatientQueueCommand</code> then calls for the utility method <co
 </div>
 <div class="paragraph">
 <p><code>RemovePatientQueueCommand</code> will then call the for the utility method <code>removePatientFromQueue</code> under <code>Model</code>, to remove the patient from the visiting queue.
-The updated queue is shown in the figure below.</p>
+The updated queue is shown in Figure 28 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1469,7 +1471,7 @@ edited with the edited patient.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Suppose that the user has just launched the application. The current patient queue is shown in the figure below.</p>
+<p>Suppose that the user has just launched the application. The current patient queue is shown in Figure 29 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1479,7 +1481,7 @@ edited with the edited patient.</p>
 </div>
 <div class="paragraph">
 <p>The user now decides to edit the first record of the first person in the list. Upon entering the command, a new window will pop up with each field displaying the
-details of the patient&#8217;s current record as shown in the figure below.</p>
+details of the patient&#8217;s current record as shown in Figure 30 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1490,7 +1492,7 @@ details of the patient&#8217;s current record as shown in the figure below.</p>
 <div class="paragraph">
 <p>After the user hits the enter button or clicks on the confirm button, <code>RecordCommand</code> will search for the first person in the list and store it as the person to be edited.
 <code>RecordCommand</code> will then create a new patient with the same attributes as the patient to be edited, except for the first record
-which will be edited based on the user&#8217;s input into the medical record window. This new patient will be stored as the edited patient as shown in the figure below.</p>
+which will be edited based on the user&#8217;s input into the medical record window. This new patient will be stored as the edited patient as shown in Figure 31 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1500,7 +1502,7 @@ which will be edited based on the user&#8217;s input into the medical record win
 </div>
 <div class="paragraph">
 <p><code>RecordCommand</code> will finally call the for the utility method <code>updatePerson</code> under <code>Model</code>, to replace the patient to be edited with the edited patient,
-the new list will be as shown in the figure below.</p>
+the new list will be as shown in Figure 32 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1940,7 +1942,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <p>Within Chrome, click on the <code>Print</code> option in Chrome&#8217;s menu.</p>
 </li>
 <li>
-<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot below.</p>
+<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in Figure 33 below.</p>
 </li>
 </ol>
 </div>
@@ -1948,7 +1950,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 33. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 33. Saving documentation as PDF files in chrome</div>
 </div>
 </div>
 </div>
@@ -3842,6 +3844,54 @@ Expected: Invalid index error is shown.</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="record"><a class="link" href="#record">F.7. Record</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Views the medical record at the specified record index for a patient specified by the index number used in the last patient listing.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>record 1 in/1</code><br>
+Expected: The first patient in the list is selected and his or her first medical record details are displayed in a new window.</p>
+</li>
+<li>
+<p>Type <code>record 1 in/999</code><br>
+Expected: The first patient in the list is selected and a new empty medical record is generate.</p>
+</li>
+<li>
+<p>Type <code>record 1 in/0</code><br>
+Expected: Invalid record index error is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="remark"><a class="link" href="#remark">F.8. Remark</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edits the remarks for a patient specified by the index number used in the last patient listing.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>remark 1 r/Weekly visits</code><br>
+Expected: The first patient in the list is selected and his or her remarks are changed to <code>Weekly visits</code>.</p>
+</li>
+<li>
+<p>Type <code>remark 1 r/</code><br>
+Expected: The first patient in the list is selected and his or her remarks are removed.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3868,7 +3918,7 @@ Expected: Invalid index error is shown.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 11:50:49 UTC
+Last updated 2018-04-15 12:21:58 UTC
 </div>
 </div>
 </body>
