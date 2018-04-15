@@ -36,7 +36,8 @@
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#command-aliases">5. Command Aliases</a></li>
+<li><a href="#command-summary">6. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -236,6 +237,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
+<p>Some commands have aliases that can be used to replace the command word. e.g. <code>add n/John Doe</code> can be written as <code>a n/John Doe</code> instead. For more details, please check the format of each command or refer to <a href="#command-aliases">Section 5, &#8220;Command Aliases&#8221;</a>.</p>
+</li>
+<li>
 <p>Items in square brackets are optional e.g <code>n/NAME [c/CONDITION]</code> can be used as <code>n/John Doe c/peanuts</code> or as <code>n/John Doe</code>.</p>
 </li>
 <li>
@@ -254,16 +258,17 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>The commands listed in this section are related to the general usage of IMDB.</p>
 </div>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code-or-code-h-code"><a class="link" href="#viewing-help-code-help-code-or-code-h-code">3.1.1. Viewing help : <code>help</code> or <code>h</code></a></h4>
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help : <code>help</code></a></h4>
 <div class="paragraph">
 <p>Opens the user guide in a separate window.<br>
 Format: <code>help</code> or <code>h</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="logging-into-the-system-code-login-code-or-code-lg-code-since-v1-2"><a class="link" href="#logging-into-the-system-code-login-code-or-code-lg-code-since-v1-2">3.1.2. Logging into the system: <code>login</code> or <code>lg</code> [since v1.2]</a></h4>
+<h4 id="logging-into-the-system-code-login-code-since-v1-2"><a class="link" href="#logging-into-the-system-code-login-code-since-v1-2">3.1.2. Logging into the system: <code>login</code> [since v1.2]</a></h4>
 <div class="paragraph">
 <p>Opens a window for the user to log into the IMDB with a matching username and password.<br>
+There are two placeholder accounts currently in the IMDB. There is alice, who is a doctor, and bob, who is a medical staff member. Some commands are restricted based on which role the user is logged into.<br>
 Format: <code>login</code> or <code>lg</code></p>
 </div>
 <div class="paragraph">
@@ -287,7 +292,7 @@ Logs the user in as bob, who is a medical staff.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-entered-commands-code-history-code-or-code-hi-code"><a class="link" href="#listing-entered-commands-code-history-code-or-code-hi-code">3.1.3. Listing entered commands : <code>history</code> or <code>hi</code></a></h4>
+<h4 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.1.3. Listing entered commands : <code>history</code></a></h4>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code> or <code>hi</code></p>
@@ -308,10 +313,10 @@ Format: <code>history</code> or <code>hi</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-previous-command-code-undo-code-or-code-u-code-or-code-z-code"><a class="link" href="#undoing-previous-command-code-undo-code-or-code-u-code-or-code-z-code">3.1.4. Undoing previous command : <code>undo</code> or <code>u</code> or <code>z</code></a></h4>
+<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.1.4. Undoing previous command : <code>undo</code></a></h4>
 <div class="paragraph">
 <p>Restores the IMDB to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code> or <code>u</code></p>
+Format: <code>undo</code> or <code>u</code> or <code>z</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -357,10 +362,10 @@ Reverses the <code>delete 1</code> command.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-the-previously-undone-command-code-redo-code-or-code-r-code-or-code-y-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-or-code-r-code-or-code-y-code">3.1.5. Redoing the previously undone command : <code>redo</code> or <code>r</code> or <code>y</code></a></h4>
+<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.1.5. Redoing the previously undone command : <code>redo</code></a></h4>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code> or <code>r</code></p>
+Format: <code>redo</code> or <code>r</code> or <code>y</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -407,7 +412,7 @@ Reapplies the <code>clear</code> command.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-entries-code-clear-code-or-code-c-code">3.1.6. Clearing all entries : <code>clear</code> or <code>c</code></a></h4>
+<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.1.6. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Clears all entries from the IMDB.<br>
 Format: <code>clear</code> or <code>c</code></p>
@@ -458,7 +463,7 @@ Format: <code>logout</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-the-program-code-exit-code-or-code-x-code"><a class="link" href="#exiting-the-program-code-exit-code-or-code-x-code">3.1.8. Exiting the program : <code>exit</code> or <code>x</code></a></h4>
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.1.8. Exiting the program : <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the program. This also logs the user out of the IMDB.<br>
 Format: <code>exit</code> or <code>x</code></p>
@@ -495,14 +500,14 @@ Format: <code>exit</code> or <code>x</code></p>
 <p>The commands listed in this section enables the management of patients’ records and details.</p>
 </div>
 <div class="sect3">
-<h4 id="listing-all-patients-code-list-code-or-code-ls-code"><a class="link" href="#listing-all-patients-code-list-code-or-code-ls-code">3.2.1. Listing all patients : <code>list</code> or <code>ls</code></a></h4>
+<h4 id="listing-all-patients-code-list-code"><a class="link" href="#listing-all-patients-code-list-code">3.2.1. Listing all patients : <code>list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all patients in the IMDB.<br>
 Format: <code>list</code> or <code>ls</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-a-patient-code-add-code-or-code-a-code"><a class="link" href="#adding-a-patient-code-add-code-or-code-a-code">3.2.2. Adding a patient: <code>add</code> or <code>a</code></a></h4>
+<h4 id="adding-a-patient-code-add-code"><a class="link" href="#adding-a-patient-code-add-code">3.2.2. Adding a patient: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Adds a patient to the IMDB<br>
 Format: <code>add n/NAME ic/NRIC p/PHONE_NUMBER e/EMAIL a/ADDRESS dob/DOB b/BLOOD TYPE [c/CONDITION]&#8230;&#8203;</code> or
@@ -549,10 +554,10 @@ Adds a new patient named Betsy.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-patient-code-delete-code-or-code-d-code-or-code-rm-code"><a class="link" href="#deleting-a-patient-code-delete-code-or-code-d-code-or-code-rm-code">3.2.3. Deleting a patient : <code>delete</code> or <code>d</code> or <code>rm</code></a></h4>
+<h4 id="deleting-a-patient-code-delete-code"><a class="link" href="#deleting-a-patient-code-delete-code">3.2.3. Deleting a patient : <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified patient from the IMDB.<br>
-Format: <code>delete INDEX</code> or <code>d</code></p>
+Format: <code>delete INDEX</code> or <code>d INDEX</code> or <code>rm INDEX</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -611,7 +616,7 @@ Deletes the 1st patient in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-patient-code-edit-code-or-code-e-code"><a class="link" href="#editing-a-patient-code-edit-code-or-code-e-code">3.2.4. Editing a patient : <code>edit</code> or <code>e</code></a></h4>
+<h4 id="editing-a-patient-code-edit-code"><a class="link" href="#editing-a-patient-code-edit-code">3.2.4. Editing a patient : <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing patient in the IMDB.<br>
 Format: <code>edit INDEX [n/NAME] [ic/NRIC] [p/PHONE] [e/EMAIL] [a/ADDRESS] [dob/DOB] [b/BLOOD TYPE][c/CONDITION]&#8230;&#8203;</code> or
@@ -672,7 +677,7 @@ Edits the name of the 2nd patient to be <code>Betsy Crower</code> and clears all
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-remarks-for-a-patient-code-remark-code-or-code-rk-code-since-v1-2"><a class="link" href="#editing-remarks-for-a-patient-code-remark-code-or-code-rk-code-since-v1-2">3.2.5. Editing remarks for a patient : <code>remark</code> or <code>rk</code> [since v1.2]</a></h4>
+<h4 id="editing-remarks-for-a-patient-code-remark-code-since-v1-2"><a class="link" href="#editing-remarks-for-a-patient-code-remark-code-since-v1-2">3.2.5. Editing remarks for a patient : <code>remark</code> [since v1.2]</a></h4>
 <div class="paragraph">
 <p>Edits the remarks for a patient specified by the index number used in the last patient listing.<br>
 Format: <code>remark INDEX r/[REMARK]</code> or <code>rk INDEX r/[REMARK]</code></p>
@@ -790,7 +795,7 @@ Removes <code>asthma</code> from the list of conditions that the patient at inde
 </div>
 </div>
 <div class="sect3">
-<h4 id="locating-patients-by-name-code-find-code-or-code-f-code"><a class="link" href="#locating-patients-by-name-code-find-code-or-code-f-code">3.2.8. Locating patients by name: <code>find</code> or <code>f</code></a></h4>
+<h4 id="locating-patients-by-name-code-find-code"><a class="link" href="#locating-patients-by-name-code-find-code">3.2.8. Locating patients by name: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Finds patients whose names contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code> or <code>f KEYWORD [MORE_KEYWORDS]</code></p>
@@ -835,7 +840,7 @@ Returns any patient having names <code>Betsy</code>, <code>Tim</code>, or <code>
 </div>
 </div>
 <div class="sect3">
-<h4 id="selecting-a-patient-code-select-code-or-code-s-code"><a class="link" href="#selecting-a-patient-code-select-code-or-code-s-code">3.2.9. Selecting a patient : <code>select</code> or <code>s</code></a></h4>
+<h4 id="selecting-a-patient-code-select-code"><a class="link" href="#selecting-a-patient-code-select-code">3.2.9. Selecting a patient : <code>select</code></a></h4>
 <div class="paragraph">
 <p>Selects the patient identified by the index number used in the last patient listing and loads up that patient&#8217;s details.<br>
 Format: <code>select INDEX</code> or <code>s INDEX</code></p>
@@ -1002,7 +1007,7 @@ Deletes the first medical record for the first person in the result of the list 
 </div>
 </div>
 <div class="sect3">
-<h4 id="printing-a-patient-s-formatted-medical-records-code-print-code-or-code-p-code-since-v1-4"><a class="link" href="#printing-a-patient-s-formatted-medical-records-code-print-code-or-code-p-code-since-v1-4">3.2.12. Printing a patient&#8217;s formatted medical records : <code>print</code> or <code>p</code> [since v1.4]</a></h4>
+<h4 id="printing-a-patient-s-formatted-medical-records-code-print-code-since-v1-4"><a class="link" href="#printing-a-patient-s-formatted-medical-records-code-print-code-since-v1-4">3.2.12. Printing a patient&#8217;s formatted medical records : <code>print</code> [since v1.4]</a></h4>
 <div class="paragraph">
 <p>Formats and prints a patient&#8217;s medical records into a pdf file. This pdf file is located in the same directory as the IMDB application.<br>
 Format: <code>print INDEX</code> or <code>p INDEX</code></p>
@@ -1375,7 +1380,125 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<h2 id="command-aliases"><a class="link" href="#command-aliases">5. Command Aliases</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Below is a table with the aliases of some commands.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Alias</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>h</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>login</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lg</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hi</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>u</code>/<code>z</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>r</code>/<code>y</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>c</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>x</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ls</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>a</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>d</code>/<code>m</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>e</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>remark</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rm</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ac</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dc</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>f</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>select</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>s</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>record</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rec</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>remover</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rr</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>print</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>p</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addq</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>aq</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>removeq</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rq</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addappt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>aa</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewappt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>va</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delappt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>da</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section provides a summary of command syntax and aliases.</p>
@@ -1479,7 +1602,7 @@ e.g.<code>viewappt john</code> or <code>viewappt john</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 08:47:41 UTC
+Last updated 2018-04-15 08:55:09 UTC
 </div>
 </div>
 </body>
