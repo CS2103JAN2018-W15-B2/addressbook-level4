@@ -45,7 +45,7 @@
 <p>Justification: This feature improves the product significantly because the doctor can track a patient&#8217;s symptoms, illnesses, suspected diseases and treatments administered over a period of time. This allows a doctor to accurately gauge a patient&#8217;s current health status.</p>
 </li>
 <li>
-<p>Highlights: This enhancement includes a new variable to the patient class. It required an in-depth analysis of design alternatives as it stores a list of records, which then stored various other new classes. The implementation too was challenging as it required a way to
+<p>Highlights: This enhancement includes a new variable to the patient class. It required an in-depth analysis of design alternatives as it stores a list of records, which then stored various other new classes. The implementation was challenging as it required a way to
 store and retrieve a list of nested classes. Its also implemented a new window which needed to accept and authenticate user inputs to ensure a valid medical record.</p>
 </li>
 </ul>
@@ -55,7 +55,7 @@ store and retrieve a list of nested classes. Its also implemented a new window w
 <p><strong>Minor enhancement</strong>: added a remark class and command that allows the medical staff to navigate to enter miscellaneous information of a patient that did not belong to any existing fields.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>]</p>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W15-B2/main/blob/master/collated/functional/nhs-work.md">Functional code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -66,7 +66,7 @@ store and retrieve a list of nested classes. Its also implemented a new window w
 <div class="ulist">
 <ul>
 <li>
-<p>PR reviewed (with non-trivial review comments): <a href="https://github.com/CS2103JAN2018-W15-B2/main/pull/101">#101</a></p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103JAN2018-W15-B2/main/pull/101">#101</a>, <a href="https://github.com/CS2103JAN2018-W15-B2/main/pull/205">#205</a></p>
 </li>
 </ul>
 </div>
@@ -517,15 +517,20 @@ Separation of Concerns as <code>Patient</code> now needs to do two different thi
 <p>Pros: Will use less memory (no need to create new window).</p>
 </li>
 <li>
-<p>Cons: Will require user to key in the whole medical record in one go (not feasible).
-=== Edit remarks feature
-==== Current Implementation</p>
+<p>Cons: Will require user to key in the whole medical record in one go (not feasible).</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-remarks-feature"><a class="link" href="#edit-remarks-feature">Edit remarks feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The edit remarks mechanism is facilitated by a <code>RemarkCommand</code>.
 It supports editing the remarks of a <code>Patient</code> to match the user input. <code>RemarkCommand</code> inherits from <code>UndoableCommand</code>.</p>
@@ -589,7 +594,6 @@ the new list will be as shown in Figure 21 below.</p>
 <img src="../images/Figure%203.2.1.3.PNG" alt="Figure 3.2.1.3" width="800">
 </div>
 <div class="title">Figure 7. The queue with updated details</div>
-</div>
 </div>
 </div>
 <div class="sect3">
@@ -671,7 +675,7 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 15:17:32 UTC
+Last updated 2018-04-15 15:22:01 UTC
 </div>
 </div>
 </body>
