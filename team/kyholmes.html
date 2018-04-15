@@ -45,7 +45,7 @@
 <p>Justification: This feature improves the product significantly because a user can make mistakes if they do manual management of visiting queue.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects commands to be added in future. It required an in-depth analysis of design alternatives.</p>
+<p>Highlights: This enhancement affects commands to be added in future such as a new medical record will be created once a patient is added into queue. It required an in-depth analysis of design alternatives.</p>
 </li>
 <li>
 <p>Credits: none</p>
@@ -54,7 +54,7 @@
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added new commands <strong>to manage patient appointments</strong>.</p>
+<p><strong>Minor enhancement</strong>: added new commands <strong>to manage patient appointments</strong>. Medical staffs can manage patient appointments effectively. This enhancement affect commands to be added in future such as managing doctors' schedule</p>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W15-B2/main/blob/master/collated/functional/Kyholmes.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W15-B2/main/blob/master/collated/test/Kyholmes-test.md">Test code</a>]</p>
@@ -96,19 +96,11 @@
 </div>
 </li>
 <li>
-<p>Documentation:
-<strong>*</strong></p>
-</li>
-<li>
-<p>Community:
-<strong>*</strong></p>
+<p>Community:</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-F12-B4/main/issues/140">#140</a>, <a href="https://github.com/CS2103JAN2018-F12-B4/main/issues/137">#137</a>, <a href="https://github.com/CS2103JAN2018-F12-B4/main/issues/135">#135</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates</p>
 </li>
 </ul>
 </div>
@@ -144,60 +136,18 @@
 </tr>
 </tbody>
 </table>
-<div class="sect3">
-<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h4>
+<div class="sect2">
+<h3 id="visiting-queue-commands"><a class="link" href="#visiting-queue-commands">Visiting Queue Commands</a></h3>
 <div class="paragraph">
-<p>Restores the IMDB to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the IMDB&#8217;s content (<code>add</code>, <code>addc</code>, <code>addq</code>, <code>clear</code>, <code>delc</code>, <code>delete</code>,
-<code>edit</code>, <code>record</code>, <code>redo</code>, <code>remark</code>, <code>removeq</code> and <code>remover</code>).</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-Reverses the <code>delete 1</code> command.</p>
-</li>
-<li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>u</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code><br>
-Reverses the <code>clear</code> command.<br>
-<code>undo</code><br>
-Reverses the <code>delete 1</code> command.<br></p>
-</li>
-</ul>
-</div>
+<p>The commands listed in this section are realted to the management of the visiting queue of the clinic.</p>
 </div>
 <div class="sect3">
-<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">Redoing the previously undone command : <code>redo</code></a></h4>
+<h4 id="adding-a-patient-into-the-visiting-queue-with-index-code-addq-code-since-v1-2"><a class="link" href="#adding-a-patient-into-the-visiting-queue-with-index-code-addq-code-since-v1-2">Adding a patient into the visiting queue with index: <code>addq</code> [since v1.2]</a></h4>
 <div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
+<p>Adds a patient to the end of the visiting queue (registration).<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addq INDEX</code></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -211,42 +161,425 @@ This command is undoable.
 </tr>
 </table>
 </div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+This command is only accessible to medical staff.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+<li>
+<p>This command will only add a patient if they are currently not in the visiting queue.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-<code>undo</code><br>
-Reverses the <code>delete 1</code> command.<br>
-<code>redo</code><br>
-Reapplies the <code>delete 1</code> command.<br></p>
+<p><code>list</code><br>
+<code>addq 3</code><br>
+Adds the third person in the result of the list command into the visiting queue.</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+<p><code>find bernice</code><br>
+<code>aq 2</code><br>
+Adds Bernice Lee into the visiting queue as shown in Figure 9 below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/addq_duplicate.PNG" alt="addq duplicate" width="990">
+</div>
+<div class="title">Figure 9: Add patient to queue according to list index</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="removing-a-patient-from-the-visiting-queue-code-removeq-code-since-v1-2"><a class="link" href="#removing-a-patient-from-the-visiting-queue-code-removeq-code-since-v1-2">Removing a patient from the visiting queue: <code>removeq</code> [since v1.2]</a></h4>
+<div class="paragraph">
+<p>Removes the first patient from the visiting queue (check-out).<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>removeq</code></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This command is undoable.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+This command is only accessible to medical staff.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>removeq</code><br>
+Removes the first patient in the queue.</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code><br>
-Reverses the <code>clear</code> command.<br>
-<code>undo</code><br>
-Reverses the <code>delete 1</code> command.<br>
-<code>r</code><br>
-Reapplies the <code>delete 1</code> command.<br>
-<code>r</code><br>
-Reapplies the <code>clear</code> command.<br></p>
+<p><code>rq</code><br>
+Removes the first patient in the queue.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h4>
+<h4 id="removing-a-patient-from-the-visiting-queue-by-index-code-removeq-code-since-v1-5rc"><a class="link" href="#removing-a-patient-from-the-visiting-queue-by-index-code-removeq-code-since-v1-5rc">Removing a patient from the visiting queue by index: <code>removeq</code> [since v1.5rc]</a></h4>
 <div class="paragraph">
-<p>Data encryption will be implemented in v2.0 to improve security and ensure confidentiality of patients' information.</p>
+<p>Removes a patient from the visiting queue by the index number of the current list view (check-out).<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>removeq INDEX</code></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This command is undoable.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+This command is only accessible to medical staff.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the visiting queue.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+<li>
+<p>This command will only remove a patient if they are currently in the visiting queue.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>removeq 4</code><br>
+Removes the fourth patient in the patient list from the visiting queue.</p>
+</li>
+<li>
+<p><code>rq 2</code><br>
+Removes the second patient in the patient list from the visiting queue.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="appointment-commands"><a class="link" href="#appointment-commands">Appointment Commands</a></h3>
+<div class="paragraph">
+<p>The commands listed in this section are related to the management of patients’ appointments.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-a-medical-appointment-with-code-addappt-code-since-v1-4"><a class="link" href="#adding-a-medical-appointment-with-code-addappt-code-since-v1-4">Adding a medical appointment with: <code>addappt</code> [since v1.4]</a></h4>
+<div class="paragraph">
+<p>Adds a medical appointment to a patient.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addappt PATIENT_NAME DATE TIME</code></p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+This command is only for medical staff.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code>.</p>
+</li>
+<li>
+<p>The date of the appointment must be in the following format: DD/MM/YYYY.</p>
+</li>
+<li>
+<p>The date of the appointment must be after the current date and time.</p>
+</li>
+<li>
+<p>The time of the appointment must be given in 24 hour clock format: HHMM.</p>
+</li>
+<li>
+<p>This command will only add the appointment if it does not book by any other patient.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewappt</code><br>
+<code>addappt 1 19/6/2018 1000</code><br>
+<code>viewappt</code><br>
+Adds a medical appointment for the first person in the list on 19/3/2018 at 10am as shown in Figure 10 below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/addappt_window.PNG" alt="addappt window" width="990">
+</div>
+<div class="title">Figure 10: Calendar panel in IMDB after an appointment is added</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>aa 1 23/7/2019 1430</code><br>
+Adds a medical appointment for the first person in the list on 23/3/2018 at 2:30pm.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-medical-appointments-by-index-code-viewappt-code-since-v1-3"><a class="link" href="#viewing-medical-appointments-by-index-code-viewappt-code-since-v1-3">Viewing medical appointments by index: <code>viewappt</code> [since v1.3]</a></h4>
+<div class="paragraph">
+<p>Shows the list of medical appointments of a patient.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>viewappt PATIENT_NAME</code></p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+This command is for both doctor and medical staff.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewappt 1</code><br>
+Lists the medical appointments made by the first patient in the list as shown in Figure 11 below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/viewappt_patient_window.PNG" alt="viewappt patient window" width="990">
+</div>
+<div class="title">Figure 11: Patient appointment panel in IMDB</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>va 2</code><br>
+Lists the medical appointments made by the second patient in the list.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-medical-appointments-in-calendar-code-viewappt-code-since-v1-4"><a class="link" href="#viewing-medical-appointments-in-calendar-code-viewappt-code-since-v1-4">Viewing medical appointments in calendar: <code>viewappt</code> [since v1.4]</a></h4>
+<div class="paragraph">
+<p>Shows the list of medical appointments in a calendar month view.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>viewappt</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewappt</code><br>
+Lists the medical appointments in the current month. User can also navigate to other months to view medical appointments for that particular month as shown in Figure 12 below.</p>
+</li>
+<li>
+<p><code>va</code><br>
+Lists the medical appointments in the current month. User can also navigate to other months to view medical appointments for that particular month as shown in Figure 12 below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/viewappt_window.PNG" alt="viewappt window" width="990">
+</div>
+<div class="title">Figure 12: Calendar panel in IMDB</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-medical-appointment-by-patient-name-and-appointment-index-number-code-delappt-code-since-v1-3"><a class="link" href="#deleting-a-medical-appointment-by-patient-name-and-appointment-index-number-code-delappt-code-since-v1-3">Deleting a medical appointment by patient name and appointment index number: <code>delappt</code> [since v1.3]</a></h4>
+<div class="paragraph">
+<p>Deletes the medical appointment at the given index of a patient specified by their name.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delappt PATIENT_NAME APPOINTMENT_INDEX_NO</code></p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+This command is only for medical staff.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code>.</p>
+</li>
+<li>
+<p>The date of the appointment must be in the following format: DD/MM/YYYY.</p>
+</li>
+<li>
+<p>The time of the appointment must be given in 24 hour clock format: HHMM.</p>
+</li>
+<li>
+<p>This command will only remove the appointment if it exists in the record.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewappt 1</code><br>
+<code>delappt 1 19/6/2018 1200</code><br>
+Deletes the medical appointment on 19/6/2018 12pm made by the first patient in the list as shown in Figure 13 below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/delappt_window.PNG" alt="delappt window" width="990">
+</div>
+<div class="title">Figure 13: Calendar panel in IMDB after deleting the appointment</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>va 2</code><br>
+<code>da 2 13/7/2018 1430</code><br>
+<code>viewappt</code><br>
+Deletes the medical appointment on 13/7/2018 2:30pm made by the second patient in the list.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-the-schedule-for-a-patient-across-all-specialists-code-coming-in-v2-0-code"><a class="link" href="#viewing-the-schedule-for-a-patient-across-all-specialists-code-coming-in-v2-0-code">Viewing the schedule for a patient across all specialists <code>[coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>IMDB will be able to view the schedule for a patient across all specialists so that medical staff can arrange non-conflicting appointments.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-the-duty-schedule-for-doctors-across-all-specialists-code-coming-in-v2-0-code"><a class="link" href="#viewing-the-duty-schedule-for-doctors-across-all-specialists-code-coming-in-v2-0-code">Viewing the duty schedule for doctors across all specialists <code>[coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>IMDB will be able to view the duty schedule for doctors across all specialists so that medical staff can make arrangements if patient specifies which doctor he or she would like to visit for the appointment.</p>
+</div>
 </div>
 </div>
 </div>
@@ -265,232 +598,158 @@ Reapplies the <code>clear</code> command.<br></p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/redo feature</a></h3>
+<h3 id="patient-visiting-queue-features"><a class="link" href="#patient-visiting-queue-features">Patient visiting queue features</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
+<p>The patient visiting queue mechanism is facilitated by <code>UniquePatientVisitingQueue</code>, <code>AddPatientQueueCommand</code> and <code>RemovePatientQueueCommand</code>.
+It supports the adding and removing of a patient from the visiting queue. <code>AddPatientQueueCommand</code> and <code>RemovePatientQueueCommand</code> inherit from <code>Command</code>.</p>
 </div>
 <div class="paragraph">
-<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. Figure 11 shows the inheritance diagram for commands:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
-</div>
-<div class="title">Figure 1. Structure of the logic component</div>
+<p>The addition mechanism functions like that of the <code>AddCommand</code> but uses only the current list index of the patient. It stores the actual index of the patient in the unfiltered patient list in the visiting queue.
+The user can find patients with certain keywords in their name using <code>FindCommand</code> then add them into queue according to the list index displayed.
+The <code>AddPatientQueueCommand</code> then calls for the utility method <code>addPatientToQueue</code> under <code>ModelManager</code>, to update the visiting queue and triggers an <code>IMDBChangedEvent</code> to the <code>UI</code> to update <code>VisitingQueuePanel</code>.</p>
 </div>
 <div class="paragraph">
-<p>As you can see from the diagram, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
-</div>
-<div class="paragraph">
-<p>Commands that are not undoable are implemented this way:</p>
+<p>Code snippet below shows how add patient into visiting queue work.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ListCommand</span> <span class="directive">extends</span> Command {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... list logic ...</span>
+<pre class="CodeRay highlight"><code data-lang="java">Preprocess before adding patient to queue:
+
+    <span class="keyword">try</span> {
+        actualSourceIndex = ParserUtil.parseIndex(actualIndexInString);
+    } <span class="keyword">catch</span> (IllegalValueException e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">The target patient cannot be missing</span><span class="delimiter">&quot;</span></span>);
     }
-}</code></pre>
+
+Add operation:
+
+    <span class="keyword">try</span> {
+        toQueue = model.addPatientToQueue(actualSourceIndex);
+    } <span class="keyword">catch</span> (DuplicatePatientException e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_DUPLICATE_PERSON);
+    }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With the extra layer, the commands that are undoable are implemented this way:</p>
+<p>Suppose that the user has just launched the application and logged in as a medical staff. The empty queue is shown in Figure 25 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/emptyVisitQueue.png" alt="emptyVisitQueue" width="800">
+</div>
+<div class="title">Figure 1. The empty queue</div>
+</div>
+<div class="paragraph">
+<p>The user now decides to add a patient into the queue.</p>
+</div>
+<div class="paragraph">
+<p><code>AddPatientQueueCommand</code> will check if the index given is valid and is in the bound of the current list displayed. If the given index is valid and in the bound, <code>AddPatientQueueCommand</code> will then call the for the utility method <code>addPatientToQueue</code> under <code>ModelManager</code>, to add the patient index into the visiting queue.
+The updated queue is shown in Figure 26 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/patientInQueue.png" alt="patientInQueue" width="800">
+</div>
+<div class="title">Figure 2. The updated queue</div>
+</div>
+<div class="paragraph">
+<p>The removal mechanism functions like that of the <code>DeleteCommand</code>. If no parameters are provided, it removes the first patient of the queue.
+If the user wants to remove a specific patient in the queue, the user can provide the patient index displayed in the queue.
+The <code>RemovePatientQueueCommand</code> then calls for the utility method <code>removePatientFromQueue</code> under <code>Model</code>, to update the visiting queue and trigger an <code>IMDBChangedEvent</code> to <code>UI</code> to update the <code>VisitingQueuePanel</code>.</p>
+</div>
+<div class="paragraph">
+<p>Code snippet below shows how <code>RemovePatientQueueCommand</code> handle two different format of <code>removeq</code> command.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">UndoableCommand</span> <span class="directive">extends</span> Command {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... undo logic ...</span>
+<pre class="CodeRay highlight"><code data-lang="java">Preprocess before removing patient tfrom visiting queue:
 
-        executeUndoableCommand();
-    }
-}
+    <span class="keyword">if</span> (indexArguementIsExist) {
+        <span class="comment">//Unfilter patient list</span>
+        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">DeleteCommand</span> <span class="directive">extends</span> UndoableCommand {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult executeUndoableCommand() {
-        <span class="comment">// ... delete logic ...</span>
+        <span class="keyword">if</span> (targetIndex.getZeroBased() &gt;= model.getFilteredPersonList().size()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
     }
-}</code></pre>
+
+Remove operation:
+
+    <span class="keyword">try</span> {
+        Patient patientToRemove;
+        <span class="keyword">if</span> (indexArguementIsExist) {
+            patientToRemove = model.removePatientFromQueueByIndex(targetIndex);
+        } <span class="keyword">else</span> {
+            patientToRemove = model.removePatientFromQueue();
+        }
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_REMOVE_SUCCESS, patientToRemove.getName().toString()));
+    } <span class="keyword">catch</span> (PatientNotFoundException e) {
+
+        <span class="keyword">if</span> (model.getVisitingQueue().size() &gt; <span class="integer">0</span>) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_PERSON_NOT_FOUND_QUEUE);
+        }
+
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_QUEUE_EMPTY);
+    }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Suppose that the user has just launched the application. The <code>UndoRedoStack</code> will be empty at the beginning.</p>
-</div>
-<div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th patient in the address book. The current state of the address book is saved
-before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code>
-(the current state is saved together with the command), as shown in Figure 12 below.</p>
+<p>Suppose that the queue contains patients as shown in Figure 27 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoStartingStackDiagram.png" alt="UndoRedoStartingStackDiagram" width="800">
+<img src="../images/patientsInQueue.png" alt="patientsInQueue" width="800">
 </div>
-<div class="title">Figure 2. Structure of the stacks before and after deletion</div>
+<div class="title">Figure 3. The queue containing some patients</div>
 </div>
 <div class="paragraph">
-<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>, as shown in Figure 13 below. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new patient.</p>
+<p>The user now decides to remove the first patient from the queue.</p>
+</div>
+<div class="paragraph">
+<p><code>RemovePatientQueueCommand</code> will then call the for the utility method <code>removePatientFromQueue</code> under <code>ModelManager</code>, to remove the patient from the visiting queue and triggers an <code>IMDBChangedEvent</code> to the <code>UI</code> to update <code>VisitingQueuePanel</code>.
+The updated queue is shown in Figure 28 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoNewCommand1StackDiagram.png" alt="UndoRedoNewCommand1StackDiagram" width="800">
+<img src="../images/patientInQueueRemoveState.png" alt="patientInQueueRemoveState" width="800">
 </div>
-<div class="title">Figure 3. Structure of the stacks before and after addition</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not be pushed to the <code>UndoRedoStack</code> at all.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The user now decides that adding the patient was a mistake, and decides to undo that action using <code>undo</code>.</p>
-</div>
-<div class="paragraph">
-<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>.
-We will restore the address book to the state before the <code>add</code> command executed, as shown in Figure 14 below.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStackDiagram.png" alt="UndoRedoExecuteUndoStackDiagram" width="800">
-</div>
-<div class="title">Figure 4. Structure of the stacks before and after redoing</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>undoStack</code> is empty, then there are no other commands left to be undone, and an <code>Exception</code> will be thrown when popping the <code>undoStack</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The sequence diagram shown in Figure 15 displays how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 5. Sequence diagram detailing the undo operation in action</div>
-</div>
-<div class="paragraph">
-<p>The redo does the exact opposite (pops from <code>redoStack</code>, push to <code>undoStack</code>, and restores the address book to the state after the command is executed).</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>redoStack</code> is empty, then there are no other commands left to be redone, and an <code>Exception</code> will be thrown when popping the <code>redoStack</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>, as shown in Figure 16 below. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StackDiagram.png" alt="UndoRedoNewCommand2StackDiagram" width="800">
-</div>
-<div class="title">Figure 6. Structure of the stacks before and after clearing</div>
-</div>
-<div class="paragraph">
-<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution, as shown in Figure 17 below.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StackDiagram.png" alt="UndoRedoNewCommand3StackDiagram" width="800">
-</div>
-<div class="title">Figure 7. Structure of the stacks before and after listing</div>
-</div>
-<div class="paragraph">
-<p>Figure 18 summarizes what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
-</div>
-<div class="title">Figure 8. Activity diagram summary of the stacks whenever a command is executed</div>
+<div class="title">Figure 4. The queue after a patient is removed</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">Aspect: Implementation of <code>UndoableCommand</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Add a new abstract method <code>executeUndoableCommand()</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will not lose any undone/redone functionality as it is now part of the default behaviour. Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.</p>
-</li>
-<li>
-<p>Cons: Will be hard for new developers to understand the template pattern.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Override <code>execute()</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Does not involve the template pattern and is easier for new developers to understand.</p>
-</li>
-<li>
-<p>Cons: Will result in classes that inherit from <code>UndoableCommand</code> needing to call <code>super.execute()</code>, or they will lose the ability to undo/redo.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<div class="paragraph">
+<p>The following is an exploration of possible alternative implementations for patient visiting queue features, the various aspects of
+each implementation and the pros and cons of each implementation:</p>
 </div>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-data-structure-to-support-the-addpatientqueue-and-removepatientqueue-command"><a class="link" href="#aspect-data-structure-to-support-the-addpatientqueue-and-removepatientqueue-command">Aspect: Data structure to support the AddPatientQueue and RemovePatientQueue command</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use LinkedList as a queue to store the patient index only</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Pros: Will be easy to implement due to existing utility methods.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Cons: May have utility limitation and have to take care how other commands affect the patient index in the list for example DeleteCommand.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Undo/redo is done by each individual command.</p>
+<p><strong>Alternative 2:</strong> Use ObservableList as queue to store patient object</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory usage (e.g. for <code>delete</code>, just save the patient being deleted).</p>
+<p>Pros: Can get rid of possible bug caused by the flexibility of the list index.</p>
 </li>
 <li>
-<p>Cons: Must ensure that the implementation of each individual command are correct.</p>
+<p>Cons: May give redundancy for this feature because no modification will be done on the patient object.</p>
 </li>
 </ul>
 </div>
@@ -499,32 +758,31 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-type-of-commands-that-can-be-undone-redone"><a class="link" href="#aspect-type-of-commands-that-can-be-undone-redone">Aspect: Type of commands that can be undone/redone</a></h5>
+<h5 id="aspect-implementation-of-code-addpatientqueuecommand-code"><a class="link" href="#aspect-implementation-of-code-addpatientqueuecommand-code">Aspect: Implementation of <code>AddPatientQueueCommand</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Only include commands that modifies the address book (<code>add</code>, <code>clear</code>, <code>edit</code>).</p>
+<p><strong>Alternative 1 (current choice):</strong> Only add the patient to the back of the list</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Only need to revert changes that are hard to change back (the view can easily be re-modified as no data are * lost).</p>
+<p>Pros: Will be easy to implement.</p>
 </li>
 <li>
-<p>Cons: Might result in user thinking that undo also applies when the list is modified (undoing filtering for example), * only to realize that it does not do that, after executing <code>undo</code>.</p>
+<p>Cons: Does not allow user to add a patient in the position they want in the queue.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Include all commands.</p>
+<p><strong>Alternative 2:</strong> Add the patient to any position in the queue</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Might be more intuitive for the user.</p>
+<p>Pros: Will improve the functionality of AddPatientQueue command.</p>
 </li>
 <li>
-<p>Cons: No way of skipping commands if user just wants to reset the state of IMDB and not the view.
-<strong>Additional Info:</strong> See our discussion  <a href="https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672">here</a>.</p>
+<p>Cons: Will require another implementation to add patient in the specified position in the queue.</p>
 </li>
 </ul>
 </div>
@@ -533,31 +791,248 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<h5 id="aspect-implementation-of-code-removepatientqueuecommand-code"><a class="link" href="#aspect-implementation-of-code-removepatientqueuecommand-code">Aspect: Implementation of <code>RemovePatientQueueCommand</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use separate stack for undo and redo</p>
+<p><strong>Alternative 1 (current choice):</strong> Remove the patient from the queue regardless of position</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to understand for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
+<p>Pros: Will be easy to implement.</p>
 </li>
 <li>
-<p>Cons: Will result in <code>Logic</code> being duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>UndoRedoStack</code>.</p>
+<p>Cons: Will be error prone since list index is flexible with the operation that user typed in.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<p><strong>Alternative 2:</strong> Remove the patient from the queue using their NRIC</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Not necessary to maintain a separate stack, just reuse what is already in the codebase.</p>
+<p>Pros: Will remove any errors caused by removing a patient from the queue by their index.</p>
 </li>
 <li>
-<p>Cons: Will need to deal with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: Will require extra checking and verification.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="patient-appointment-features"><a class="link" href="#patient-appointment-features">Patient appointment features</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The patient appointment mechanism is facilitated by <code>Appointment</code>, <code>AppointmentEntry</code>, <code>DateTime</code>, <code>UniqueAppointmentEntryList</code>, <code>UniqueAppointmentList</code>, <code>AddAppointmentCommand</code>, <code>DeleteAppointmentCommand</code>, <code>ViewAppoinmentCommand</code>, <code>AddAppointmenetCommandParser</code>, <code>DeleteAppoinmentCommandParser</code> and <code>ViewAppointmentCommandParser</code>.
+It supports the adding, deleting and viewing of patient appointments. <code>AddAppointmentCommand</code>, <code>DeleteAppointmentCommand</code> and <code>ViewAppoinmentCommand</code> inherit from <code>Command</code>.</p>
+</div>
+<div class="paragraph">
+<p>The add new patient appointment mechanism functions like that of the <code>AddCommand</code> with current list index of the patient, date, and time as inputs. <code>AddAppointmenetCommandParser</code> will verify the user input format and pass to <code>AddAppointmentCommand</code> to handle adding of appointment operation. It also make sure that the date provided is after the current date (date of today) and is not book by other patients. If verification is correct, a new appointment object with date and time will be created and is stored in the patient&#8217;s list of appointments.
+The user can find patients using the <code>FindCommand</code> and then add a new appointment according to the current list index displayed.
+The <code>AddPatientQueueCommand</code> then calls for the utility method addPatientAppointment under <code>Model</code> to add a new patient appointment and trigger an <code>IMDBChangedEvent</code> to the <code>UI</code> to update PatientAppointmentPanel or CalendarPanel.</p>
+</div>
+<div class="paragraph">
+<p>Code snippet below shows how <code>AddAppointmenetCommandParser</code> verify user inputs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">String</span> trimmedArgs = args.trim();
+
+<span class="keyword">if</span> (trimmedArgs.isEmpty()) {
+    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            AddAppointmentCommand.MESSAGE_USAGE));
+}
+
+<span class="predefined-type">String</span><span class="type">[]</span> argsArray = trimmedArgs.split(<span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">s</span><span class="delimiter">&quot;</span></span>);
+
+<span class="keyword">if</span> (argsArray.length &lt; NO_OF_ARGUMENTS) {
+    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            AddAppointmentCommand.MESSAGE_USAGE));
+}
+
+<span class="keyword">try</span> {
+    Index targetPatientIndex = ParserUtil.parseIndex(argsArray[PATIENT_INDEX_INDEX]);
+    DateTime appointmentDateTime = ParserUtil.parseDateTime(argsArray[DATE_INDEX] + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>
+            + argsArray[TIME_INDEX]);
+    <span class="keyword">if</span> (DateTime.isBefore(argsArray[DATE_INDEX] + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + argsArray[TIME_INDEX])) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddAppointmentCommand.MESSAGE_USAGE));
+    }
+    <span class="keyword">return</span> <span class="keyword">new</span> AddAppointmentCommand(targetPatientIndex, appointmentDateTime);
+} <span class="keyword">catch</span> (IllegalValueException e) {
+    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            AddAppointmentCommand.MESSAGE_USAGE));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Suppose that the user has just launched the application and logged in as a medical staff. Bernice&#8217;s appointment list is shown Figure 29 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/appointment_list.png" alt="appointment list" width="800">
+</div>
+<div class="title">Figure 5. Bernice&#8217;s appointment list contain some appointments</div>
+</div>
+<div class="paragraph">
+<p>The user now decides to add a new appointment on 20/7/2018 3pm for Bernice.</p>
+</div>
+<div class="paragraph">
+<p><code>AddAppointmenetCommandParser</code> will verify if the input given is in correct format and the date given is valid. If the input is valid, <code>AddAppointmenetCommand</code> will then call for the utility method <code>addPatientAppointment</code> under <code>ModelManager</code>, to add the new appointment into the appointment list of Bernice. The update appointment list is shown in Figure 30 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/appointment_list_add.png" alt="appointment list add" width="800">
+</div>
+<div class="title">Figure 6. Bernice&#8217;s appointment list updated</div>
+</div>
+<div class="paragraph">
+<p>The delete appointment mechanism functions like that of the <code>DeleteCommand</code> with current list index of the patient, date, and time as inputs. <code>DeleteAppointmenetCommandParser</code> will verify the user input format and pass to <code>DeleteAppointmenetCommand</code> to handle deleting of appointment operation. The verification steps are similar to <code>DeleteAppointmenetCommandParser</code> If verification is correct, the <code>DeleteAppointmenetCommand</code> then calls for the utility method deletePatientAppointment under <code>ModelManager</code>, remove the appointment if the appointment is exist in the patient&#8217;s appointment list and trigger an <code>IMDBChangedEvent</code> to <code>UI</code> to update PatientAppointmentPanel or CalendarPanel.</p>
+</div>
+<div class="paragraph">
+<p>Suppose that the user has just launched the application and logged in as a medical staff. Bernice’s appointment list is shown Figure 31 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/appointment_list_add.png" alt="appointment list add" width="800">
+</div>
+<div class="title">Figure 7. Bernice&#8217;s appointment list updated</div>
+</div>
+<div class="paragraph">
+<p>Now the user receives Bernice&#8217;s request to cancel an appointment on 22/6/2018 11am.</p>
+</div>
+<div class="paragraph">
+<p><code>DeleteAppointmenetCommandParser</code> will verify if the input given is in correct format. If the input is valid, <code>DeleteAppointmenetCommand</code> will then call for the utility method <code>deletePatientAppointment</code> under <code>ModelManager</code>, to delete the appointment from the appointment list of Bernice. The updated appointment list is shown in Figure 31 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/appointment_list_del.png" alt="appointment list del" width="800">
+</div>
+<div class="title">Figure 8. Bernice&#8217;s appointment list updated</div>
+</div>
+<div class="paragraph">
+<p>The view appointment mechanism functions like that of the <code>findCommand</code> and <code>listCommand</code> depends on whether the current list index of the patient is provided.  If patient index is provided, the <code>viewAppointmentCommand</code> then calls for the utility method getPatientFromListByIndex by patient index under <code>ModelManager</code>, to get the patient and trigger an <code>IMDBChangedEvent</code> to <code>UI</code> to update PatientAppointmentPanel to display list of past and upcoming appoinments made by this patient. If the current list index of the patient is not provided, the <code>viewAppointmentCommand</code> then calls for the utility method getAppointmentEntryList under <code>ModelManager</code>, to get the list of appointments made by all patients and trigger an <code>IMDBChangedEvent</code> to <code>UI</code> to update CalendarPanel.</p>
+</div>
+<div class="paragraph">
+<p>Code snippet below shows how <code>ViewAppoinmentCommand</code> handle two different format of <code>viewappt</code> commands.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">if</span> (indexArgumentIsExist) {
+    targetPatient = model.getPatientFromListByIndex(targetIndex);
+    EventsCenter.getInstance().post(<span class="keyword">new</span> ShowPatientAppointmentRequestEvent(targetPatient));
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_SUCCESS_PATIENT, targetPatient.getName().fullName));
+} <span class="keyword">else</span> {
+    EventsCenter.getInstance().post(<span class="keyword">new</span> ShowCalendarViewRequestEvent(model.getAppointmentEntryList()));
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="paragraph">
+<p>The following is an exploration of possible alternative implementations for patient appointment features, the various aspects of
+each implementation and the pros and cons of each implementation:</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-addappointmentcommand-and-deleteappointmentcommand-and-viewappointmentcommand"><a class="link" href="#aspect-data-structure-to-support-the-addappointmentcommand-and-deleteappointmentcommand-and-viewappointmentcommand">Aspect: Data structure to support the AddAppointmentCommand and DeleteAppointmentCommand and viewAppointmentCommand</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Usetwo separate customised data structure to store appointments for each patient and appointments for all patient (master list) to be displayed on the calendar panel</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to implement due to existing utility methods.</p>
+</li>
+<li>
+<p>Cons: May have redundant methods in both data structure.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a appointment superclass or interface and extends from it</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be able to customise functionality of the data structure and get rid of redundant methods.</p>
+</li>
+<li>
+<p>Cons: May not find similar behaviour between this two classes.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-addappointmentcommand"><a class="link" href="#aspect-implementation-of-addappointmentcommand">Aspect: Implementation of AddAppointmentCommand</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Add new appointment using current list index of patient.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to implement due to existing utility methods.</p>
+</li>
+<li>
+<p>Cons: Will be error prone since list index is flexible with the operation that user typed in..</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Add new appointment using patient&#8217;s NRIC.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will add the new appointment for the correct patient.</p>
+</li>
+<li>
+<p>Cons: Will require extra checking for patient&#8217;s NRIC uniqueness upon adding into IMDB.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-deleteappointmentcommand"><a class="link" href="#aspect-implementation-of-deleteappointmentcommand">Aspect: Implementation of DeleteAppointmentCommand</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Remove an appointment using date and time as input.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to implement due to existing utility methods.</p>
+</li>
+<li>
+<p>Cons: May delete the incorrect appointment if users do not check the input they type before entering the command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Remove appointment by appointment list index.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can prevent user from deleting the wrong appointment.</p>
+</li>
+<li>
+<p>Cons: Will require implementation to maintain the appointment index.</p>
 </li>
 </ul>
 </div>
@@ -572,7 +1047,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:38:10 UTC
+Last updated 2018-04-15 15:10:58 UTC
 </div>
 </div>
 </body>
