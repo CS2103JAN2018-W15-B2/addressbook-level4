@@ -148,7 +148,7 @@ This app will not work with earlier versions of Java 8.
 <p>Copy the file to the folder you want to use as the home folder for IMDB.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds as shown in the figure below.</p>
+<p>Double-click the file to start the app. The GUI should appear in a few seconds as shown in the Figure 1 below.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/Ui_new.PNG" alt="Ui new" width="990">
@@ -207,7 +207,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="content">
 <img src="images/ui_walkthrough.png" alt="ui walkthrough" width="990">
 </div>
-<div class="title">Figure 2: User Interface Walkthrough of IMDB</div>
+<div class="title">Figure 2: User interface walkthrough of IMDB</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -260,16 +260,28 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help : <code>help</code></a></h4>
 <div class="paragraph">
-<p>Opens the user guide in a separate window.<br>
+<p>Opens the user guide in a separate window as shown in Figure 3 below.<br>
 Format: <code>help</code> or <code>h</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/help_window.PNG" alt="help window" width="990">
+</div>
+<div class="title">Figure 3: Help window</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="logging-into-the-system-code-login-code-since-v1-2"><a class="link" href="#logging-into-the-system-code-login-code-since-v1-2">3.1.2. Logging into the system: <code>login</code> [since v1.2]</a></h4>
 <div class="paragraph">
-<p>Opens a window for the user to log into the IMDB with a matching username and password.<br>
+<p>Opens a window for the user to log into the IMDB with a matching username and password as shown in Figure 4 below.<br>
 There are two placeholder accounts currently in the IMDB. There is alice, who is a doctor, and bob, who is a medical staff member. Some commands are restricted based on which role the user is logged into.<br>
 Format: <code>login</code> or <code>lg</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/login_window.PNG" alt="login window" width="990">
+</div>
+<div class="title">Figure 4: Login window</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -280,15 +292,31 @@ Format: <code>login</code> or <code>lg</code></p>
 <p><code>login</code><br>
 Username: alice<br>
 Password: password123<br>
-Logs the user in as alice, who is a doctor.</p>
+Logs the user in as alice, who is a doctor as shown in Figure 5 below.</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/login_window_doctor.PNG" alt="login window doctor" width="990">
+</div>
+<div class="title">Figure 5: IMDB main window (Logged in as Alice)</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>login</code><br>
 Username: bob<br>
 Password: password456<br>
-Logs the user in as bob, who is a medical staff.</p>
+Logs the user in as bob, who is a medical staff as shown in Figure 6 below.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/login_window_staff.PNG" alt="login window staff" width="990">
+</div>
+<div class="title">Figure 6: IMDB main window (Logged in as Bob)</div>
 </div>
 </div>
 <div class="sect3">
@@ -591,7 +619,7 @@ If the specified patient is in the queue, you have to remove the patient from th
 <p>The index refers to the index number shown in the most recent listing.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code>.</p>
 </li>
 </ul>
 </div>
@@ -642,7 +670,7 @@ This command is undoable.
 <p>The index refers to the index number shown in the most recent listing.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code>.</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -938,9 +966,15 @@ This command is only accessible to doctors.
 <li>
 <p><code>list</code><br>
 <code>record 1 in/1</code><br>
-Displays the first medical record for the first person in the result of the list command.</p>
+Displays the first medical record for the first person in the result of the list command as shown Figure 7 below.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/record_window.PNG" alt="record window" width="990">
+</div>
+<div class="title">Figure 7: Record window</div>
 </div>
 </div>
 <div class="sect3">
@@ -1009,7 +1043,7 @@ Deletes the first medical record for the first person in the result of the list 
 <div class="sect3">
 <h4 id="printing-a-patient-s-formatted-medical-records-code-print-code-since-v1-4"><a class="link" href="#printing-a-patient-s-formatted-medical-records-code-print-code-since-v1-4">3.2.12. Printing a patient&#8217;s formatted medical records : <code>print</code> [since v1.4]</a></h4>
 <div class="paragraph">
-<p>Formats and prints a patient&#8217;s medical records into a pdf file. This pdf file is located in the same directory as the IMDB application.<br>
+<p>Formats and prints a patient&#8217;s medical records into a PDF file. This PDF file is located in the same directory as the IMDB application as shown in Figure 8 below.<br>
 Format: <code>print INDEX</code> or <code>p INDEX</code></p>
 </div>
 <div class="admonitionblock caution">
@@ -1023,6 +1057,12 @@ This command is only accessible to doctors.
 </td>
 </tr>
 </table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/print_window.PNG" alt="print window" width="990">
+</div>
+<div class="title">Figure 8: PDF file in the directory</div>
 </div>
 </div>
 <div class="sect3">
@@ -1069,6 +1109,23 @@ This command is only accessible to medical staff.
 </tr>
 </table>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+<li>
+<p>This command will only add a patient if they are currently not in the visiting queue.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -1082,7 +1139,7 @@ Adds the third person in the result of the list command into the visiting queue.
 <li>
 <p><code>find bernice</code><br>
 <code>aq 2</code><br>
-Adds Bernice Lee into the visiting queue as shown in Figure 3 below.</p>
+Adds Bernice Lee into the visiting queue as shown in Figure 9 below.</p>
 </li>
 </ul>
 </div>
@@ -1090,7 +1147,7 @@ Adds Bernice Lee into the visiting queue as shown in Figure 3 below.</p>
 <div class="content">
 <img src="images/addq_duplicate.PNG" alt="addq duplicate" width="990">
 </div>
-<div class="title">Figure 3: Add patient to queue according to list index</div>
+<div class="title">Figure 9: Add patient to queue according to list index</div>
 </div>
 </div>
 <div class="sect3">
@@ -1178,7 +1235,7 @@ This command is only accessible to medical staff.
 <div class="ulist">
 <ul>
 <li>
-<p>The index refers to the index number shown in the most recent listing.</p>
+<p>The index refers to the index number shown in the visiting queue.</p>
 </li>
 <li>
 <p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
@@ -1218,7 +1275,7 @@ Removes the second patient in the patient list from the visiting queue.</p>
 <p>Adds a medical appointment to a patient.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>addappt PATIENT_NAME DATE TIME</code> or <code>aa PATIENT_NAME DATE TIME</code></p>
+<p>Format: <code>addappt INDEX DATE TIME</code> or <code>aa PATIENT_NAME DATE TIME</code></p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -1237,10 +1294,22 @@ This command is only for medical staff.
 <div class="ulist">
 <ul>
 <li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code>.</p>
+</li>
+<li>
 <p>The date of the appointment must be in the following format: DD/MM/YYYY.</p>
 </li>
 <li>
+<p>The date of the appointment must be after the current date and time.</p>
+</li>
+<li>
 <p>The time of the appointment must be given in 24 hour clock format: HHMM.</p>
+</li>
+<li>
+<p>This command will only add the appointment if it does not book by any other patient.</p>
 </li>
 </ul>
 </div>
@@ -1252,23 +1321,61 @@ This command is only for medical staff.
 <div class="ulist">
 <ul>
 <li>
-<p><code>addappt Betsy 19/3/2018 1000</code><br>
-Adds a medical appointment for Betsy on 19/3/2018 at 10am.</p>
+<p><code>viewappt</code><br>
+<code>addappt 1 19/6/2018 1000</code><br>
+<code>viewappt</code><br>
+Adds a medical appointment for the first person in the list on 19/3/2018 at 10am as shown in Figure 10.</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/addappt_window.PNG" alt="addappt window" width="990">
+</div>
+<div class="title">Figure 10: Calendar panel in IMDB after an appointment is added</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><code>aa John 23/3/2019 1430</code><br>
-Adds a medical appointment for John on 23/3/2018 at 2:30pm.</p>
+<p><code>aa 1 23/7/2019 1430</code><br>
+Adds a medical appointment for the first person in the list on 23/3/2018 at 2:30pm.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-medical-appointments-by-patient-name-code-viewappt-code-since-v1-3"><a class="link" href="#viewing-medical-appointments-by-patient-name-code-viewappt-code-since-v1-3">3.4.2. Viewing medical appointments by patient name: <code>viewappt</code> [since v1.3]</a></h4>
+<h4 id="viewing-medical-appointments-by-index-code-viewappt-code-since-v1-3"><a class="link" href="#viewing-medical-appointments-by-index-code-viewappt-code-since-v1-3">3.4.2. Viewing medical appointments by index: <code>viewappt</code> [since v1.3]</a></h4>
 <div class="paragraph">
 <p>Shows the list of medical appointments of a patient.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>viewappt PATIENT_NAME</code> or <code>va PATIENT_NAME</code></p>
+<p>Format: <code>viewappt INDEX</code> or <code>va INDEX</code></p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+This command is for both doctor and medical staff.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code>.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -1276,12 +1383,22 @@ Adds a medical appointment for John on 23/3/2018 at 2:30pm.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>viewappt Betsy</code><br>
-Lists the medical appointments made by Betsy.</p>
+<p><code>viewappt 1</code><br>
+Lists the medical appointments made by the first patient in the list as shown in Figure 11.</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/viewappt_patient_window.PNG" alt="viewappt patient window" width="990">
+</div>
+<div class="title">Figure 11: Patient Appointment panel in IMDB</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><code>va John</code><br>
-Lists the medical appointments made by John.</p>
+<p><code>va 2</code><br>
+Lists the medical appointments made by the second patient in the list.</p>
 </li>
 </ul>
 </div>
@@ -1301,13 +1418,19 @@ Lists the medical appointments made by John.</p>
 <ul>
 <li>
 <p><code>viewappt</code><br>
-Lists the medical appointments in the current month. User can also navigate to other months to view medical appointments for that particular month.</p>
+Lists the medical appointments in the current month. User can also navigate to other months to view medical appointments for that particular month as shown in Figure 12 below.</p>
 </li>
 <li>
 <p><code>va</code><br>
-Lists the medical appointments in the current month. User can also navigate to other months to view medical appointments for that particular month.</p>
+Lists the medical appointments in the current month. User can also navigate to other months to view medical appointments for that particular month as shown in Figure 12 below.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/viewappt_window.PNG" alt="viewappt window" width="990">
+</div>
+<div class="title">Figure 12: Calendar panel in IMDB</div>
 </div>
 </div>
 <div class="sect3">
@@ -1316,7 +1439,7 @@ Lists the medical appointments in the current month. User can also navigate to o
 <p>Deletes the medical appointment at the given index of a patient specified by their name.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delappt PATIENT_NAME APPOINTMENT_INDEX_NO</code> or <code>da PATIENT_NAME APPOINTMENT_INDEX_NO</code></p>
+<p>Format: <code>delappt INDEX DATE TIME</code> or <code>da INDEX DATE TIME</code></p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -1330,20 +1453,54 @@ This command is only for medical staff.
 </tr>
 </table>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code>.</p>
+</li>
+<li>
+<p>The date of the appointment must be in the following format: DD/MM/YYYY.</p>
+</li>
+<li>
+<p>The time of the appointment must be given in 24 hour clock format: HHMM.</p>
+</li>
+<li>
+<p>This command will only remove the appointment if it exists in the record.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>viewappt Betsy</code><br>
-<code>delappt Betsy 2</code><br>
-Deletes the medical appointment made by Betsy with index number 2.</p>
+<p><code>viewappt 1</code><br>
+<code>delappt 1 19/6/2018 1200</code><br>
+Deletes the medical appointment on 19/6/2018 12pm made by the first patient in the list as shown in Figure 13.</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/delappt_window.PNG" alt="delappt window" width="990">
+</div>
+<div class="title">Figure 13: Calendar panel in IMDB after deleting the appointment</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><code>va John</code><br>
-<code>da John 1</code><br>
-Deletes the medical appointment made by John with index number 1.</p>
+<p><code>va 2</code><br>
+<code>da 2 13/7/2018 1430</code><br>
+<code>viewappt</code><br>
+Deletes the medical appointment on 13/7/2018 2:30pm made by the second patient in the list.</p>
 </li>
 </ul>
 </div>
@@ -1519,7 +1676,7 @@ e.g.<code>addq 2</code> or <code>aq 1</code></p>
 </li>
 <li>
 <p><strong>Add new appointment</strong> : <code>addappt</code> or <code>aa</code><br>
-e.g.<code>addappt betsy 19/3/2018 1300</code> or <code>aa betsy 19/3/2018 1300</code></p>
+e.g.<code>addappt 1 19/6/2018 1200</code> or <code>aa 1 19/6/2018 1200</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code> or <code>c</code></p>
@@ -1530,7 +1687,7 @@ e.g. <code>delete</code> or <code>d</code> or <code>rm 3</code></p>
 </li>
 <li>
 <p><strong>Delete appointment</strong> : <code>delappt</code> or <code>da</code><br>
-e.g.<code>delappt betsy 2</code> or <code>da betsy 2</code></p>
+e.g.<code>delappt 1 19/6/2018 1200</code> or <code>da 1 19/6/2018 1200</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code> or <code>hi</code></p>
@@ -1589,11 +1746,11 @@ e.g.<code>remover</code> or <code>rr 1 in/2</code></p>
 e.g.<code>select</code> or <code>s 2</code></p>
 </li>
 <li>
-<p><strong>View appointments in calendar</strong> : <code>viewappt</code> or <code>va</code><br>
-e.g.<code>viewappt john</code> or <code>viewappt john</code></p>
+<p><strong>View appointments in calendar</strong> : <code>viewappt</code> or <code>va</code><br></p>
 </li>
 <li>
-<p><strong>View appointments by patient name</strong> : <code>viewappt</code> or <code>va</code></p>
+<p><strong>View appointments by index</strong> : <code>viewappt</code> or <code>va</code>
+e.g.<code>viewappt 1</code> or <code>va 1</code></p>
 </li>
 </ul>
 </div>
@@ -1602,7 +1759,7 @@ e.g.<code>viewappt john</code> or <code>viewappt john</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 10:37:09 UTC
+Last updated 2018-04-15 11:32:22 UTC
 </div>
 </div>
 </body>

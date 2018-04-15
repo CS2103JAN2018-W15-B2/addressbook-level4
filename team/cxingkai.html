@@ -123,9 +123,15 @@ This feature can also be extended in the future by adding additional user roles 
 <div class="sect3">
 <h4 id="logging-into-the-system-code-login-code-since-v1-2"><a class="link" href="#logging-into-the-system-code-login-code-since-v1-2">Logging into the system: <code>login</code> [since v1.2]</a></h4>
 <div class="paragraph">
-<p>Opens a window for the user to log into the IMDB with a matching username and password.<br>
+<p>Opens a window for the user to log into the IMDB with a matching username and password as shown in Figure 4 below.<br>
 There are two placeholder accounts currently in the IMDB. There is alice, who is a doctor, and bob, who is a medical staff member. Some commands are restricted based on which role the user is logged into.<br>
 Format: <code>login</code> or <code>lg</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/login_window.PNG" alt="login window" width="990">
+</div>
+<div class="title">Figure 4: Login window</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -136,13 +142,23 @@ Format: <code>login</code> or <code>lg</code></p>
 <p><code>login</code><br>
 Username: alice<br>
 Password: password123<br>
-Logs the user in as alice, who is a doctor.</p>
+Logs the user in as alice, who is a doctor as shown in Figure 5 below.</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/login_window_doctor.PNG" alt="login window doctor" width="990">
+</div>
+<div class="title">Figure 5: IMDB main window (Logged in as Alice)</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>login</code><br>
 Username: bob<br>
 Password: password456<br>
-Logs the user in as bob, who is a medical staff.</p>
+Logs the user in as bob, who is a medical staff as shown in Figure 6 below.</p>
 </li>
 </ul>
 </div>
@@ -157,7 +173,7 @@ Format: <code>logout</code></p>
 <div class="sect3">
 <h4 id="printing-a-patient-s-formatted-medical-records-code-print-code-since-v1-4"><a class="link" href="#printing-a-patient-s-formatted-medical-records-code-print-code-since-v1-4">Printing a patient&#8217;s formatted medical records : <code>print</code> [since v1.4]</a></h4>
 <div class="paragraph">
-<p>Formats and prints a patient&#8217;s medical records into a pdf file. This pdf file is located in the same directory as the IMDB application.<br>
+<p>Formats and prints a patient&#8217;s medical records into a PDF file. This PDF file is located in the same directory as the IMDB application as shown in Figure 8 below.<br>
 Format: <code>print INDEX</code> or <code>p INDEX</code></p>
 </div>
 <div class="admonitionblock caution">
@@ -171,6 +187,12 @@ This command is only accessible to doctors.
 </td>
 </tr>
 </table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/print_window.PNG" alt="print window" width="990">
+</div>
+<div class="title">Figure 8: PDF file in the directory</div>
 </div>
 </div>
 </div>
@@ -324,7 +346,7 @@ each implementation and the pros and cons of each implementation:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 10:37:09 UTC
+Last updated 2018-04-15 11:32:22 UTC
 </div>
 </div>
 </body>
