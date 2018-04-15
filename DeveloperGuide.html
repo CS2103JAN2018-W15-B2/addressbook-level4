@@ -319,40 +319,16 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </table>
 </div>
 <div class="paragraph">
-<p>Given below is a quick overview of each component.<br></p>
-</div>
-<div class="paragraph">
-<p><code>Main</code> has only one class called <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for the following:</p>
+<p>The App consists of the following components:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>At app launch: It initializes the components in the correct sequence, and connects them up with each other.</p>
+<p><code>Main</code>: Consists of only one class called <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>.</p>
 </li>
 <li>
-<p>At shut down: It shuts down the components and invokes the cleanup method where necessary.</p>
+<p><a href="#Design-Commons"><strong><code>Commons</code></strong></a>: Represents a collection of classes used by multiple other components.</p>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p><a href="#Design-Commons"><strong><code>Commons</code></strong></a> represents a collection of classes used by multiple other components. Two of those classes play important roles at the architecture level.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>EventsCenter</code> : Used by components to communicate with other components using events (i.e. a form of <em>Event Driven</em> design).
-This class is written using <a href="https://github.com/google/guava/wiki/EventBusExplained">Google&#8217;s Event Bus library</a>.</p>
-</li>
-<li>
-<p><code>LogsCenter</code> : Used by many classes to write log messages to the App&#8217;s log file.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The rest of the App consists of the following components:</p>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p><a href="#Design-Ui"><strong><code>UI</code></strong></a>: Acts as the UI of the App.</p>
 </li>
@@ -368,7 +344,37 @@ This class is written using <a href="https://github.com/google/guava/wiki/EventB
 </ul>
 </div>
 <div class="paragraph">
-<p>Each of the four components:</p>
+<p>Given below is an overview of each component.</p>
+</div>
+<div class="paragraph">
+<p><code>Main</code> is responsible for the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>At app launch: It initializes the components in the correct sequence, and connects them up with each other.</p>
+</li>
+<li>
+<p>At shut down: It shuts down the components and invokes the cleanup method where necessary.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="#Design-Commons"><strong><code>Commons</code></strong></a> has two major classes that play important roles at the architecture level.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>EventsCenter</code> : Used by components to communicate with other components using events (i.e. a form of <em>Event Driven</em> design).
+This class is written using <a href="https://github.com/google/guava/wiki/EventBusExplained">Google&#8217;s Event Bus library</a>.</p>
+</li>
+<li>
+<p><code>LogsCenter</code> : Used by many classes to write log messages to the App&#8217;s log file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The rest of the 4 components does the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -906,6 +912,27 @@ match the user input. The <code>RemarkCommand</code> then calls for the utility 
 edited with the edited patient.</p>
 </div>
 <div class="paragraph">
+<p>The <code>Patient</code> is updated in the following manner:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
+        requireNonNull(patientToEdit);
+        requireNonNull(editedPatient);
+
+        <span class="keyword">try</span> {
+            model.updatePerson(patientToEdit, editedPatient);
+        } <span class="keyword">catch</span> (DuplicatePatientException dpe) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_DUPLICATE_PERSON);
+        } <span class="keyword">catch</span> (PatientNotFoundException pnfe) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">The target patient cannot be missing</span><span class="delimiter">&quot;</span></span>);
+        }
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(generateSuccessMessage(editedPatient));
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>Suppose that the user has just launched the application. The current patient queue is shown in the figure below.</p>
 </div>
 <div class="imageblock">
@@ -1384,6 +1411,62 @@ It supports editing the records of a <code>Patient</code> to match the user inpu
 by the user. It then creates a new patient with the same attributes as the patient to be edited, changing the records attribute to
 match the user input. The <code>RecordCommand</code> then calls for the utility method <code>updatePerson</code> under <code>Model</code>, to replace the patient to be
 edited with the edited patient.</p>
+</div>
+<div class="paragraph">
+<p>The inputs from the user are handled in the following manner:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> closeWindow(<span class="predefined-type">String</span> date, <span class="predefined-type">String</span> symptom, <span class="predefined-type">String</span> illness, <span class="predefined-type">String</span> treatment) {
+        <span class="keyword">if</span> (date.equals(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>) || symptom.equals(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>) || illness.equals(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>) || treatment.equals(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>)) {
+            messageText.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Please fill in all fields.</span><span class="delimiter">&quot;</span></span>);
+        } <span class="keyword">else</span> {
+            <span class="keyword">if</span> (RecordManager.authenticate(date, symptom, illness, treatment)) {
+                messageText.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Success! Please close this window.</span><span class="delimiter">&quot;</span></span>);
+                closeButtonAction();
+            } <span class="keyword">else</span> {
+                <span class="keyword">if</span> (!DateOfBirth.isValidDob(date)) {
+                    messageText.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Date should only contain digits and</span><span class="delimiter">&quot;</span></span>
+                            + <span class="string"><span class="delimiter">&quot;</span><span class="content">slashes, in the following format DD/MM/YYYY</span><span class="delimiter">&quot;</span></span>);
+                } <span class="keyword">else</span> {
+                    messageText.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Text field should only contain</span><span class="delimiter">&quot;</span></span>
+                            + <span class="string"><span class="delimiter">&quot;</span><span class="content">visible characters and spaces, and it should not be blank</span><span class="delimiter">&quot;</span></span>);
+                }
+            }
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>editedPatient</code> is created in the following manner:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">protected</span> <span class="type">void</span> preprocessUndoableCommand() <span class="directive">throws</span> CommandException {
+        <span class="predefined-type">List</span>&lt;Patient&gt; lastShownList = model.getFilteredPersonList();
+
+        <span class="keyword">if</span> (patientIndex.getZeroBased() &gt;= lastShownList.size()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+
+        patientToEdit = lastShownList.get(patientIndex.getZeroBased());
+
+        <span class="comment">//creating medical record window here and obtaining user input</span>
+        <span class="keyword">if</span> (!isTest) { <span class="comment">//only execute if it is not a test</span>
+            RecordWindow recordWindow = <span class="keyword">new</span> RecordWindow();
+            Stage stage = <span class="keyword">new</span> Stage();
+            recordWindow.start(stage, patientToEdit.getRecord(recordIndex.getZeroBased()));
+        }
+
+        Record editedRecord = RecordManager.getRecord();
+
+        <span class="keyword">if</span> (editedRecord == <span class="predefined-constant">null</span>) {
+            editedPatient = patientToEdit;
+        } <span class="keyword">else</span> {
+            editedPatient = createEditedPatient(patientToEdit, recordIndex.getZeroBased(), editedRecord);
+        }
+    }</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Suppose that the user has just launched the application. The current patient queue is shown in the figure below.</p>
@@ -3785,7 +3868,7 @@ Expected: Invalid index error is shown.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 20:27:35 UTC
+Last updated 2018-04-15 08:47:41 UTC
 </div>
 </div>
 </body>

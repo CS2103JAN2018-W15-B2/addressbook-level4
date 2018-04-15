@@ -300,6 +300,62 @@ match the user input. The <code>RecordCommand</code> then calls for the utility 
 edited with the edited patient.</p>
 </div>
 <div class="paragraph">
+<p>The inputs from the user are handled in the following manner:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> closeWindow(<span class="predefined-type">String</span> date, <span class="predefined-type">String</span> symptom, <span class="predefined-type">String</span> illness, <span class="predefined-type">String</span> treatment) {
+        <span class="keyword">if</span> (date.equals(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>) || symptom.equals(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>) || illness.equals(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>) || treatment.equals(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>)) {
+            messageText.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Please fill in all fields.</span><span class="delimiter">&quot;</span></span>);
+        } <span class="keyword">else</span> {
+            <span class="keyword">if</span> (RecordManager.authenticate(date, symptom, illness, treatment)) {
+                messageText.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Success! Please close this window.</span><span class="delimiter">&quot;</span></span>);
+                closeButtonAction();
+            } <span class="keyword">else</span> {
+                <span class="keyword">if</span> (!DateOfBirth.isValidDob(date)) {
+                    messageText.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Date should only contain digits and</span><span class="delimiter">&quot;</span></span>
+                            + <span class="string"><span class="delimiter">&quot;</span><span class="content">slashes, in the following format DD/MM/YYYY</span><span class="delimiter">&quot;</span></span>);
+                } <span class="keyword">else</span> {
+                    messageText.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Text field should only contain</span><span class="delimiter">&quot;</span></span>
+                            + <span class="string"><span class="delimiter">&quot;</span><span class="content">visible characters and spaces, and it should not be blank</span><span class="delimiter">&quot;</span></span>);
+                }
+            }
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>editedPatient</code> is created in the following manner:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">protected</span> <span class="type">void</span> preprocessUndoableCommand() <span class="directive">throws</span> CommandException {
+        <span class="predefined-type">List</span>&lt;Patient&gt; lastShownList = model.getFilteredPersonList();
+
+        <span class="keyword">if</span> (patientIndex.getZeroBased() &gt;= lastShownList.size()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+
+        patientToEdit = lastShownList.get(patientIndex.getZeroBased());
+
+        <span class="comment">//creating medical record window here and obtaining user input</span>
+        <span class="keyword">if</span> (!isTest) { <span class="comment">//only execute if it is not a test</span>
+            RecordWindow recordWindow = <span class="keyword">new</span> RecordWindow();
+            Stage stage = <span class="keyword">new</span> Stage();
+            recordWindow.start(stage, patientToEdit.getRecord(recordIndex.getZeroBased()));
+        }
+
+        Record editedRecord = RecordManager.getRecord();
+
+        <span class="keyword">if</span> (editedRecord == <span class="predefined-constant">null</span>) {
+            editedPatient = patientToEdit;
+        } <span class="keyword">else</span> {
+            editedPatient = createEditedPatient(patientToEdit, recordIndex.getZeroBased(), editedRecord);
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>Suppose that the user has just launched the application. The current patient queue is shown in the figure below.</p>
 </div>
 <div class="imageblock">
@@ -473,7 +529,7 @@ Separation of Concerns as <code>Patient</code> now needs to do two different thi
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 20:27:35 UTC
+Last updated 2018-04-15 08:47:41 UTC
 </div>
 </div>
 </body>
